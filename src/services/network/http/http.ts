@@ -2,7 +2,7 @@ import axios, { AxiosPromise, AxiosRequestConfig } from 'axios'
 import { NextPageContext } from 'next'
 import { Cookies } from 'utils'
 
-const baseURL = process.env.BACKEND_API || 'http://localhost:3000/api'
+const baseURL = process.env.BACKEND_API || '/api'
 
 type CustomHeader = string | number | boolean
 
