@@ -62,10 +62,11 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
       }
     } catch (error) {
       console.log(error)
+      /** TODO: refresh token */
       return {
         props: {
           initialData: [],
-          auth
+          auth: null
         }
       }
     }
