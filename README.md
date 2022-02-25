@@ -8,10 +8,10 @@ When user likes the recommendation, he can gives a like it simmilar the Tinder.
 
 ## Todo
 
-- [] config React-Query
-- [] config Husky
-- [] config CommitStage
-- [] config Semantic-Release
+- [ ] config React-Query
+- [ ] config Husky
+- [ ] config CommitStage
+- [ ] config Semantic-Release
 
 ## Demo
 
