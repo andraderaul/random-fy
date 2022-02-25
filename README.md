@@ -20,7 +20,7 @@ soon
 
 **Back-end:** [NextJs](https://nextjs.org/docs)
 
-## Referência
+## References
 
 - [Spotify Web Api](https://developer.spotify.com/documentation/web-api/reference)
 
