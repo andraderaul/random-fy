@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/andraderaul/random-fy/compare/v1.0.1...v1.0.2) (2022-02-25)
+
+
+### Bug Fixes
+
+* centering grid items ([0320f85](https://github.com/andraderaul/random-fy/commit/0320f859ea097ac87183cd8c751560de90a2935d))
+
 ## [1.0.1](https://github.com/andraderaul/random-fy/compare/v1.0.0...v1.0.1) (2022-02-25)
 
 
