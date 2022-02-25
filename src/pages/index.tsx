@@ -55,7 +55,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
     return {
       props: {
-        initialData: response.data,
+        initialData: [],
         auth
       }
     }
@@ -63,8 +63,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
   return {
     props: {
-      initialData: [],
-      auth
+      initialData: auth
     }
   }
 }
