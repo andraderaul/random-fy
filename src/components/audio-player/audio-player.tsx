@@ -2,11 +2,11 @@ import { useEffect } from 'react'
 import { useAudio } from 'react-use'
 import { PlayIcon, PauseIcon } from '@heroicons/react/solid'
 
-type AudioPlayer = {
+type AudioPlayerProps = {
   src: string
 }
 
-export const AudioPlayer = ({ src }: AudioPlayer) => {
+export const AudioPlayer = ({ src }: AudioPlayerProps) => {
   const [audio, state, controls] = useAudio({
     src: src,
     autoPlay: false
@@ -24,7 +24,7 @@ export const AudioPlayer = ({ src }: AudioPlayer) => {
       {audio}
       {state.playing ? (
         <PauseIcon
-          className="h-10 w-10 fill-gray-600 cursor-pointer
+          className="h-20 w-20 sm:h-10 sm:w-10 fill-gray-600 cursor-pointer
           hover:scale-110
           transition duration-200 ease-out hover:ease-in"
           type="button"
@@ -32,7 +32,7 @@ export const AudioPlayer = ({ src }: AudioPlayer) => {
         />
       ) : (
         <PlayIcon
-          className="h-10 w-10 fill-gray-600 cursor-pointer
+          className="h-20 w-20 sm:h-10 sm:w-10 fill-gray-600 cursor-pointer
           hover:scale-110
           transition duration-200 ease-out hover:ease-in"
           type="button"
