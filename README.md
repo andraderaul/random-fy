@@ -8,7 +8,7 @@ When user likes the recommendation, he can gives a like it simmilar the Tinder.
 
 ## Demo
 
-soon
+[random-fy](https://random-fy.vercel.app/)
 
 ## Screenshot
 
