@@ -2,7 +2,9 @@ import axios, { AxiosPromise, AxiosRequestConfig } from 'axios'
 import { NextPageContext } from 'next'
 import { Cookies } from 'utils'
 
-const baseURL = process.env.NEXT_PUBLIC_API
+const baseURL = process.env.NEXT_PUBLIC_API || '/api'
+
+console.log({ baseURL: process.env.NEXT_PUBLIC_API })
 
 type CustomHeader = string | number | boolean
 
