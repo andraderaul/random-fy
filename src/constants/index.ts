@@ -1,0 +1,1 @@
+export { scopes } from './scopes'
