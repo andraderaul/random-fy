@@ -63,7 +63,8 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
   return {
     props: {
-      initialData: auth
+      initialData: [],
+      auth
     }
   }
 }
