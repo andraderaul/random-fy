@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/andraderaul/random-fy/compare/v1.0.0...v1.0.1) (2022-02-25)
+
+
+### Bug Fixes
+
+* server side render when request has error ([76fbbfd](https://github.com/andraderaul/random-fy/commit/76fbbfdb97d967b05ebf0472d896bf7e251fe0b6))
+
 # 1.0.0 (2022-02-25)
 
 
