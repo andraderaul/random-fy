@@ -50,13 +50,23 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
       value: cookies['authorization']
     })
 
-    const initialArtistResponse = await getRandomArtist()
-    const response = await getRecomendations(initialArtistResponse.data.id)
+    try {
+      const initialArtistResponse = await getRandomArtist()
+      const response = await getRecomendations(initialArtistResponse.data.id)
 
-    return {
-      props: {
-        initialData: response.data,
-        auth
+      return {
+        props: {
+          initialData: response.data,
+          auth
+        }
+      }
+    } catch (error) {
+      console.log(error)
+      return {
+        props: {
+          initialData: [],
+          auth
+        }
       }
     }
   }
@@ -64,7 +74,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   return {
     props: {
       initialData: [],
-      auth
+      auth: null
     }
   }
 }
