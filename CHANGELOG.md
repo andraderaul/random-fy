@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/andraderaul/random-fy/compare/v1.0.2...v1.1.0) (2022-02-26)
+
+
+### Features
+
+* create authenticated and non-authenticated components ([3da7dd0](https://github.com/andraderaul/random-fy/commit/3da7dd01007aae71442014cf8102e69cb9f24265))
+
 ## [1.0.2](https://github.com/andraderaul/random-fy/compare/v1.0.1...v1.0.2) (2022-02-25)
 
 
