@@ -1,0 +1,21 @@
+{
+  "name": "random-fy",
+  "short_name": "random fy",
+  "icons": [
+    {
+      "src": "/img/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/img/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "background_color": "rgb(250 250 250)",
+  "description": "This is a project that will show artists and musics based in the recommendation from Spotify",
+  "display": "fullscreen",
+  "start_url": "/",
+  "theme_color": "rgb(250 250 250)"
+}
