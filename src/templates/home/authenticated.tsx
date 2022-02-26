@@ -1,14 +1,18 @@
-import { Content, Grid, ImageBox, Title } from 'components'
+import { Content, Grid, ImageBox, ImageBoxSkeleton, Title } from 'components'
+import { useRecommendation } from 'queries'
 import { useState } from 'react'
-import { getRecomendations } from 'services'
-import { Recommendation } from 'types'
 
 type AuthenticatedProps = {
-  initialData: Array<Recommendation>
+  artistId: string
 }
 
-export const Authenticated = ({ initialData }: AuthenticatedProps) => {
-  const [data, setData] = useState(() => initialData)
+export const Authenticated = ({ artistId }: AuthenticatedProps) => {
+  const [id, setId] = useState(() => artistId)
+  const { data, isError, isLoading } = useRecommendation(id)
+
+  if (isError) {
+    return <div>ocorreu um erro</div>
+  }
 
   return (
     <>
@@ -17,7 +21,8 @@ export const Authenticated = ({ initialData }: AuthenticatedProps) => {
           <Title>Randomfy</Title>
         </div>
         <Grid>
-          {data.map((item) => (
+          {isLoading && <ImageBoxSkeleton />}
+          {data?.data.map((item) => (
             <ImageBox
               key={item.id}
               imgSrc={item.images[1].url}
@@ -25,8 +30,7 @@ export const Authenticated = ({ initialData }: AuthenticatedProps) => {
               track={item.track.name}
               artist={item.name}
               onLike={async () => {
-                const response = await getRecomendations(item.id)
-                setData(response.data)
+                setId(item.id)
               }}
             />
           ))}

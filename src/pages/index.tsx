@@ -1,61 +1,50 @@
 import type { GetServerSidePropsContext, NextPage } from 'next'
-import { getRecomendations } from 'services'
 import { getRandomArtist, setCustomHeader } from 'services'
-import { Recommendation } from 'types'
 import { Cookies } from 'utils'
 import { NonAuthenticated } from 'templates'
 import { Authenticated } from 'templates/home/authenticated'
 
 type HomeProps = {
-  initialData: Array<Recommendation>
   auth: string
+  artistId: string
 }
 
-const Home: NextPage<HomeProps> = ({ initialData, auth }) => {
+const Home: NextPage<HomeProps> = ({ auth, artistId }) => {
   if (!auth) {
     console.log('non')
     return <NonAuthenticated />
   }
 
-  return <Authenticated initialData={initialData} />
+  return <Authenticated artistId={artistId} />
 }
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
-  const cookies = Cookies.getAll({ ctx: context })
-  const auth = cookies['authorization'] ?? null
+  try {
+    const cookies = Cookies.getAll({ ctx: context })
+    const auth = cookies['authorization'] ?? null
 
-  if (auth) {
     setCustomHeader({
       key: 'authorization',
       value: cookies['authorization']
     })
 
-    try {
-      const initialArtistResponse = await getRandomArtist()
-      const response = await getRecomendations(initialArtistResponse.data.id)
+    const initialArtistResponse = await getRandomArtist()
+    const artistId = initialArtistResponse.data.id ?? null
 
-      return {
-        props: {
-          initialData: response.data,
-          auth
-        }
-      }
-    } catch (error) {
-      console.log(error)
-      /** TODO: refresh token */
-      return {
-        props: {
-          initialData: [],
-          auth: null
-        }
+    return {
+      props: {
+        artistId,
+        auth
       }
     }
-  }
-
-  return {
-    props: {
-      initialData: [],
-      auth: null
+  } catch (error) {
+    console.log(error)
+    /** TODO: refresh token */
+    return {
+      props: {
+        auth: null,
+        artistId: null
+      }
     }
   }
 }

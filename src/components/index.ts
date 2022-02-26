@@ -1,4 +1,4 @@
-export { ImageBox } from './image-box'
+export { ImageBox, ImageBoxSkeleton } from './image-box'
 export { Grid } from './grid'
 export { AudioPlayer } from './audio-player'
 export { Content } from './content'
