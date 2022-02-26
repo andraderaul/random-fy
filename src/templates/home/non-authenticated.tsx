@@ -1,11 +1,13 @@
-import { Title } from 'components'
+import { Title, Content } from 'components'
 import Link from 'next/link'
 
 export const NonAuthenticated = () => {
   return (
-    <div className="bg-neutral-50 max-w-6xl my-0 mx-auto min-h-screen">
+    <Content>
       <div className="p-4">
         <Title>Randomfy</Title>
+      </div>
+      <div className="p-4">
         <div className="flex justify-center">
           <Link href="/api/login">
             <a
@@ -17,6 +19,6 @@ export const NonAuthenticated = () => {
           </Link>
         </div>
       </div>
-    </div>
+    </Content>
   )
 }

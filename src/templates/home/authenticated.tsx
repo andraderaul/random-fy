@@ -11,23 +11,27 @@ export const Authenticated = ({ initialData }: AuthenticatedProps) => {
   const [data, setData] = useState(() => initialData)
 
   return (
-    <Content>
-      <Title>Randomfy</Title>
-      <Grid>
-        {data.map((item) => (
-          <ImageBox
-            key={item.id}
-            imgSrc={item.images[1].url}
-            audioSrc={item.track.previewUrl}
-            track={item.track.name}
-            artist={item.name}
-            onLike={async () => {
-              const response = await getRecomendations(item.id)
-              setData(response.data)
-            }}
-          />
-        ))}
-      </Grid>
-    </Content>
+    <>
+      <Content>
+        <div className="p-4">
+          <Title>Randomfy</Title>
+        </div>
+        <Grid>
+          {data.map((item) => (
+            <ImageBox
+              key={item.id}
+              imgSrc={item.images[1].url}
+              audioSrc={item.track.previewUrl}
+              track={item.track.name}
+              artist={item.name}
+              onLike={async () => {
+                const response = await getRecomendations(item.id)
+                setData(response.data)
+              }}
+            />
+          ))}
+        </Grid>
+      </Content>
+    </>
   )
 }
