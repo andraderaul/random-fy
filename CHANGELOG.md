@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/andraderaul/random-fy/compare/v1.2.0...v1.3.0) (2022-02-26)
+
+
+### Features
+
+* add react query ([43eda7c](https://github.com/andraderaul/random-fy/commit/43eda7c4da1b9231596160e98d1f39dc6d4a7193))
+
 # [1.2.0](https://github.com/andraderaul/random-fy/compare/v1.1.0...v1.2.0) (2022-02-26)
 
 
