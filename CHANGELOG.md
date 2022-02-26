@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/andraderaul/random-fy/compare/v1.1.0...v1.2.0) (2022-02-26)
+
+
+### Features
+
+* add next N progress bar ([485729c](https://github.com/andraderaul/random-fy/commit/485729cfd68221f28970bbc033f8c870068c550e))
+
 # [1.1.0](https://github.com/andraderaul/random-fy/compare/v1.0.2...v1.1.0) (2022-02-26)
 
 
