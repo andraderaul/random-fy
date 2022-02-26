@@ -9,10 +9,11 @@ export const NonAuthenticated = () => {
       </div>
       <div className="p-4">
         <div className="flex justify-center">
+          {/* TODO: IMPROVE THIS!!!! */}
           <Link href="/api/login">
             <a
-              className="w-20 text-slate-50 rounded-full 
-                text-center bg-gray-800 p-1"
+              className="w-20 text-slate-50 rounded-full text-center bg-gray-800 p-1"
+              aria-label="login button"
             >
               Login
             </a>

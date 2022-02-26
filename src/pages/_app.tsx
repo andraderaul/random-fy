@@ -1,6 +1,7 @@
 import 'styles/globals.css'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
+import NextNProgress from 'nextjs-progressbar'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -17,6 +18,12 @@ function MyApp({ Component, pageProps }: AppProps) {
           content="This is a project that will show artists and musics based in the recommendation from Spotify"
         />
       </Head>
+      <NextNProgress
+        color="#171717"
+        startPosition={0.3}
+        stopDelayMs={200}
+        height={3}
+      />
       <Component {...pageProps} />
     </>
   )
