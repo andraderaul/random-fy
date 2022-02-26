@@ -1,5 +1,4 @@
-import { Content, Grid, ImageBox } from 'components'
-import { Title } from 'components/title/title'
+import { Content, Grid, ImageBox, Title } from 'components'
 import { useState } from 'react'
 import { getRecomendations } from 'services'
 import { Recommendation } from 'types'
