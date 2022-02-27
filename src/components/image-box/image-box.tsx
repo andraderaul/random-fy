@@ -40,6 +40,7 @@ export const ImageBox = ({
       </div>
       <div className="absolute top-1/2 left-1/2 -translate-y-2/4 -translate-x-2/4">
         <HeartIcon
+          aria-label="heart-icon"
           className="h-20 w-20 sm:h-10 sm:w-10 stroke-gray-50 hover:stroke-red-500
            hover:fill-red-500 hover:scale-110 cursor-pointer 
            transition duration-200 ease-out hover:ease-in"
