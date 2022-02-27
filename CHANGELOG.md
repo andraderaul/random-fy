@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/andraderaul/random-fy/compare/v1.4.0...v1.5.0) (2022-02-27)
+
+
+### Features
+
+* dark mode ([104e13e](https://github.com/andraderaul/random-fy/commit/104e13e51e36da02ff4f71e350251510c9ea43d2))
+
 # [1.4.0](https://github.com/andraderaul/random-fy/compare/v1.3.0...v1.4.0) (2022-02-27)
 
 
