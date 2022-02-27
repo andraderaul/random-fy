@@ -15,27 +15,25 @@ export const Authenticated = ({ artistId }: AuthenticatedProps) => {
   }
 
   return (
-    <>
-      <Content>
-        <div className="p-4">
-          <Title>Randomfy</Title>
-        </div>
-        <Grid>
-          {isLoading && <ImageBoxSkeleton />}
-          {data?.data.map((item) => (
-            <ImageBox
-              key={item.id}
-              imgSrc={item.images[1].url}
-              audioSrc={item.track.previewUrl}
-              track={item.track.name}
-              artist={item.name}
-              onLike={async () => {
-                setId(item.id)
-              }}
-            />
-          ))}
-        </Grid>
-      </Content>
-    </>
+    <Content>
+      <div className="mt-8 p-4">
+        <Title>Randomfy</Title>
+      </div>
+      <Grid>
+        {isLoading && <ImageBoxSkeleton />}
+        {data?.data.map((item) => (
+          <ImageBox
+            key={item.id}
+            imgSrc={item.images[1].url}
+            audioSrc={item.track.previewUrl}
+            track={item.track.name}
+            artist={item.name}
+            onLike={async () => {
+              setId(item.id)
+            }}
+          />
+        ))}
+      </Grid>
+    </Content>
   )
 }
