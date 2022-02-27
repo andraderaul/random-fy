@@ -18,9 +18,9 @@ export const ImageBox = ({
   onLike
 }: ImageBoxProps) => {
   return (
-    <div className="flex flex-col max-w-xs relative shadow-md hover:shadow-lg">
+    <div className="flex flex-col max-w-xs relative shadow-md hover:shadow-lg dark:shadow-neutral-700">
       <div
-        className="rounded bg-white p-4 hover:grayscale 
+        className="rounded bg-white dark:bg-neutral-900 p-4 hover:grayscale 
         transition duration-200 ease-out hover:ease-in"
       >
         <AudioPlayer src={audioSrc} />
@@ -32,8 +32,10 @@ export const ImageBox = ({
           height="300"
         />
         <div className="flex flex-col items-start p-2">
-          <strong className="w-64 truncate">{track}</strong>
-          <p className="w-64 truncate">{artist}</p>
+          <strong className="w-64 truncate dark:text-neutral-200">
+            {track}
+          </strong>
+          <p className="w-64 truncate dark:text-neutral-200">{artist}</p>
         </div>
       </div>
       <div className="absolute top-1/2 left-1/2 -translate-y-2/4 -translate-x-2/4">

@@ -24,7 +24,7 @@ export const AudioPlayer = ({ src }: AudioPlayerProps) => {
       {audio}
       {state.playing ? (
         <PauseIcon
-          className="h-20 w-20 sm:h-10 sm:w-10 fill-gray-600 cursor-pointer
+          className="h-20 w-20 sm:h-10 sm:w-10 dark:fill-gray-100 fill-gray-600 cursor-pointer
           hover:scale-110
           transition duration-200 ease-out hover:ease-in"
           type="button"
@@ -32,7 +32,7 @@ export const AudioPlayer = ({ src }: AudioPlayerProps) => {
         />
       ) : (
         <PlayIcon
-          className="h-20 w-20 sm:h-10 sm:w-10 fill-gray-600 cursor-pointer
+          className="h-20 w-20 sm:h-10 sm:w-10 dark:fill-gray-100 fill-gray-600 cursor-pointer
           hover:scale-110
           transition duration-200 ease-out hover:ease-in"
           type="button"

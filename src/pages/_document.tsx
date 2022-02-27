@@ -3,7 +3,7 @@ import Document, { Html, Head, Main, NextScript } from 'next/document'
 export default class MyDocument extends Document {
   render() {
     return (
-      <Html lang="pt-BR">
+      <Html lang="pt-BR" className="bg-neutral-50 dark:bg-neutral-700">
         <Head>
           <meta content="IE=edge" httpEquiv="X-UA-Compatible" />
           <link

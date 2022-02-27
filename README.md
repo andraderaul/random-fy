@@ -15,9 +15,13 @@ When user likes the recommendation, he can gives a like it simmilar the Tinder.
 
 [random-fy](https://random-fy.vercel.app/)
 
-## Screenshot
+## Screenshots
 
-![randomfy screen](./public/screenshots/1.png)
+- Light Mode
+  ![randomfy screen light mode](./public/screenshots/2.png)
+
+- Dark Mode
+  ![randomfy screen dark mode](./public/screenshots/3.png)
 
 ## Stack
 
