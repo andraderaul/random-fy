@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/andraderaul/random-fy/compare/v1.3.0...v1.4.0) (2022-02-27)
+
+
+### Features
+
+* create subtitle component ([0d76f9b](https://github.com/andraderaul/random-fy/commit/0d76f9b68054e156874479f49f7f8f959fa4805a))
+
 # [1.3.0](https://github.com/andraderaul/random-fy/compare/v1.2.0...v1.3.0) (2022-02-26)
 
 
