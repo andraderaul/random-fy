@@ -1,4 +1,4 @@
-# random-fy
+# randomfy
 
 This is a project that will show artists and musics based in the recommendation from Spotify.
 After the user logged in the application, recommendation will appear.
@@ -13,7 +13,7 @@ When user likes the recommendation, he can gives a like it simmilar the Tinder.
 
 ## Demo
 
-[random-fy](https://random-fy.vercel.app/)
+[randomfy](https://random-fy.vercel.app/)
 
 ## Screenshots
 

@@ -30,14 +30,14 @@ export const HTMLToImage = ({
     }).then((canvas) => {
       const image = canvas.toDataURL('png')
       const a = document.createElement('a')
-      a.setAttribute('download', 'random-fy.png')
+      a.setAttribute('download', 'randomfy.png')
       a.setAttribute('href', image)
       a.click()
     })
   }
 
   return artists.length >= MAX_RANDOM_FY_ITEMS ? (
-    <div id="grid" className="max-w-5xl">
+    <div id="grid" className="max-w-5xl my-0 mx-auto">
       <div className="p-4">
         <Title>Randomfy</Title>
       </div>
@@ -63,7 +63,7 @@ export const HTMLToImage = ({
           aria-label="download button"
           onClick={printIMG}
         >
-          download
+          Download Image
         </button>
       </div>
     </div>

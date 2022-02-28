@@ -42,6 +42,8 @@ export default async function handler(
       type: artist.type,
       name: artist.name,
       track: {
+        id: topTrackCollection[index].id,
+        uri: topTrackCollection[index].uri,
         name: topTrackCollection[index].name,
         previewUrl: topTrackCollection[index].preview_url
       }

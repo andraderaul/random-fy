@@ -8,7 +8,7 @@ export const NonAuthenticated = () => {
       <div className="mt-8 p-4">
         <Title>Randomfy</Title>
       </div>
-      <div className="p-4 mt-8   mb-0 mx-auto sm:w-4/5 w-full">
+      <div className="p-4 mt-8 mb-0 mx-auto sm:w-4/5 w-full">
         <SubTitle>Yeah.</SubTitle>
         <SubTitle>Hello music lover!</SubTitle>
         <p className="mt-8 text-5xl font-thin dark:text-gray-300 text-gray-700 leading-10 tracking-wide">

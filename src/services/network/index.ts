@@ -4,5 +4,6 @@ export {
   getCustomHeader,
   setCustomHeader,
   getRandomArtist,
-  getRecomendations
+  getRecomendations,
+  createPlaylist
 } from './http'

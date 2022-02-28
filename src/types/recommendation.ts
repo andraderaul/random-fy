@@ -8,6 +8,8 @@ export type Recommendation = {
   type: string
   name: string
   track: {
+    id: string
+    uri: string
     name: string
     previewUrl: string
   }

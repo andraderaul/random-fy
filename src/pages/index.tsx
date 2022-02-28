@@ -11,7 +11,6 @@ type HomeProps = {
 
 const Home: NextPage<HomeProps> = ({ auth, artistId }) => {
   if (!auth) {
-    console.log('non')
     return <NonAuthenticated />
   }
 
