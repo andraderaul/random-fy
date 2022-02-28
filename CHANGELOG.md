@@ -1,3 +1,10 @@
+## [1.6.1](https://github.com/andraderaul/random-fy/compare/v1.6.0...v1.6.1) (2022-02-28)
+
+
+### Bug Fixes
+
+* get recommendations ([aa027c7](https://github.com/andraderaul/random-fy/commit/aa027c7aa81b8a44909b029e1445901407a02e3c))
+
 # [1.6.0](https://github.com/andraderaul/random-fy/compare/v1.5.0...v1.6.0) (2022-02-28)
 
 
