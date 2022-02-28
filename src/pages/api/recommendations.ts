@@ -33,8 +33,6 @@ export default async function handler(
         max: topTrack.body.tracks.length
       })
 
-      console.log(topTrack.body.tracks[topTrackSelected].album.images)
-
       topTrackCollection.push(topTrack.body.tracks[topTrackSelected])
     }
 

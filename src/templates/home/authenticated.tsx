@@ -29,7 +29,7 @@ export const Authenticated = ({ artistId }: AuthenticatedProps) => {
     trackId: ''
   }))
 
-  const { data, isError, isLoading } = useRecommendation(
+  const { data, isError, isLoading, isRefetching } = useRecommendation(
     liked.id,
     liked.trackId
   )
@@ -51,8 +51,13 @@ export const Authenticated = ({ artistId }: AuthenticatedProps) => {
     <Content>
       {likedArtists.length < MAX_RANDOM_FY_ITEMS && (
         <>
-          <div className="mt-8 p-4">
+          <div
+            className={`mt-8 p-4 flex items-center ${
+              isRefetching ? 'animate-pulse' : ''
+            }`}
+          >
             <Title>Randomfy</Title>
+            {isRefetching && <span className="ml-4">refetching...</span>}
           </div>
           <Grid>
             {isLoading && <ImageBoxSkeleton />}

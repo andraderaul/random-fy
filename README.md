@@ -10,6 +10,7 @@ When user likes the recommendation, he can gives a like it simmilar the Tinder.
 
 - [ ] config Husky
 - [ ] config CommitStage
+- [ ] msw
 - [ ] toast
 - [ ] refetch loading
 - [ ] refresh token
