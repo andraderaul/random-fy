@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/andraderaul/random-fy/compare/v1.6.1...v1.7.0) (2022-02-28)
+
+
+### Features
+
+* create a new playlist by randomfy ([3d1a388](https://github.com/andraderaul/random-fy/commit/3d1a388bf57d9e8afbd75f7be08251ef26bca23e))
+
 ## [1.6.1](https://github.com/andraderaul/random-fy/compare/v1.6.0...v1.6.1) (2022-02-28)
 
 
