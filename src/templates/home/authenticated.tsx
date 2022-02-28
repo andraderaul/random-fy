@@ -35,8 +35,6 @@ export const Authenticated = ({ artistId }: AuthenticatedProps) => {
   )
   const mutation = usePlaylistMutation()
 
-  console.log(mutation.data)
-
   const handleLike = (artist: Recommendation) => {
     setLiked({
       id: artist.id,
@@ -61,7 +59,7 @@ export const Authenticated = ({ artistId }: AuthenticatedProps) => {
             {data?.data.map((artist) => (
               <ImageBox
                 key={artist.id}
-                imgSrc={artist.images[1].url}
+                imgSrc={artist.track.images[1].url}
                 audioSrc={artist.track.previewUrl}
                 track={artist.track.name}
                 artist={artist.name}

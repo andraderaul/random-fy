@@ -33,6 +33,8 @@ export default async function handler(
         max: topTrack.body.tracks.length
       })
 
+      console.log(topTrack.body.tracks[topTrackSelected].album.images)
+
       topTrackCollection.push(topTrack.body.tracks[topTrackSelected])
     }
 
@@ -45,7 +47,8 @@ export default async function handler(
         id: topTrackCollection[index].id,
         uri: topTrackCollection[index].uri,
         name: topTrackCollection[index].name,
-        previewUrl: topTrackCollection[index].preview_url
+        previewUrl: topTrackCollection[index].preview_url,
+        images: topTrackCollection[index].album.images
       }
     }))
 
