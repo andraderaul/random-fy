@@ -1,3 +1,10 @@
+## [1.7.1](https://github.com/andraderaul/random-fy/compare/v1.7.0...v1.7.1) (2022-02-28)
+
+
+### Bug Fixes
+
+* album url image ([8a61428](https://github.com/andraderaul/random-fy/commit/8a614282e321d2f910bd3c4177f022187c3d42e8))
+
 # [1.7.0](https://github.com/andraderaul/random-fy/compare/v1.6.1...v1.7.0) (2022-02-28)
 
 
