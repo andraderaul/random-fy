@@ -25,9 +25,14 @@ describe('Cookies', () => {
       name: 'token',
       value: 'fake-token'
     })
-    expect(setCookie).toHaveBeenCalledWith(null, 'token', 'fake-token', {
-      secure: false
-    })
+    expect(setCookie).toHaveBeenCalledWith(
+      { res: undefined },
+      'token',
+      'fake-token',
+      {
+        secure: false
+      }
+    )
   })
 
   it('should be able to set cookies when context is not undefined', () => {
