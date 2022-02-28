@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/andraderaul/random-fy/compare/v1.5.0...v1.6.0) (2022-02-28)
+
+
+### Features
+
+* add html to image component ([#1](https://github.com/andraderaul/random-fy/issues/1)) ([fa557ce](https://github.com/andraderaul/random-fy/commit/fa557ce4d79fdbf196fd62c1653a5d8789540c5b))
+
 # [1.5.0](https://github.com/andraderaul/random-fy/compare/v1.4.0...v1.5.0) (2022-02-27)
 
 
