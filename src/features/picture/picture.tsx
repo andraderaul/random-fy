@@ -4,15 +4,15 @@ import { PrimaryButton, PrimaryText, Title } from 'components'
 import { Recommendation } from 'types'
 import { MAX_RANDOM_FY_ITEMS } from '../../constants'
 
-type HTMLToImageProps = {
+type PictureProps = {
   artists: Array<Recommendation>
   html2canvas?: typeof html2canvasExternal
 }
 
-export const HTMLToImage = ({
+export const Picture = ({
   artists,
   html2canvas = html2canvasExternal
-}: HTMLToImageProps) => {
+}: PictureProps) => {
   const printIMG = () => {
     const domElement = document.getElementById('grid')
 

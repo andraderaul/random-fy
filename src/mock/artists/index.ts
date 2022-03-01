@@ -1,0 +1,1 @@
+export { artistsMock } from './artists'

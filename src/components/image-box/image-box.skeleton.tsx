@@ -1,8 +1,11 @@
+import { Fragment } from 'react'
+
 export const ImageBoxSkeleton = () => {
   return (
-    <>
+    <Fragment>
       {[1, 2, 3].map((item) => (
         <div
+          data-testid="image-box-skeleton"
           key={item}
           className="flex flex-col max-w-xs relative shadow-md hover:shadow-lg animate-pulse"
         >
@@ -23,6 +26,6 @@ export const ImageBoxSkeleton = () => {
           </div>
         </div>
       ))}
-    </>
+    </Fragment>
   )
 }
