@@ -1,6 +1,7 @@
-import { useEffect } from 'react'
+import { useContext, useEffect } from 'react'
 import { useAudio as ReactUseAudio } from 'react-use'
 import { PlayIcon, PauseIcon } from '@heroicons/react/solid'
+import { AudioContext } from 'contexts'
 
 type AudioPlayerProps = {
   src: string
@@ -16,12 +17,31 @@ export const AudioPlayer = ({
     autoPlay: false
   })
 
-  const { volume } = controls
+  const { source, setSource } = useContext(AudioContext)
+
+  const { volume, play, pause } = controls
 
   useEffect(() => {
+    if (src !== source) {
+      pause()
+    }
+  }, [source, src, pause])
+
+  useEffect(() => {
+    /**
+     * @disclaimer
+     * I don't know why when I add volume function to array deps
+     * this component receive this error
+     * "Maximum update depth exceeded. This can happen when a component calls setState inside"
+     */
     volume(0.1)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  const handlePlay = () => {
+    play()
+    setSource?.(src)
+  }
 
   return (
     <div className="flex justify-center p-2">
@@ -33,7 +53,7 @@ export const AudioPlayer = ({
           hover:scale-110
           transition duration-200 ease-out hover:ease-in"
           type="button"
-          onClick={controls.pause}
+          onClick={pause}
         />
       ) : (
         <PlayIcon
@@ -42,7 +62,7 @@ export const AudioPlayer = ({
           hover:scale-110
           transition duration-200 ease-out hover:ease-in"
           type="button"
-          onClick={controls.play}
+          onClick={handlePlay}
         />
       )}
     </div>

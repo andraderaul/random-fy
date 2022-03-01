@@ -3,6 +3,11 @@ import userEvent from '@testing-library/user-event'
 import { ImageBox } from './image-box'
 
 describe('<ImageBox />', () => {
+  beforeEach(() => {
+    window.HTMLMediaElement.prototype.play = jest.fn()
+    window.HTMLMediaElement.prototype.pause = jest.fn()
+  })
+
   const heartIconPath = 'div > div:nth-child(2) > svg > path'
   const onLikeMock = jest.fn()
 
