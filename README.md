@@ -6,6 +6,12 @@ When user likes the recommendation, he can gives a like it simmilar the Tinder.
 
 > disclaimer: I'll improve this readme soon
 
+## About
+
+Randomfy takes your most listened to Spotify artists and select one of them for you can know new artists based in this artist selected. If you liked that artist, you can give a like. After that, you can make a playlist with the artists liked and share with your friends. Also you can create a picture with this artists.
+
+Disclaimer: Randomfy is not affiliated with Spotify. The site is built on Nextjs, React and the Spotify API.
+
 ## Todo
 
 - [ ] config Husky
