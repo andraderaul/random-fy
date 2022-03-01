@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/andraderaul/random-fy/compare/v1.7.2...v1.8.0) (2022-03-01)
+
+
+### Features
+
+* create primary button and primary text components ([c8b9bfb](https://github.com/andraderaul/random-fy/commit/c8b9bfb4bc67e2427bee2b2e43c46c57cab2a338))
+
 ## [1.7.2](https://github.com/andraderaul/random-fy/compare/v1.7.1...v1.7.2) (2022-03-01)
 
 
