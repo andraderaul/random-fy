@@ -1,3 +1,10 @@
+# [1.9.0](https://github.com/andraderaul/random-fy/compare/v1.8.0...v1.9.0) (2022-03-01)
+
+
+### Features
+
+* create about page ([2be6b59](https://github.com/andraderaul/random-fy/commit/2be6b595c0dfbae77e7778668528a5b8ac09e3f9))
+
 # [1.8.0](https://github.com/andraderaul/random-fy/compare/v1.7.2...v1.8.0) (2022-03-01)
 
 
