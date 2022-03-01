@@ -38,9 +38,6 @@ export const Picture = ({
 
   return artists.length >= MAX_RANDOM_FY_ITEMS ? (
     <div id="grid" className="max-w-5xl my-0 mx-auto">
-      <div className="p-4">
-        <Title>Randomfy</Title>
-      </div>
       <div className="p-4" id="subtitle">
         <PrimaryText>You can download your randomfy!</PrimaryText>
       </div>

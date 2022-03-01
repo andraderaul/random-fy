@@ -1,13 +1,11 @@
 import Image from 'next/image'
-import { Title, Content, SubTitle, PrimaryText } from 'components'
+import { Content, SubTitle, PrimaryText, Header } from 'components'
 import Link from 'next/link'
 
 export const NonAuthenticated = () => {
   return (
     <Content>
-      <div className="mt-8 p-4">
-        <Title>Randomfy</Title>
-      </div>
+      <Header />
       <div className="p-4 mt-8 mb-0 mx-auto sm:w-4/5 w-full">
         <SubTitle>Yeah.</SubTitle>
         <SubTitle>Hello music lover!</SubTitle>

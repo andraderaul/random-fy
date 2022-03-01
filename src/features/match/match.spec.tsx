@@ -38,12 +38,6 @@ describe('<Match />', () => {
       />
     )
 
-    expect(
-      screen.getByRole('heading', {
-        name: /randomfy/i
-      })
-    ).toBeInTheDocument()
-
     expect(screen.getAllByText(/fish beach/i)).toHaveLength(
       MAX_ARTISTS_TO_SHOW_PER_TURN
     )

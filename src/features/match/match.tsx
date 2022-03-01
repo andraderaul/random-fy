@@ -51,15 +51,7 @@ export const Match = ({
 
   return likedArtists.length < MAX_RANDOM_FY_ITEMS ? (
     <Fragment>
-      <div
-        className={`mt-8 p-4 flex items-center ${
-          isRefetching ? 'animate-pulse' : ''
-        }`}
-      >
-        <Title>Randomfy</Title>
-        {isRefetching && <span className="ml-4">refetching...</span>}
-      </div>
-
+      {isRefetching && <span className="ml-4">refetching...</span>}
       <Grid>
         {isLoading && <ImageBoxSkeleton />}
         {newArtists.map((artist) => (

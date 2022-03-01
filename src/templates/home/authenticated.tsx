@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Content } from 'components'
+import { Content, Header } from 'components'
 
 import { Recommendation } from 'types'
 
@@ -20,13 +20,14 @@ export const Authenticated = ({ artistId }: AuthenticatedProps) => {
       value={{ source: currentPlaying, setSource: setCurrentPlaying }}
     >
       <Content>
+        <Header />
         <Match
           artistId={artistId}
           likedArtists={likedArtists}
           setLikedArtists={setLikedArtists}
         />
-        <Picture artists={likedArtists} />
         <Playlist artists={likedArtists} />
+        <Picture artists={likedArtists} />
       </Content>
     </AudioContext.Provider>
   )

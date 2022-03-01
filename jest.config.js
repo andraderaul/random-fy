@@ -5,17 +5,10 @@ module.exports = {
     '/.next/',
     'stories.tsx',
     '/mock',
-    '/pages',
     '/constants',
     '/styles'
   ],
-  coveragePathIgnorePatterns: [
-    'stories.tsx',
-    '/mock',
-    '/pages',
-    '/constants',
-    '/styles'
-  ],
+  coveragePathIgnorePatterns: ['stories.tsx', '/mock', '/constants', '/styles'],
   transformIgnorePatterns: ['node_modules/(?!imask|react-extras)'],
   collectCoverage: true,
   collectCoverageFrom: ['src/**/*.ts(x)?'],
