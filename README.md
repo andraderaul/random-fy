@@ -20,9 +20,7 @@ Disclaimer: Randomfy is not affiliated with Spotify. The site is built on Nextjs
 - [ ] toast
 - [ ] refetch loading
 - [ ] refresh token
-- [ ] audio issues
 - [ ] clean up the recommendations
-- [ ] about
 
 ## Demo
 

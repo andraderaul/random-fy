@@ -4,7 +4,7 @@ import {
   NextApiResponse
 } from 'next'
 
-import nookies, { parseCookies, setCookie } from 'nookies'
+import nookies, { parseCookies, setCookie, destroyCookie } from 'nookies'
 
 type SetCookie = {
   name: string
@@ -20,6 +20,15 @@ type GetAllCookie = {
   ctx?: NextPageContext | GetServerSidePropsContext
 }
 
+type DestroyCookie = {
+  name: string
+  options?: {
+    ctx?: NextPageContext | GetServerSidePropsContext
+    res?: NextApiResponse
+    [key: string]: unknown
+  }
+}
+
 const getOptions = () => {
   const secure = process.env.NODE_ENV === 'production'
   return { secure }
@@ -33,6 +42,15 @@ function getAll(options: GetAllCookie = {}) {
   }
 
   return parseCookies()
+}
+
+function destroy({ name, options = {} }: DestroyCookie) {
+  const { ctx, res, ...rest } = options
+  if (ctx !== undefined) {
+    nookies.destroy(ctx, name, rest)
+  }
+
+  destroyCookie({ res }, name, rest)
 }
 
 function set({ name, value, options = {} }: SetCookie) {
@@ -54,5 +72,6 @@ function set({ name, value, options = {} }: SetCookie) {
 
 export const Cookies = {
   getAll,
-  set
+  set,
+  destroy
 }

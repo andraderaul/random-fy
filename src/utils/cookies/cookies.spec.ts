@@ -1,12 +1,14 @@
 import { NextPageContext } from 'next'
 import { Cookies } from './cookies'
-import nookies, { setCookie } from 'nookies'
+import nookies, { setCookie, destroyCookie } from 'nookies'
 
 jest.mock('nookies', () => ({
   get: jest.fn().mockReturnValue({ token: 'fake-token' }),
   set: jest.fn(),
   parseCookies: jest.fn().mockReturnValue({ token: 'fake-token' }),
-  setCookie: jest.fn()
+  setCookie: jest.fn(),
+  destroyCookie: jest.fn(),
+  destroy: jest.fn()
 }))
 
 describe('Cookies', () => {
@@ -47,5 +49,22 @@ describe('Cookies', () => {
     expect(nookies.set).toHaveBeenCalledWith({}, 'token', 'fake-token', {
       secure: false
     })
+  })
+
+  it('should be able to destroy cookies when context is undefined', () => {
+    Cookies.destroy({ name: 'token' })
+
+    expect(destroyCookie).toHaveBeenCalledWith({ res: undefined }, 'token', {})
+  })
+
+  it('should be able to destroy cookies when context is not undefined', () => {
+    Cookies.destroy({
+      name: 'token',
+      options: {
+        ctx: {} as NextPageContext
+      }
+    })
+
+    expect(destroyCookie).toHaveBeenCalledWith({ res: undefined }, 'token', {})
   })
 })
