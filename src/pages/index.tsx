@@ -24,7 +24,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
     setCustomHeader({
       key: 'authorization',
-      value: cookies['authorization']
+      value: cookies['authorization'] ?? ''
     })
 
     const initialArtistResponse = await getRandomArtist()
@@ -36,9 +36,18 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
         auth
       }
     }
-  } catch (error) {
+  } catch (error: any) {
+    if (error?.response?.status === 401) {
+      Cookies.destroy({
+        name: 'authorization',
+        options: {
+          ctx: context
+        }
+      })
+    }
+
     console.log(error)
-    /** TODO: refresh token */
+
     return {
       props: {
         auth: null,

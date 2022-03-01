@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-import { spotifyApi } from 'services'
+import { setCustomHeader, spotifyApi } from 'services'
 import { Cookies } from 'utils'
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -32,12 +32,6 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
         }
       })
 
-      res
-        .writeHead(302, {
-          Location: `/`
-        })
-        .end()
-
       setInterval(async () => {
         const data = await spotifyApi.refreshAccessToken()
         const access_token = data.body['access_token']
@@ -45,6 +39,11 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
         console.log('The access token has been refreshed!')
         console.log('access_token:', access_token)
         spotifyApi.setAccessToken(access_token)
+
+        setCustomHeader({
+          key: 'authorization',
+          value: access_token
+        })
 
         Cookies.set({
           name: 'authorization',
@@ -56,6 +55,12 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
           }
         })
       }, (expires_in / 2) * 1000)
+
+      res
+        .writeHead(302, {
+          Location: `/`
+        })
+        .end()
     })
     .catch((error) => {
       console.error('Error getting Tokens:', error)
