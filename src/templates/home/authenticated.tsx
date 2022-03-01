@@ -6,7 +6,9 @@ import {
   ImageBoxSkeleton,
   Title,
   HTMLToImage,
-  SubTitle
+  SubTitle,
+  PrimaryButton,
+  PrimaryText
 } from 'components'
 import { usePlaylistMutation, useRecommendation } from 'queries'
 import { Recommendation } from 'types'
@@ -85,18 +87,17 @@ export const Authenticated = ({ artistId }: AuthenticatedProps) => {
 
         {likedArtists.length === MAX_RANDOM_FY_ITEMS && (
           <>
-            <div className="p-4" id="subtitle">
-              <SubTitle>You can make a randomfy playlist!</SubTitle>
+            <div className="p-4 max-w-5xl my-0 mx-auto" id="subtitle">
+              <SubTitle></SubTitle>
+              <PrimaryText>You can make a randomfy playlist!</PrimaryText>
             </div>
-            <div className="flex justify-center p-4">
-              <button
-                className="flex justify-evenly items-center w-56 p-3 rounded-full font-semibold 
-          text-center text-gray-100 dark:text-gray-800 bg-gray-900 dark:bg-gray-200"
-                aria-label="create playlist button"
+            <div className="flex justify-center p-4 pb-12">
+              <PrimaryButton
+                ariaLabel="create playlist button"
                 onClick={() => mutation.mutate(likedArtists)}
               >
                 Create Playlist
-              </button>
+              </PrimaryButton>
             </div>
           </>
         )}

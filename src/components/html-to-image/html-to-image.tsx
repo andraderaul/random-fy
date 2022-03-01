@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import html2canvasExternal from 'html2canvas'
-import { SubTitle, Title } from 'components'
+import { PrimaryButton, PrimaryText, Title } from 'components'
 import { Recommendation } from 'types'
 import { MAX_RANDOM_FY_ITEMS } from '../../constants'
 
@@ -42,7 +42,7 @@ export const HTMLToImage = ({
         <Title>Randomfy</Title>
       </div>
       <div className="p-4" id="subtitle">
-        <SubTitle>You can download your randomfy!</SubTitle>
+        <PrimaryText>You can download your randomfy!</PrimaryText>
       </div>
       <div className="grid grid-cols-4">
         {artists.map((artist, index) => (
@@ -56,15 +56,13 @@ export const HTMLToImage = ({
         ))}
       </div>
       <div className="flex justify-center p-10">
-        <button
+        <PrimaryButton
           id="download"
-          className="flex justify-evenly items-center w-56 p-3 rounded-full font-semibold 
-              text-center text-gray-100 dark:text-gray-800 bg-gray-900 dark:bg-gray-200"
-          aria-label="download button"
           onClick={printIMG}
+          ariaLabel="download button"
         >
           Download Image
-        </button>
+        </PrimaryButton>
       </div>
     </div>
   ) : null

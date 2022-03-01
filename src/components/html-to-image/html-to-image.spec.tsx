@@ -1,5 +1,6 @@
 import { render, screen, act } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { Recommendation } from 'types'
 import { HTMLToImage } from './html-to-image'
 
 //TODO: MOVE THIS TO A MOCK DIRECTORY
@@ -117,7 +118,7 @@ const artistsMock = [
         'https://p.scdn.co/mp3-preview/5ef82ca0e722ef6e51359140ba4d5a319eb35383?cid=c400423b160b43dcbb941e61d7d4cd60'
     }
   }
-]
+] as Array<Recommendation>
 
 describe('<HTMLToImage />', () => {
   it('should be render a HTMLToImage component', () => {
@@ -134,9 +135,7 @@ describe('<HTMLToImage />', () => {
     )
 
     expect(
-      screen.getByRole('heading', {
-        name: /you can download your randomfy!/i
-      })
+      screen.getByText(/you can download your randomfy!/i)
     ).toBeInTheDocument()
 
     expect(

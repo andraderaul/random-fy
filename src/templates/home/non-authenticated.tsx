@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { Title, Content, SubTitle } from 'components'
+import { Title, Content, SubTitle, PrimaryText } from 'components'
 import Link from 'next/link'
 
 export const NonAuthenticated = () => {
@@ -11,10 +11,12 @@ export const NonAuthenticated = () => {
       <div className="p-4 mt-8 mb-0 mx-auto sm:w-4/5 w-full">
         <SubTitle>Yeah.</SubTitle>
         <SubTitle>Hello music lover!</SubTitle>
-        <p className="mt-8 text-5xl font-thin dark:text-gray-300 text-gray-700 leading-10 tracking-wide">
-          Are you ready to know new Spotify artists and create a playlist with
-          them?
-        </p>
+        <div className="mt-8">
+          <PrimaryText>
+            Are you ready to know new Spotify artists and create a playlist with
+            them?
+          </PrimaryText>
+        </div>
       </div>
       <div className="p-4 mt-10">
         <div className="flex justify-center">
