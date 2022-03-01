@@ -1,3 +1,10 @@
+## [1.7.2](https://github.com/andraderaul/random-fy/compare/v1.7.1...v1.7.2) (2022-03-01)
+
+
+### Bug Fixes
+
+* when two tracks was played same time ([df70e17](https://github.com/andraderaul/random-fy/commit/df70e17ccc1bf710945b0df7fe00fff5b28840fe))
+
 ## [1.7.1](https://github.com/andraderaul/random-fy/compare/v1.7.0...v1.7.1) (2022-02-28)
 
 
