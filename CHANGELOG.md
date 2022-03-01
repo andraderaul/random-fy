@@ -1,3 +1,10 @@
+## [1.10.1](https://github.com/andraderaul/random-fy/compare/v1.10.0...v1.10.1) (2022-03-01)
+
+
+### Bug Fixes
+
+* logout when status is 401 ([5439a52](https://github.com/andraderaul/random-fy/commit/5439a52c67245e38620798013db3d76868e488eb))
+
 # [1.10.0](https://github.com/andraderaul/random-fy/compare/v1.9.0...v1.10.0) (2022-03-01)
 
 
