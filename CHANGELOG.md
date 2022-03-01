@@ -1,3 +1,10 @@
+# [1.10.0](https://github.com/andraderaul/random-fy/compare/v1.9.0...v1.10.0) (2022-03-01)
+
+
+### Features
+
+* create log out ([4dbe585](https://github.com/andraderaul/random-fy/commit/4dbe5859deaa38d82e25ebe31de4c1a6fb062265))
+
 # [1.9.0](https://github.com/andraderaul/random-fy/compare/v1.8.0...v1.9.0) (2022-03-01)
 
 
