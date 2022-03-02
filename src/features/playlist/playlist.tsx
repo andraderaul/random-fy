@@ -15,7 +15,7 @@ export const Playlist = ({
   artists,
   usePlaylist = usePlaylistMutation
 }: PlaylistProps) => {
-  const { mutate } = usePlaylist()
+  const { mutate, isLoading } = usePlaylist()
 
   return artists.length === MAX_RANDOM_FY_ITEMS ? (
     <Fragment>
@@ -23,7 +23,11 @@ export const Playlist = ({
         <SubTitle></SubTitle>
         <PrimaryText>You can make a randomfy playlist!</PrimaryText>
       </div>
-      <div className="flex justify-center p-4 pb-12">
+      <div
+        className={`flex justify-center p-4 pb-12 ${
+          isLoading ? 'animate-pulse' : ''
+        }`}
+      >
         <PrimaryButton
           ariaLabel="create playlist button"
           onClick={() => mutate(artists)}
