@@ -1,3 +1,10 @@
+# [1.12.0](https://github.com/andraderaul/random-fy/compare/v1.11.0...v1.12.0) (2022-03-02)
+
+
+### Features
+
+* add success and error toast ([d7986fe](https://github.com/andraderaul/random-fy/commit/d7986febc97e2d9789538909b7df830e31fd9158))
+
 # [1.11.0](https://github.com/andraderaul/random-fy/compare/v1.10.1...v1.11.0) (2022-03-02)
 
 
