@@ -7,7 +7,7 @@ import { Rnd } from 'utils'
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
-) {
+): Promise<void> {
   try {
     const token = req.headers.authorization as string
     spotifyApi.setAccessToken(token)
@@ -17,6 +17,17 @@ export default async function handler(
     )
 
     const artists = response.body.artists
+
+    /* falback when there aren't recommendations */
+    if (artists.length === 0 || artists === undefined) {
+      const topArtists = await spotifyApi.getMyTopArtists({
+        limit: 50
+      })
+      req.query.name = topArtists.body.items[0].id
+
+      return handler(req, res)
+    }
+
     const sliceEnd = Rnd.getRndNumber({
       min: MAX_ARTISTS_TO_SHOW_PER_TURN,
       max: artists.length
