@@ -1,4 +1,5 @@
 import { Fragment } from 'react'
+import { Toaster } from 'react-hot-toast'
 
 import { MAX_RANDOM_FY_ITEMS } from '../../constants'
 import { Recommendation } from 'types'
@@ -30,6 +31,16 @@ export const Playlist = ({
           Create Playlist
         </PrimaryButton>
       </div>
+      <Toaster
+        toastOptions={{
+          error: {
+            style: {
+              background: 'red',
+              color: 'white'
+            }
+          }
+        }}
+      />
     </Fragment>
   ) : null
 }
