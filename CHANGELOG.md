@@ -1,3 +1,10 @@
+# [1.11.0](https://github.com/andraderaul/random-fy/compare/v1.10.1...v1.11.0) (2022-03-02)
+
+
+### Features
+
+* add is refetching icon ([190d3c2](https://github.com/andraderaul/random-fy/commit/190d3c218b8a2002b0fd6fb49296821665487736))
+
 ## [1.10.1](https://github.com/andraderaul/random-fy/compare/v1.10.0...v1.10.1) (2022-03-01)
 
 
