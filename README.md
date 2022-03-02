@@ -18,7 +18,6 @@ Disclaimer: Randomfy is not affiliated with Spotify. The site is built on Nextjs
 - [ ] config CommitStage
 - [ ] msw
 - [ ] toast
-- [ ] refetch loading
 - [ ] refresh token
 - [ ] clean up the recommendations
 

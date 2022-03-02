@@ -18,7 +18,7 @@ describe('<Picture />', () => {
     ).toBeInTheDocument()
   })
 
-  it('should be return null when artists lenght less than the constant MAX_RANDOM_FY_ITEMS', () => {
+  it('should be return null when artists length less than the constant MAX_RANDOM_FY_ITEMS', () => {
     const { container } = render(<Picture artists={[]} />)
 
     expect(container.firstChild).toBeNull()

@@ -84,21 +84,21 @@ describe('<Match />', () => {
     )
   })
 
-  it('should be render a refetching component ', () => {
+  it('should be return null when artists length more than the constant MAX_RANDOM_FY_ITEMS', () => {
     const usePlaylistMutationMock = jest.fn().mockReturnValue({
       ...returnValue,
-      isRefetching: true
+      data: { data: artistsMock }
     })
 
-    render(
+    const { container } = render(
       <Match
-        likedArtists={[]}
+        likedArtists={artistsMock}
         artistId={artistIdMock}
         setLikedArtists={setLikedArtistsMock}
         useRecommendation={usePlaylistMutationMock}
       />
     )
 
-    expect(screen.getByText(/refetching\.\.\./i)).toBeInTheDocument()
+    expect(container.firstChild).toBeNull()
   })
 })

@@ -6,13 +6,16 @@ describe('<Header />', () => {
     const getAllMock = jest.fn().mockReturnValue({
       authorization: 'token'
     })
+
     const CookiesMock = {
       getAll: getAllMock,
       destroy: jest.fn(),
       set: jest.fn()
     }
 
-    render(<Header cookies={CookiesMock} />)
+    const useIsFetchingMock = jest.fn().mockReturnValue(0)
+
+    render(<Header cookies={CookiesMock} useIsFetching={useIsFetchingMock} />)
 
     expect(
       screen.getByRole('heading', {
@@ -43,13 +46,18 @@ describe('<Header />', () => {
     const getAllMock = jest.fn().mockReturnValue({
       authorization: ''
     })
+
     const CookiesMock = {
       getAll: getAllMock,
       destroy: jest.fn(),
       set: jest.fn()
     }
 
-    const { queryByText } = render(<Header cookies={CookiesMock} />)
+    const useIsFetchingMock = jest.fn().mockReturnValue(0)
+
+    const { queryByText } = render(
+      <Header cookies={CookiesMock} useIsFetching={useIsFetchingMock} />
+    )
 
     expect(
       screen.getByRole('heading', {
@@ -70,5 +78,13 @@ describe('<Header />', () => {
     ).toBeInTheDocument()
 
     expect(queryByText(/log out/i)).not.toBeInTheDocument()
+  })
+
+  it('should be render a is fetching icon', () => {
+    const useIsFetchingMock = jest.fn().mockReturnValue(1)
+
+    render(<Header useIsFetching={useIsFetchingMock} />)
+
+    expect(screen.getByTestId('refeching')).toBeInTheDocument()
   })
 })

@@ -2,7 +2,7 @@ import { Dispatch, Fragment, SetStateAction, useState } from 'react'
 
 import { useRecommendation as useRecommendationQuery } from 'queries'
 import { Recommendation } from 'types'
-import { Grid, ImageBox, ImageBoxSkeleton, Title } from 'components'
+import { Grid, ImageBox, ImageBoxSkeleton } from 'components'
 
 import { MAX_RANDOM_FY_ITEMS } from '../../constants'
 
@@ -51,7 +51,6 @@ export const Match = ({
 
   return likedArtists.length < MAX_RANDOM_FY_ITEMS ? (
     <Fragment>
-      {isRefetching && <span className="ml-4">refetching...</span>}
       <Grid>
         {isLoading && <ImageBoxSkeleton />}
         {newArtists.map((artist) => (
