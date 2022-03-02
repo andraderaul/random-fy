@@ -1,4 +1,4 @@
-import { Recommendation } from 'types'
+import { Artist, Recommendation } from 'types'
 
 const imagesMock = [
   {
@@ -18,7 +18,7 @@ const imagesMock = [
   }
 ]
 
-const artistMock: Recommendation = {
+const artistForRecommendationMock: Recommendation = {
   id: '7zejo99XCAwPzycPCCaoM8',
   images: imagesMock,
   type: 'artist',
@@ -34,6 +34,24 @@ const artistMock: Recommendation = {
 }
 
 export const artistsMock = Array.from({ length: 20 }, (_, k) => ({
-  ...artistMock,
-  id: `${artistMock.id}-${k}`
+  ...artistForRecommendationMock,
+  id: `${artistForRecommendationMock.id}-${k}`
 }))
+
+export const artistMock: Artist = {
+  external_urls: {
+    spotify: 'url spotify'
+  },
+  followers: {
+    href: 'href followers',
+    total: 123
+  },
+  genres: ['one', 'two'],
+  href: 'href artist',
+  id: '321',
+  images: imagesMock,
+  name: 'Artist name',
+  popularity: 1234,
+  type: 'artist',
+  uri: 'url artist'
+}

@@ -1,0 +1,53 @@
+import { renderHook } from '@testing-library/react-hooks'
+import {
+  wrapperReactQuery,
+  forceRequestError,
+  artistsMock,
+  playlistMock
+} from 'mock'
+
+import { useRecommendation } from './use-recommendation'
+
+describe('useRecommendation', () => {
+  it('when use recommendation query is loading return undefined data', async () => {
+    const { result, waitFor } = renderHook(
+      () => useRecommendation('artistId', 'trackId'),
+      {
+        wrapper: wrapperReactQuery
+      }
+    )
+
+    await waitFor(() => {
+      result.current.isLoading
+      expect(result.current.data).toBe(undefined)
+    })
+  })
+
+  it('when use recommendation query is success return a data', async () => {
+    const { result, waitFor } = renderHook(
+      () => useRecommendation('artistId', 'trackId'),
+      {
+        wrapper: wrapperReactQuery
+      }
+    )
+
+    await waitFor(() => result.current.isSuccess)
+    expect(result.current.data?.data).toEqual(artistsMock)
+  })
+
+  it('when use recommendation query is error return a data error', async () => {
+    forceRequestError({ method: 'get' })
+
+    const { result, waitFor } = renderHook(
+      () => useRecommendation('artistId', 'trackId'),
+      {
+        wrapper: wrapperReactQuery
+      }
+    )
+
+    await waitFor(() => result.current.isError)
+    expect(result.current.error?.response?.data).toEqual({
+      error: 'Invalid data'
+    })
+  })
+})

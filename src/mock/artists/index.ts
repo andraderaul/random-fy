@@ -1,1 +1,1 @@
-export { artistsMock } from './artists'
+export { artistsMock, artistMock } from './artists'
