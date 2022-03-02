@@ -13,9 +13,7 @@ describe('<Header />', () => {
       set: jest.fn()
     }
 
-    const useIsFetchingMock = jest.fn().mockReturnValue(0)
-
-    render(<Header cookies={CookiesMock} useIsFetching={useIsFetchingMock} />)
+    render(<Header cookies={CookiesMock} />)
 
     expect(
       screen.getByRole('heading', {
@@ -53,11 +51,7 @@ describe('<Header />', () => {
       set: jest.fn()
     }
 
-    const useIsFetchingMock = jest.fn().mockReturnValue(0)
-
-    const { queryByText } = render(
-      <Header cookies={CookiesMock} useIsFetching={useIsFetchingMock} />
-    )
+    const { queryByText } = render(<Header cookies={CookiesMock} />)
 
     expect(
       screen.getByRole('heading', {
@@ -78,13 +72,5 @@ describe('<Header />', () => {
     ).toBeInTheDocument()
 
     expect(queryByText(/log out/i)).not.toBeInTheDocument()
-  })
-
-  it('should be render a is fetching icon', () => {
-    const useIsFetchingMock = jest.fn().mockReturnValue(1)
-
-    render(<Header useIsFetching={useIsFetchingMock} />)
-
-    expect(screen.getByTestId('refeching')).toBeInTheDocument()
   })
 })
