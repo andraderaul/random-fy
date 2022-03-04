@@ -2,5 +2,5 @@
 . "$(dirname "$0")/_/husky.sh"
 
 yarn typecheck
-yarn lint
-yarn test
+yarn lint --fix
+yarn test --findRelatedTests ./src --bail
