@@ -3,4 +3,4 @@
 
 yarn typecheck
 yarn lint --fix
-yarn test --findRelatedTests ./src --bail
+yarn test 

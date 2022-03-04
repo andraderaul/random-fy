@@ -10,9 +10,6 @@ type Data = {
 
 const state = Rnd.generateRandomString(16)
 
-export default function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<Data>
-) {
+export default function handler(_: NextApiRequest, res: NextApiResponse<Data>) {
   res.redirect(spotifyApi.createAuthorizeURL(scopes, state))
 }
