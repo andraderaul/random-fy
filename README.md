@@ -32,13 +32,26 @@ Disclaimer: Randomfy is not affiliated with Spotify. The site is built on Nextjs
 
 ## Stack
 
-**Front-end:** [NextJs](https://nextjs.org/docs), [React](https://pt-br.reactjs.org/docs/getting-started.html), [TailwindCSS](https://tailwindcss.com/docs/)
+**Front-end:**
 
-**Back-end:** [NextJs](https://nextjs.org/docs)
+- [NextJs](https://nextjs.org/docs)
+- [React](https://pt-br.reactjs.org/docs/getting-started.html)
+- [TailwindCSS](https://tailwindcss.com/docs/)
+- [React-Query](https://react-query.tanstack.com/)
+- [Axios](https://github.com/axios/axios)
+- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
+- [MSW JS](https://mswjs.io/)
+
+**Back-end:**
+
+- [NextJs](https://nextjs.org/docs)
+- [Jest](https://jestjs.io/)
 
 ## References
 
 - [Spotify Web Api](https://developer.spotify.com/documentation/web-api/reference)
+- [Festify](https://salty-beach-42139.herokuapp.com/)
+- [Receiptify](https://receiptify.herokuapp.com/)
 
 ## Author
 
