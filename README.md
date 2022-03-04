@@ -47,11 +47,18 @@ Disclaimer: Randomfy is not affiliated with Spotify. The site is built on Nextjs
 - [NextJs](https://nextjs.org/docs)
 - [Jest](https://jestjs.io/)
 
+## Related projects
+
+- [Festify](https://salty-beach-42139.herokuapp.com/)
+- [Receiptify](https://receiptify.herokuapp.com/)
+
 ## References
 
 - [Spotify Web Api](https://developer.spotify.com/documentation/web-api/reference)
-- [Festify](https://salty-beach-42139.herokuapp.com/)
-- [Receiptify](https://receiptify.herokuapp.com/)
+
+## License
+
+[MIT](./LICENSE)
 
 ## Author
 
