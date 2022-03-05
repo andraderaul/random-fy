@@ -11,7 +11,7 @@ export const NonAuthenticated = () => {
         <SubTitle>Hello music lover!</SubTitle>
         <div className="mt-8">
           <PrimaryText>
-            Are you ready to know new Spotify artists and create a playlist with
+            Are you ready to meet new Spotify artists and create a playlist with
             them?
           </PrimaryText>
         </div>

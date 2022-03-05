@@ -2,17 +2,15 @@
 
 # randomfy
 
-This is a project that will show artists and musics based in the recommendation from Spotify.
-After the user logged in the application, recommendation will appear.
-When user likes the recommendation, he can gives a like it simmilar the Tinder.
-
-> disclaimer: I'll improve this readme soon
-
 ## About
 
-Randomfy takes your most listened to Spotify artists and select one of them for you can know new artists based in this artist selected. If you liked that artist, you can give a like. After that, you can make a playlist with the artists liked and share with your friends. Also you can create a picture with this artists.
+Randomfy takes your most listened Spotify artists, selects one of them and shows you similar artists, so you can meet new artists based on the previous selected one.
 
-Disclaimer: Randomfy is not affiliated with Spotify. The site is built on Nextjs, React and the Spotify API.
+Disclaimer: Randomfy is not affiliated with Spotify. The site was build with Nextjs, React and the Spotify API.
+
+## How it works
+
+This project shows artists and songs based on your Spotify recommendation. When the user signs in the application, a recommendation is shown. The user can like or dislike the recommendation, just like on Tinder. After that, you can make a playlist with the liked artists and share it with your friends. Also, you can create an image with these artists.
 
 ## Todo
 

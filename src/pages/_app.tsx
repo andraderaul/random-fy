@@ -24,7 +24,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta name="theme-color" content="rgb(250 250 250)" />
         <meta
           name="description"
-          content="This is a project that will show artists and musics based in the recommendation from Spotify"
+          content="Randomfy takes your most listened Spotify artists, selects one of them and shows you similar artists, so you can meet new artists based on the previous selected one."
         />
       </Head>
       <QueryClientProvider client={queryClientRef.current}>

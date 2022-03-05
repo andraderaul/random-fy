@@ -14,7 +14,7 @@
     }
   ],
   "background_color": "rgb(250 250 250)",
-  "description": "This is a project that will show artists and musics based in the recommendation from Spotify",
+  "description": "Randomfy takes your most listened Spotify artists, selects one of them and shows you similar artists, so you can meet new artists based on the previous selected one.",
   "display": "fullscreen",
   "start_url": "/",
   "theme_color": "rgb(250 250 250)"

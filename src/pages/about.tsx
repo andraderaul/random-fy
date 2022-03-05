@@ -8,22 +8,38 @@ const About = () => {
         <SubTitle>About</SubTitle>
         <div className="mt-8">
           <PrimaryText>
-            Randomfy takes your most listened to Spotify artists and select one
-            of them for you can know new artists based in this artist selected.
-            If you liked that artist, you can give a like. After that, you can
-            make a playlist with the artists liked and share with your friends.
-            Also you can create a picture with this artists.
+            Randomfy takes your most listened Spotify artists, selects one of
+            them and shows you similar artists, so you can meet new artists
+            based on the previous selected one.
           </PrimaryText>
           <div className="mt-6">
             <PrimaryText>
-              Disclaimer: Randomfy is not affiliated with Spotify. The site is
-              built on Nextjs, React and the Spotify API.
+              Disclaimer: Randomfy is not affiliated with Spotify. The site was
+              build with Nextjs, React and the Spotify API.
             </PrimaryText>
           </div>
           <div className="mt-6">
             <PrimaryText>
               Why are you reading this? You must be bored. Go listen to new
               artists.
+            </PrimaryText>
+          </div>
+        </div>
+        <div className="mt-12">
+          <SubTitle>How it works</SubTitle>
+          <div className="mt-8">
+            <PrimaryText>
+              This project shows artists and songs based on your Spotify
+              recommendation. When the user signs in the application, a
+              recommendation is shown.
+            </PrimaryText>
+          </div>
+          <div className="mt-8">
+            <PrimaryText>
+              The user can like or dislike the recommendation, just like on
+              Tinder. After that, you can make a playlist with the liked artists
+              and share it with your friends. Also, you can create an image with
+              these artists.
             </PrimaryText>
           </div>
         </div>
