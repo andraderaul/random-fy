@@ -1,3 +1,10 @@
+## [1.12.2](https://github.com/andraderaul/random-fy/compare/v1.12.1...v1.12.2) (2022-03-06)
+
+
+### Bug Fixes
+
+* download image ([5ce3e17](https://github.com/andraderaul/random-fy/commit/5ce3e1764de2bff575ae8c1f75e980d448df5954))
+
 ## [1.12.1](https://github.com/andraderaul/random-fy/compare/v1.12.0...v1.12.1) (2022-03-06)
 
 
