@@ -12,7 +12,7 @@ export const usePlaylistMutation = () => {
     Array<Recommendation>
   >((data) => createPlaylist(data), {
     onSuccess: () => {
-      toast.success('Playlist create with success!')
+      toast.success('Playlist was created with success!')
     },
     onError: () => {
       toast.error('Something wrong with the Playlist! ')
