@@ -1,3 +1,10 @@
+# [1.13.0](https://github.com/andraderaul/random-fy/compare/v1.12.2...v1.13.0) (2022-03-06)
+
+
+### Features
+
+* show playlist after created ([5b96579](https://github.com/andraderaul/random-fy/commit/5b96579f86ff501ffcee575c8afb8dbfb31d67ff))
+
 ## [1.12.2](https://github.com/andraderaul/random-fy/compare/v1.12.1...v1.12.2) (2022-03-06)
 
 
