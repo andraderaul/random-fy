@@ -1,3 +1,10 @@
+## [1.12.1](https://github.com/andraderaul/random-fy/compare/v1.12.0...v1.12.1) (2022-03-06)
+
+
+### Bug Fixes
+
+* x icon color in the dark mode ([5de11f4](https://github.com/andraderaul/random-fy/commit/5de11f481b84f650c15ac02317584b4a8dd39e38))
+
 # [1.12.0](https://github.com/andraderaul/random-fy/compare/v1.11.0...v1.12.0) (2022-03-02)
 
 
