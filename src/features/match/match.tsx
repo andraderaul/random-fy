@@ -55,7 +55,7 @@ export const Match = ({
       <div className="flex justify-center" aria-label="refetch-items">
         <XIcon
           aria-label="x-icon"
-          className="h-20 w-20 sm:h-10 sm:w-10 stroke-gray-50 hover:stroke-red-500
+          className="h-20 w-20 sm:h-10 sm:w-10 stroke-gray-700 dark:stroke-gray-50 hover:stroke-red-500
            hover:fill-red-500 hover:scale-110 cursor-pointer 
            transition duration-200 ease-out hover:ease-in"
           onClick={() => refetch()}
