@@ -3,7 +3,7 @@ import { Toaster } from 'react-hot-toast'
 
 import { MAX_RANDOM_FY_ITEMS } from '../../constants'
 import { Recommendation } from 'types'
-import { PrimaryButton, PrimaryText, SubTitle } from 'components'
+import { PrimaryButton, PrimaryText } from 'components'
 import { usePlaylistMutation } from 'queries'
 
 type PlaylistProps = {
@@ -19,8 +19,7 @@ export const Playlist = ({
 
   return artists.length === MAX_RANDOM_FY_ITEMS ? (
     <Fragment>
-      <div className="p-4 max-w-5xl my-0 mx-auto" id="subtitle">
-        <SubTitle></SubTitle>
+      <div className="p-4 max-w-5xl my-0 mx-auto">
         <PrimaryText>You can make a randomfy playlist!</PrimaryText>
       </div>
       <div

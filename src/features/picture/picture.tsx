@@ -22,7 +22,6 @@ export const Picture = ({
       onclone: (document) => {
         const button = document.getElementById('download')
         const subtitle = document.getElementById('subtitle')
-        console.log(subtitle)
         if (button && subtitle) {
           button.style.visibility = 'hidden'
           subtitle.style.visibility = 'hidden'
