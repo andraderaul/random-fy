@@ -24,10 +24,12 @@ This project shows artists and songs based on your Spotify recommendation. When 
 ## Screenshots
 
 - Light Mode
-  ![randomfy screen light mode](./public/screenshots/2.png)
+
+![randomfy screen light mode](./public/screenshots/2.png)
 
 - Dark Mode
-  ![randomfy screen dark mode](./public/screenshots/3.png)
+
+![randomfy screen dark mode](./public/screenshots/1.png)
 
 ## Stack
 
