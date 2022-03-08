@@ -1,4 +1,9 @@
-import axios, { AxiosPromise, AxiosRequestConfig } from 'axios'
+import axios, {
+  AxiosError,
+  AxiosPromise,
+  AxiosRequestConfig,
+  AxiosResponse
+} from 'axios'
 import { NextPageContext } from 'next'
 import { Cookies } from 'utils'
 
@@ -37,6 +42,17 @@ const requestInterceptor = async (config: CustomAxiosRequestConfig) => {
   }
 }
 
+function responseSuccessInterceptor(response: AxiosResponse) {
+  return response
+}
+function responseErrorInterceptor(error: AxiosError) {
+  if (error.response?.status === 401) {
+    console.log(error.response.data)
+  }
+
+  return Promise.reject(error)
+}
+
 const httpInstance = axios.create({
   baseURL
 })
@@ -44,6 +60,10 @@ const httpInstance = axios.create({
 /* */
 
 httpInstance.interceptors.request.use(requestInterceptor)
+httpInstance.interceptors.response.use(
+  responseSuccessInterceptor,
+  responseErrorInterceptor
+)
 
 export const setCustomHeader = ({ key, value }: SetCustomHeader) => {
   httpInstance.defaults.headers.common[key] = value

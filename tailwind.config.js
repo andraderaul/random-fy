@@ -7,7 +7,10 @@ module.exports = {
   ],
   theme: {
     extend: {
-      colors: { white: '#ffffff' },
+      colors: {
+        white: '#ffffff',
+        spotifyGreen: '#1DB954'
+      },
       gridTemplateColumns: {
         'auto-fit': 'repeat(auto-fit, minmax(300px, 1fr))'
       }

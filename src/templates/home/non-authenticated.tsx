@@ -25,8 +25,8 @@ export const NonAuthenticated = () => {
               aria-label="login button"
             >
               <Image
-                alt="spotify logo"
-                src="/img/spotify-logo.png"
+                alt="spotify icon"
+                src="/img/Spotify_Icon_RGB_Black.png"
                 width="30"
                 height="30"
               />

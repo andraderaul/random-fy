@@ -51,7 +51,7 @@ export const Picture = ({
             height="300"
           />
         ))}
-        <div className="absolute top-1 right-1">
+        <div className="absolute top-0 right-0 -translate-y-10">
           <p
             className="font-mono text-xl text-gray-800 text-center	
             font-semibold"
@@ -59,7 +59,7 @@ export const Picture = ({
             random-fy.vercel.app
           </p>
         </div>
-        <div className="absolute bottom-3 left-1">
+        <div className="absolute bottom-0 left-0 translate-y-10">
           <p
             className="font-mono text-xl text-gray-800 text-center	
             font-semibold"

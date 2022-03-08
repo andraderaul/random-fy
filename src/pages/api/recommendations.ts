@@ -47,19 +47,22 @@ export default async function handler(
       topTrackCollection.push(topTrack.body.tracks[topTrackSelected])
     }
 
-    const result = artistCollection.map((artist, index) => ({
-      id: artist.id,
-      images: artist.images,
-      type: artist.type,
-      name: artist.name,
-      track: {
-        id: topTrackCollection[index].id,
-        uri: topTrackCollection[index].uri,
-        name: topTrackCollection[index].name,
-        previewUrl: topTrackCollection[index].preview_url,
-        images: topTrackCollection[index].album.images
-      }
-    }))
+    const result = artistCollection
+      .map((artist, index) => ({
+        id: artist.id,
+        images: artist.images,
+        type: artist.type,
+        name: artist.name,
+        track: {
+          id: topTrackCollection[index].id,
+          uri: topTrackCollection[index].uri,
+          name: topTrackCollection[index].name,
+          previewUrl: topTrackCollection[index].preview_url,
+          images: topTrackCollection[index].album.images,
+          hrefSpotify: topTrackCollection[index].external_urls.spotify
+        }
+      }))
+      .slice(0, 1)
 
     res.status(200).json(result)
   } catch (error: any) {

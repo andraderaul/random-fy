@@ -1,9 +1,8 @@
 import { Dispatch, Fragment, SetStateAction, useState } from 'react'
-import { XIcon } from '@heroicons/react/outline'
 
 import { useRecommendation as useRecommendationQuery } from 'queries'
 import { Recommendation } from 'types'
-import { Grid, ImageBox, ImageBoxSkeleton } from 'components'
+import { Grid, ImageBox, ImageBoxSkeleton, PrimaryText } from 'components'
 
 import { MAX_RANDOM_FY_ITEMS } from '../../constants'
 
@@ -52,15 +51,10 @@ export const Match = ({
 
   return likedArtists.length < MAX_RANDOM_FY_ITEMS ? (
     <Fragment>
-      <div className="flex justify-center" aria-label="refetch-items">
-        <XIcon
-          aria-label="x-icon"
-          className="h-20 w-20 sm:h-10 sm:w-10 stroke-gray-700 dark:stroke-gray-50 hover:stroke-red-500
-           hover:fill-red-500 hover:scale-110 cursor-pointer 
-           transition duration-200 ease-out hover:ease-in"
-          onClick={() => refetch()}
-          type="button"
-        />
+      <div className="flex justify-center p-2">
+        <PrimaryText>
+          {likedArtists.length}/{MAX_RANDOM_FY_ITEMS}
+        </PrimaryText>
       </div>
       <Grid>
         {isLoading || isRefetching ? (
@@ -74,6 +68,8 @@ export const Match = ({
               track={artist.track.name}
               artist={artist.name}
               onLike={() => handleLike(artist)}
+              onDislike={() => refetch()}
+              href={artist.track.hrefSpotify}
             />
           ))
         )}

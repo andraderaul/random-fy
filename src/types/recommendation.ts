@@ -10,6 +10,7 @@ type Track = {
   name: string
   previewUrl: string
   images: Images
+  hrefSpotify: string
 }
 
 export type Recommendation = {
