@@ -29,7 +29,8 @@ const artistForRecommendationMock: Recommendation = {
     images: imagesMock,
     name: 'Fish Beach',
     previewUrl:
-      'https://p.scdn.co/mp3-preview/4fb1c7db76d70da33d74db84f6863b1d4dc582ab?cid=c400423b160b43dcbb941e61d7d4cd60'
+      'https://p.scdn.co/mp3-preview/4fb1c7db76d70da33d74db84f6863b1d4dc582ab?cid=c400423b160b43dcbb941e61d7d4cd60',
+    hrefSpotify: 'href spotify'
   }
 }
 
