@@ -15,7 +15,6 @@ This project shows artists and songs based on your Spotify recommendation. When 
 ## Todo
 
 - [ ] refresh token
-- [ ] number of likes
 - [ ] hide already liked songs
 
 ## Demo

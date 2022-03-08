@@ -55,6 +55,9 @@ jest.mock('services', () => {
               preview_url: 'url 1',
               album: {
                 images: []
+              },
+              external_urls: {
+                spotify: 'spotify url'
               }
             },
             {
@@ -64,6 +67,9 @@ jest.mock('services', () => {
               preview_url: 'url 2',
               album: {
                 images: []
+              },
+              external_urls: {
+                spotify: 'spotify url'
               }
             },
             {
@@ -73,6 +79,9 @@ jest.mock('services', () => {
               preview_url: 'url 3',
               album: {
                 images: []
+              },
+              external_urls: {
+                spotify: 'spotify url'
               }
             },
             {
@@ -82,6 +91,9 @@ jest.mock('services', () => {
               preview_url: 'url 4',
               album: {
                 images: []
+              },
+              external_urls: {
+                spotify: 'spotify url'
               }
             }
           ]
@@ -94,7 +106,7 @@ jest.mock('services', () => {
 jest.mock('utils', () => {
   return {
     Rnd: {
-      getRndNumber: jest.fn().mockReturnValue(3)
+      getRndNumber: jest.fn().mockReturnValue(1)
     }
   }
 })
@@ -137,41 +149,16 @@ describe('testing create playlist', () => {
       {
         id: '54321',
         images: [],
+        type: 'artist',
         name: 'a day to remember',
         track: {
-          id: 'qwe67612',
+          id: 'cba1234',
+          uri: 'uri track 2',
+          name: 'track 2',
+          previewUrl: 'url 2',
           images: [],
-          name: 'track 4',
-          previewUrl: 'url 4',
-          uri: 'uri track 4'
-        },
-        type: 'artist'
-      },
-      {
-        id: '09876',
-        images: [],
-        name: 'asking alexandria',
-        track: {
-          id: 'qwe67612',
-          images: [],
-          name: 'track 4',
-          previewUrl: 'url 4',
-          uri: 'uri track 4'
-        },
-        type: 'artist'
-      },
-      {
-        id: '54321',
-        images: [],
-        name: 'paramore',
-        track: {
-          id: 'qwe67612',
-          images: [],
-          name: 'track 4',
-          previewUrl: 'url 4',
-          uri: 'uri track 4'
-        },
-        type: 'artist'
+          hrefSpotify: 'spotify url'
+        }
       }
     ])
   })
@@ -184,41 +171,16 @@ describe('testing create playlist', () => {
       {
         id: '54321',
         images: [],
+        type: 'artist',
         name: 'a day to remember',
         track: {
-          id: 'qwe67612',
+          id: 'cba1234',
+          uri: 'uri track 2',
+          name: 'track 2',
+          previewUrl: 'url 2',
           images: [],
-          name: 'track 4',
-          previewUrl: 'url 4',
-          uri: 'uri track 4'
-        },
-        type: 'artist'
-      },
-      {
-        id: '09876',
-        images: [],
-        name: 'asking alexandria',
-        track: {
-          id: 'qwe67612',
-          images: [],
-          name: 'track 4',
-          previewUrl: 'url 4',
-          uri: 'uri track 4'
-        },
-        type: 'artist'
-      },
-      {
-        id: '54321',
-        images: [],
-        name: 'paramore',
-        track: {
-          id: 'qwe67612',
-          images: [],
-          name: 'track 4',
-          previewUrl: 'url 4',
-          uri: 'uri track 4'
-        },
-        type: 'artist'
+          hrefSpotify: 'spotify url'
+        }
       }
     ])
   })

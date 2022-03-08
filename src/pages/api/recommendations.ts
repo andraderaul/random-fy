@@ -57,7 +57,8 @@ export default async function handler(
         uri: topTrackCollection[index].uri,
         name: topTrackCollection[index].name,
         previewUrl: topTrackCollection[index].preview_url,
-        images: topTrackCollection[index].album.images
+        images: topTrackCollection[index].album.images,
+        hrefSpotify: topTrackCollection[index].external_urls.spotify
       }
     }))
 
