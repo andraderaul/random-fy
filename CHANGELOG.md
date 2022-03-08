@@ -1,3 +1,10 @@
+## [1.13.1](https://github.com/andraderaul/random-fy/compare/v1.13.0...v1.13.1) (2022-03-08)
+
+
+### Bug Fixes
+
+* Spotify design guidelines ([#2](https://github.com/andraderaul/random-fy/issues/2)) ([26e69e7](https://github.com/andraderaul/random-fy/commit/26e69e7f7a8cdf35270085c241275a9e707ad197))
+
 # [1.13.0](https://github.com/andraderaul/random-fy/compare/v1.12.2...v1.13.0) (2022-03-06)
 
 
