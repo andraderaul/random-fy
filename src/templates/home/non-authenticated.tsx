@@ -26,7 +26,7 @@ export const NonAuthenticated = () => {
             >
               <Image
                 alt="spotify icon"
-                src="/img/Spotify_Icon_RGB_Black.png"
+                src="/img/Spotify_Icon_RGB_Green.png"
                 width="30"
                 height="30"
               />
