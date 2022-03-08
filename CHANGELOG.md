@@ -1,3 +1,10 @@
+## [1.13.2](https://github.com/andraderaul/random-fy/compare/v1.13.1...v1.13.2) (2022-03-08)
+
+
+### Bug Fixes
+
+* header on mobile ([ecba47b](https://github.com/andraderaul/random-fy/commit/ecba47bec3d831d518ef8d60434daa4ab7cecfd7))
+
 ## [1.13.1](https://github.com/andraderaul/random-fy/compare/v1.13.0...v1.13.1) (2022-03-08)
 
 
