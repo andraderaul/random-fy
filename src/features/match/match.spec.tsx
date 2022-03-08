@@ -120,7 +120,7 @@ describe('<Match />', () => {
       />
     )
 
-    const refreshButton = screen.getByLabelText('refetch-items')
+    const refreshButton = screen.getByLabelText('dislike')
     expect(refreshButton).toBeInTheDocument()
 
     act(() => {

@@ -58,7 +58,7 @@ export const ImageBox = ({
 
         <div className="flex justify-around items-center">
           <HeartIcon
-            aria-label="heart-icon"
+            aria-label="like"
             className="h-20 w-20 sm:h-10 sm:w-10 stroke-gray-600 dark:stroke-gray-50 hover:stroke-spotifyGreen
            hover:fill-spotifyGreen hover:scale-110 cursor-pointer 
            transition duration-200 ease-out hover:ease-in"
@@ -69,7 +69,7 @@ export const ImageBox = ({
           <AudioPlayer src={audioSrc} />
 
           <XIcon
-            aria-label="heart-icon"
+            aria-label="dislike"
             className="h-20 w-20 sm:h-10 sm:w-10 stroke-gray-600 dark:stroke-gray-50 hover:stroke-red-500
            hover:fill-red-500 hover:scale-110 cursor-pointer 
            transition duration-200 ease-out hover:ease-in"

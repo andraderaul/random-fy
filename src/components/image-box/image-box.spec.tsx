@@ -6,14 +6,18 @@ describe('<ImageBox />', () => {
   beforeEach(() => {
     window.HTMLMediaElement.prototype.play = jest.fn()
     window.HTMLMediaElement.prototype.pause = jest.fn()
+
+    jest.clearAllMocks()
   })
 
-  const heartIconPath = 'div > div:nth-child(2) > svg > path'
   const onLikeMock = jest.fn()
+  const onDislikeMock = jest.fn()
 
   it('should be render a ImageBox component', () => {
-    const { container } = render(
+    render(
       <ImageBox
+        href="https://i.scdn.co/image/0a1865649e26dc7d377e4d16447a6e785f0b781d"
+        onDislike={onDislikeMock}
         imgSrc="https://i.scdn.co/image/0a1865649e26dc7d377e4d16447a6e785f0b781d"
         audioSrc="audio"
         onLike={onLikeMock}
@@ -30,13 +34,14 @@ describe('<ImageBox />', () => {
     expect(screen.getByText(/artist test/i)).toBeInTheDocument()
     expect(screen.getByText(/track test/i)).toBeInTheDocument()
 
-    const heartButton = container.querySelector(heartIconPath)
-    expect(heartButton).toBeInTheDocument()
+    expect(screen.getByLabelText('like')).toBeInTheDocument()
   })
 
   it('should be to click on like', () => {
-    const { container } = render(
+    render(
       <ImageBox
+        href="https://i.scdn.co/image/0a1865649e26dc7d377e4d16447a6e785f0b781d"
+        onDislike={onDislikeMock}
         imgSrc="https://i.scdn.co/image/0a1865649e26dc7d377e4d16447a6e785f0b781d"
         audioSrc="audio"
         onLike={onLikeMock}
@@ -45,10 +50,30 @@ describe('<ImageBox />', () => {
       />
     )
 
-    const heartButton = container.querySelector(heartIconPath)
+    const likeButton = screen.getByLabelText('like')
     act(() => {
-      if (heartButton) userEvent.click(heartButton)
+      userEvent.click(likeButton)
     })
     expect(onLikeMock).toHaveBeenCalled()
+  })
+
+  it('should be to click on dislike', () => {
+    render(
+      <ImageBox
+        href="https://i.scdn.co/image/0a1865649e26dc7d377e4d16447a6e785f0b781d"
+        onDislike={onDislikeMock}
+        imgSrc="https://i.scdn.co/image/0a1865649e26dc7d377e4d16447a6e785f0b781d"
+        audioSrc="audio"
+        onLike={onLikeMock}
+        artist="artist test"
+        track="track test"
+      />
+    )
+
+    const dislikeButton = screen.getByLabelText('dislike')
+    act(() => {
+      userEvent.click(dislikeButton)
+    })
+    expect(onDislikeMock).toHaveBeenCalled()
   })
 })
