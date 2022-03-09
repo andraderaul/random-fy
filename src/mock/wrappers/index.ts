@@ -1,1 +1,1 @@
-export { wrapperReactQuery } from './wrappers'
+export { wrapperReactQuery, renderWithClient } from './wrappers'

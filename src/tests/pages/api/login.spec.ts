@@ -1,8 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
-import { scopes } from '../../constants'
+import { scopes } from '../../../constants'
 import { spotifyApi } from 'services'
-import handler from './login'
+import handler from 'pages/api/login'
 
 jest.mock('services', () => ({
   spotifyApi: {

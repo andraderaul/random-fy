@@ -21,11 +21,6 @@ describe('<Match />', () => {
     refetch: refetchMock
   }
 
-  beforeEach(() => {
-    window.HTMLMediaElement.prototype.play = jest.fn()
-    window.HTMLMediaElement.prototype.pause = jest.fn()
-  })
-
   it('should be render a Match feature', () => {
     const usePlaylistMutationMock = jest.fn().mockReturnValue({
       ...returnValue,

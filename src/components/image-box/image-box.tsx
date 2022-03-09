@@ -22,7 +22,10 @@ export const ImageBox = ({
   onDislike
 }: ImageBoxProps) => {
   return (
-    <div className="flex flex-col max-w-xs relative shadow-md hover:shadow-lg dark:shadow-neutral-700">
+    <div
+      aria-label="image box"
+      className="flex flex-col max-w-xs relative shadow-md hover:shadow-lg dark:shadow-neutral-700"
+    >
       <div
         className="rounded bg-white dark:bg-neutral-900 p-4 
         transition duration-200 ease-out hover:ease-in"
@@ -57,23 +60,23 @@ export const ImageBox = ({
         </div>
 
         <div className="flex justify-around items-center">
-          <HeartIcon
-            aria-label="like"
-            className="h-20 w-20 sm:h-10 sm:w-10 stroke-gray-600 dark:stroke-gray-50 hover:stroke-spotifyGreen
-           hover:fill-spotifyGreen hover:scale-110 cursor-pointer 
-           transition duration-200 ease-out hover:ease-in"
-            onClick={onLike}
-            type="button"
-          />
-
-          <AudioPlayer src={audioSrc} />
-
           <XIcon
             aria-label="dislike"
             className="h-20 w-20 sm:h-10 sm:w-10 stroke-gray-600 dark:stroke-gray-50 hover:stroke-red-500
            hover:fill-red-500 hover:scale-110 cursor-pointer 
            transition duration-200 ease-out hover:ease-in"
             onClick={onDislike}
+            type="button"
+          />
+
+          <AudioPlayer src={audioSrc} />
+
+          <HeartIcon
+            aria-label="like"
+            className="h-20 w-20 sm:h-10 sm:w-10 stroke-gray-600 dark:stroke-gray-50 hover:stroke-spotifyGreen
+           hover:fill-spotifyGreen hover:scale-110 cursor-pointer 
+           transition duration-200 ease-out hover:ease-in"
+            onClick={onLike}
             type="button"
           />
         </div>

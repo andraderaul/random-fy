@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
 import { artistMock as mockArtist } from 'mock'
-import handler from './recommendations'
+import handler from 'pages/api/recommendations'
 
 jest.mock('services', () => {
   return {

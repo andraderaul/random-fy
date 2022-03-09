@@ -20,3 +20,8 @@ afterEach(() => server.resetHandlers())
 
 // Disable API mocking after the tests are done.
 afterAll(() => server.close())
+
+beforeEach(() => {
+  window.HTMLMediaElement.prototype.play = jest.fn()
+  window.HTMLMediaElement.prototype.pause = jest.fn()
+})

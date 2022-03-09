@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next'
 
 import { spotifyApi } from 'services'
 import { Cookies } from 'utils'
-import handler from './callback'
+import handler from 'pages/api/callback'
 
 jest.mock('services', () => ({
   setCustomHeader: jest.fn(),

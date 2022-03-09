@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
 import { artistMock as mockArtist } from 'mock'
-import handler from './random-top-artist'
+import handler from 'pages/api/random-top-artist'
 
 jest.mock('services', () => ({
   spotifyApi: {
