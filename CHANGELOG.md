@@ -1,3 +1,10 @@
+# [1.15.0](https://github.com/andraderaul/random-fy/compare/v1.14.0...v1.15.0) (2022-03-10)
+
+
+### Features
+
+* add footer ([aadf98c](https://github.com/andraderaul/random-fy/commit/aadf98c45aad59c643a181cfc6c37d91b81048c3))
+
 # [1.14.0](https://github.com/andraderaul/random-fy/compare/v1.13.3...v1.14.0) (2022-03-10)
 
 
