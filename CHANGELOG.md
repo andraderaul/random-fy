@@ -1,3 +1,10 @@
+## [1.13.3](https://github.com/andraderaul/random-fy/compare/v1.13.2...v1.13.3) (2022-03-10)
+
+
+### Bug Fixes
+
+* remove refetch on window focus ([bb89339](https://github.com/andraderaul/random-fy/commit/bb893393e5c9f5ed1cd6b78d6c6726d742487088))
+
 ## [1.13.2](https://github.com/andraderaul/random-fy/compare/v1.13.1...v1.13.2) (2022-03-08)
 
 
