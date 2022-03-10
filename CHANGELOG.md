@@ -1,3 +1,10 @@
+# [1.14.0](https://github.com/andraderaul/random-fy/compare/v1.13.3...v1.14.0) (2022-03-10)
+
+
+### Features
+
+* hide already liked songs ([b054be2](https://github.com/andraderaul/random-fy/commit/b054be2813c6d13cd681628c1706d73302ded2d3))
+
 ## [1.13.3](https://github.com/andraderaul/random-fy/compare/v1.13.2...v1.13.3) (2022-03-10)
 
 
