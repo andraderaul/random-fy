@@ -51,22 +51,6 @@ export const Picture = ({
             height="300"
           />
         ))}
-        <div className="absolute top-0 right-0 -translate-y-10">
-          <p
-            className="font-mono text-xl text-gray-800 text-center	
-            font-semibold"
-          >
-            random-fy.vercel.app
-          </p>
-        </div>
-        <div className="absolute bottom-0 left-0 translate-y-10">
-          <p
-            className="font-mono text-xl text-gray-800 text-center	
-            font-semibold"
-          >
-            random-fy.vercel.app
-          </p>
-        </div>
       </div>
       <div className="flex justify-center p-10">
         <PrimaryButton

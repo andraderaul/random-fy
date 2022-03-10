@@ -1,4 +1,11 @@
-import { Dispatch, Fragment, SetStateAction, useState } from 'react'
+import {
+  Dispatch,
+  Fragment,
+  SetStateAction,
+  useEffect,
+  useState,
+  useMemo
+} from 'react'
 
 import { useRecommendation as useRecommendationQuery } from 'queries'
 import { Recommendation } from 'types'
@@ -34,6 +41,21 @@ export const Match = ({
     liked.trackId
   )
 
+  const newArtists = useMemo(() => data?.data ?? [], [data?.data])
+
+  useEffect(() => {
+    for (const newArtist of newArtists) {
+      const alreadyLiked = likedArtists.some(
+        (likedArtist) => likedArtist.track.id === newArtist.track.id
+      )
+
+      if (alreadyLiked) {
+        refetch()
+        break
+      }
+    }
+  }, [likedArtists, newArtists, refetch])
+
   const handleLike = (artist: Recommendation) => {
     setLiked({
       id: artist.id,
@@ -42,8 +64,6 @@ export const Match = ({
 
     setLikedArtists((oldLikedArtists) => [...oldLikedArtists, artist])
   }
-
-  const newArtists = data?.data ?? []
 
   if (isError) {
     return <div>Something wrong! :(</div>

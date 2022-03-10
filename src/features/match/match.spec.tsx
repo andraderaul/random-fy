@@ -6,7 +6,6 @@ import { artistsMock } from 'mock'
 import { MAX_ARTISTS_TO_SHOW_PER_TURN } from '../../constants'
 
 describe('<Match />', () => {
-  const likedArtistsMock = artistsMock.slice(2, artistsMock.length)
   const artistIdMock = '12MAX_ARTISTS_TO_SHOW_PER_TURN'
   const setLikedArtistsMock = jest.fn()
   const refetchMock = jest.fn()
@@ -21,6 +20,10 @@ describe('<Match />', () => {
     refetch: refetchMock
   }
 
+  beforeEach(() => {
+    jest.clearAllMocks()
+  })
+
   it('should be render a Match feature', () => {
     const usePlaylistMutationMock = jest.fn().mockReturnValue({
       ...returnValue,
@@ -29,7 +32,7 @@ describe('<Match />', () => {
 
     render(
       <Match
-        likedArtists={likedArtistsMock}
+        likedArtists={[]}
         artistId={artistIdMock}
         setLikedArtists={setLikedArtistsMock}
         useRecommendation={usePlaylistMutationMock}
@@ -108,7 +111,7 @@ describe('<Match />', () => {
 
     render(
       <Match
-        likedArtists={likedArtistsMock}
+        likedArtists={[]}
         artistId={artistIdMock}
         setLikedArtists={setLikedArtistsMock}
         useRecommendation={usePlaylistMutationMock}
@@ -144,5 +147,23 @@ describe('<Match />', () => {
     expect(screen.getAllByTestId('image-box-skeleton')).toHaveLength(
       MAX_ARTISTS_TO_SHOW_PER_TURN
     )
+  })
+
+  it('should be able to rerefetch recommendations, when a song already liked', () => {
+    const usePlaylistMutationMock = jest.fn().mockReturnValue({
+      ...returnValue,
+      data: { data: artistsMock.slice(0, MAX_ARTISTS_TO_SHOW_PER_TURN) }
+    })
+
+    render(
+      <Match
+        likedArtists={artistsMock.slice(0, MAX_ARTISTS_TO_SHOW_PER_TURN)}
+        artistId={artistIdMock}
+        setLikedArtists={setLikedArtistsMock}
+        useRecommendation={usePlaylistMutationMock}
+      />
+    )
+
+    expect(refetchMock).toHaveBeenCalledTimes(1)
   })
 })
