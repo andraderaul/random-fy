@@ -45,13 +45,7 @@ export const ImageBox = ({
             />
           </a>
         </div>
-        <Image
-          className="rounded"
-          alt={artist}
-          src={imgSrc}
-          width="300"
-          height="300"
-        />
+        <Image alt={artist} src={imgSrc} width="300" height="300" />
         <div className="flex flex-col items-start p-2">
           <strong className="w-64 truncate dark:text-neutral-200">
             {track}
@@ -66,7 +60,6 @@ export const ImageBox = ({
            hover:fill-red-500 hover:scale-110 cursor-pointer 
            transition duration-200 ease-out hover:ease-in"
             onClick={onDislike}
-            type="button"
           />
 
           <AudioPlayer src={audioSrc} />
@@ -77,7 +70,6 @@ export const ImageBox = ({
            hover:fill-spotifyGreen hover:scale-110 cursor-pointer 
            transition duration-200 ease-out hover:ease-in"
             onClick={onLike}
-            type="button"
           />
         </div>
       </div>

@@ -20,7 +20,7 @@ export const ImageBoxSkeleton = () => {
 
           <div
             aria-label="image loading"
-            className="rounded w-72 h-72 bg-gray-300 dark:bg-gray-600"
+            className="w-72 h-72 bg-gray-300 dark:bg-gray-600"
           />
           <div className="mt-4 w-20 h-4 bg-gray-800 dark:bg-gray-100 rounded" />
           <div className="mt-4 mb-2 w-6/12 h-4 bg-gray-500 dark:bg-gray-200 rounded" />
