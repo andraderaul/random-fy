@@ -1,10 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks'
-import {
-  wrapperReactQuery,
-  forceRequestError,
-  artistsMock,
-  playlistMock
-} from 'mock'
+import { wrapperReactQuery, forceRequestError, mockRecommendations } from 'mock'
 
 import { useRecommendation } from './use-recommendation'
 
@@ -32,7 +27,7 @@ describe('useRecommendation', () => {
     )
 
     await waitFor(() => result.current.isSuccess)
-    expect(result.current.data?.data).toEqual(artistsMock)
+    expect(result.current.data?.data).toEqual(mockRecommendations)
   })
 
   it('when use recommendation query is error return a data error', async () => {

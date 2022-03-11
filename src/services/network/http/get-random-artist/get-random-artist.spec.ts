@@ -1,6 +1,6 @@
 import { getRandomArtist } from './get-random-artist'
 
-import { artistMock } from 'mock'
+import { mockArtist } from 'mock'
 
 describe('get random artist', () => {
   it('should be able to get a random artist', async () => {
@@ -9,6 +9,6 @@ describe('get random artist', () => {
     expect(response.request.method).toBe('GET')
     expect(response.config.url).toBe('/random-top-artist')
     expect(response.status).toBe(200)
-    expect(response.data).toEqual(artistMock)
+    expect(response.data).toEqual(mockArtist)
   })
 })

@@ -1,7 +1,7 @@
 import { render, screen, act } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
-import { artistsMock } from 'mock'
+import { mockRecommendations } from 'mock'
 import { Playlist } from './playlist'
 
 describe('<Playlist />', () => {
@@ -12,7 +12,10 @@ describe('<Playlist />', () => {
 
   it('should be render a Playlist feature', () => {
     render(
-      <Playlist artists={artistsMock} usePlaylist={usePlaylistMutationMock} />
+      <Playlist
+        artists={mockRecommendations}
+        usePlaylist={usePlaylistMutationMock}
+      />
     )
 
     expect(
@@ -36,7 +39,10 @@ describe('<Playlist />', () => {
 
   it('should be able to create a playlist', () => {
     render(
-      <Playlist artists={artistsMock} usePlaylist={usePlaylistMutationMock} />
+      <Playlist
+        artists={mockRecommendations}
+        usePlaylist={usePlaylistMutationMock}
+      />
     )
 
     const createPlaylistButton = screen.getByRole('button', {

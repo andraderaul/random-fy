@@ -1,3 +1,5 @@
+import { Image } from './image'
+
 export type Artist = {
   external_urls: {
     spotify: string
@@ -9,11 +11,7 @@ export type Artist = {
   genres: Array<string>
   href: string
   id: string
-  images: Array<{
-    height: number
-    url: string
-    width: number
-  }>
+  images: Array<Image>
   name: string
   popularity: number
   type: string

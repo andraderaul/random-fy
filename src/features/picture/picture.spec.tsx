@@ -1,11 +1,12 @@
 import { render, screen, act } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { artistsMock } from 'mock'
+import { mockRecommendations } from 'mock'
+
 import { Picture } from './picture'
 
 describe('<Picture />', () => {
   it('should be render a Picture feature', () => {
-    render(<Picture artists={artistsMock} />)
+    render(<Picture artists={mockRecommendations} />)
 
     expect(
       screen.getByText(/you can download your randomfy!/i)
@@ -28,7 +29,9 @@ describe('<Picture />', () => {
     const html2canvasMock = jest
       .fn()
       .mockResolvedValue({ toDataURL: jest.fn() })
-    render(<Picture artists={artistsMock} html2canvas={html2canvasMock} />)
+    render(
+      <Picture artists={mockRecommendations} html2canvas={html2canvasMock} />
+    )
 
     const downloadButton = screen.getByRole('button', {
       name: /download button/i

@@ -15,6 +15,8 @@ This project shows artists and songs based on your Spotify recommendation. When 
 ## Todo
 
 - [ ] refresh token
+- [ ] bg button in the safari
+- [ ] image border radius
 
 ## Demo
 

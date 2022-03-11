@@ -2,8 +2,8 @@ import { renderHook } from '@testing-library/react-hooks'
 import {
   wrapperReactQuery,
   forceRequestError,
-  artistsMock,
-  playlistMock
+  mockPlaylist,
+  mockRecommendations
 } from 'mock'
 
 import { usePlaylistMutation } from './use-playlist-mutation'
@@ -13,7 +13,7 @@ describe('usePlaylistMutation', () => {
     const { result, waitFor } = renderHook(() => usePlaylistMutation(), {
       wrapper: wrapperReactQuery
     })
-    result.current.mutate(artistsMock)
+    result.current.mutate(mockRecommendations)
     await waitFor(() => {
       result.current.isLoading
       expect(result.current.data).toBe(undefined)
@@ -24,9 +24,9 @@ describe('usePlaylistMutation', () => {
     const { result, waitFor } = renderHook(() => usePlaylistMutation(), {
       wrapper: wrapperReactQuery
     })
-    result.current.mutate(artistsMock)
+    result.current.mutate(mockRecommendations)
     await waitFor(() => result.current.isSuccess)
-    expect(result.current.data?.data).toEqual(playlistMock)
+    expect(result.current.data?.data).toEqual(mockPlaylist)
   })
 
   it('when playlist mutate is error return a data error', async () => {
@@ -35,7 +35,7 @@ describe('usePlaylistMutation', () => {
       wrapper: wrapperReactQuery
     })
 
-    result.current.mutate(artistsMock)
+    result.current.mutate(mockRecommendations)
     await waitFor(() => result.current.isError)
     expect(result.current.error?.response?.data).toEqual({
       error: 'Invalid data'

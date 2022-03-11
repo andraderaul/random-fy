@@ -2,7 +2,7 @@ import { render, screen, act } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { Match } from './match'
 
-import { artistsMock } from 'mock'
+import { mockRecommendations } from 'mock'
 import { MAX_ARTISTS_TO_SHOW_PER_TURN } from '../../constants'
 
 describe('<Match />', () => {
@@ -20,6 +20,8 @@ describe('<Match />', () => {
     refetch: refetchMock
   }
 
+  const mockData = mockRecommendations.slice(0, MAX_ARTISTS_TO_SHOW_PER_TURN)
+
   beforeEach(() => {
     jest.clearAllMocks()
   })
@@ -27,7 +29,7 @@ describe('<Match />', () => {
   it('should be render a Match feature', () => {
     const usePlaylistMutationMock = jest.fn().mockReturnValue({
       ...returnValue,
-      data: { data: artistsMock.slice(0, MAX_ARTISTS_TO_SHOW_PER_TURN) }
+      data: { data: mockData }
     })
 
     render(
@@ -39,10 +41,10 @@ describe('<Match />', () => {
       />
     )
 
-    expect(screen.getAllByText(/fish beach/i)).toHaveLength(
+    expect(screen.getAllByText(mockData[0].track.name)).toHaveLength(
       MAX_ARTISTS_TO_SHOW_PER_TURN
     )
-    expect(screen.getAllByText(/michael nyman band/i)).toHaveLength(
+    expect(screen.getAllByText(mockData[0].name)).toHaveLength(
       MAX_ARTISTS_TO_SHOW_PER_TURN
     )
   })
@@ -88,12 +90,12 @@ describe('<Match />', () => {
   it('should be return null when artists length more than the constant MAX_RANDOM_FY_ITEMS', () => {
     const usePlaylistMutationMock = jest.fn().mockReturnValue({
       ...returnValue,
-      data: { data: artistsMock }
+      data: { data: mockRecommendations }
     })
 
     const { container } = render(
       <Match
-        likedArtists={artistsMock}
+        likedArtists={mockRecommendations}
         artistId={artistIdMock}
         setLikedArtists={setLikedArtistsMock}
         useRecommendation={usePlaylistMutationMock}
@@ -106,7 +108,7 @@ describe('<Match />', () => {
   it('should be able to refetch recommendations', () => {
     const usePlaylistMutationMock = jest.fn().mockReturnValue({
       ...returnValue,
-      data: { data: artistsMock.slice(0, MAX_ARTISTS_TO_SHOW_PER_TURN) }
+      data: { data: mockRecommendations.slice(0, MAX_ARTISTS_TO_SHOW_PER_TURN) }
     })
 
     render(
@@ -152,12 +154,15 @@ describe('<Match />', () => {
   it('should be able to rerefetch recommendations, when a song already liked', () => {
     const usePlaylistMutationMock = jest.fn().mockReturnValue({
       ...returnValue,
-      data: { data: artistsMock.slice(0, MAX_ARTISTS_TO_SHOW_PER_TURN) }
+      data: { data: mockRecommendations.slice(0, MAX_ARTISTS_TO_SHOW_PER_TURN) }
     })
 
     render(
       <Match
-        likedArtists={artistsMock.slice(0, MAX_ARTISTS_TO_SHOW_PER_TURN)}
+        likedArtists={mockRecommendations.slice(
+          0,
+          MAX_ARTISTS_TO_SHOW_PER_TURN
+        )}
         artistId={artistIdMock}
         setLikedArtists={setLikedArtistsMock}
         useRecommendation={usePlaylistMutationMock}
