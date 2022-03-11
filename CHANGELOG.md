@@ -1,3 +1,10 @@
+## [1.15.1](https://github.com/andraderaul/random-fy/compare/v1.15.0...v1.15.1) (2022-03-11)
+
+
+### Bug Fixes
+
+* display icons on safari ([2ada1c6](https://github.com/andraderaul/random-fy/commit/2ada1c6beb44c73c9a4abc9b2bfda0bdf0715260))
+
 # [1.15.0](https://github.com/andraderaul/random-fy/compare/v1.14.0...v1.15.0) (2022-03-10)
 
 
