@@ -1,3 +1,10 @@
+## [1.15.2](https://github.com/andraderaul/random-fy/compare/v1.15.1...v1.15.2) (2022-03-12)
+
+
+### Bug Fixes
+
+* get correct scopes ([acc3864](https://github.com/andraderaul/random-fy/commit/acc3864b32bce328f65a7b1fe92b79ffc4009400))
+
 ## [1.15.1](https://github.com/andraderaul/random-fy/compare/v1.15.0...v1.15.1) (2022-03-11)
 
 
