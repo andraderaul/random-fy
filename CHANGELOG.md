@@ -1,3 +1,10 @@
+## [1.15.3](https://github.com/andraderaul/random-fy/compare/v1.15.2...v1.15.3) (2022-03-12)
+
+
+### Bug Fixes
+
+* improve error state on match ([ae72578](https://github.com/andraderaul/random-fy/commit/ae725787787eb2a3b2bcfb7ea50fd7d2db75ffd4))
+
 ## [1.15.2](https://github.com/andraderaul/random-fy/compare/v1.15.1...v1.15.2) (2022-03-12)
 
 
