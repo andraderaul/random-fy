@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react'
 import { PrimaryButton } from './primary-button'
 
 describe('<PrimaryButton/>', () => {
-  it('should be render a PrimaryText component', () => {
+  it('should be render a PrimaryButton component', () => {
     render(
       <PrimaryButton onClick={jest.fn()}>hello button testing</PrimaryButton>
     )

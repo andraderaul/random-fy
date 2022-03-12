@@ -9,7 +9,13 @@ import {
 
 import { useRecommendation as useRecommendationQuery } from 'queries'
 import { Recommendation } from 'types'
-import { Grid, ImageBox, ImageBoxSkeleton, PrimaryText } from 'components'
+import {
+  GenericError,
+  Grid,
+  ImageBox,
+  ImageBoxSkeleton,
+  PrimaryText
+} from 'components'
 
 import { MAX_RANDOM_FY_ITEMS } from '../../constants'
 
@@ -66,21 +72,7 @@ export const Match = ({
   }
 
   if (isError) {
-    return (
-      <div className="h-60 p-4 flex flex-col justify-evenly items-center">
-        <PrimaryText>Something wrong! :(</PrimaryText>
-        <button
-          aria-label="try-again"
-          className="rounded-full flex justify-evenly items-center w-56 p-3
-              font-semibold 
-              text-center text-gray-100 dark:text-gray-800 
-              bg-gray-900 dark:bg-gray-200"
-          onClick={() => refetch}
-        >
-          Try Again
-        </button>
-      </div>
-    )
+    return <GenericError tryAgain={() => refetch} />
   }
 
   return likedArtists.length < MAX_RANDOM_FY_ITEMS ? (
