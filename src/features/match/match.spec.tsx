@@ -6,7 +6,8 @@ import { mockRecommendations } from 'mock'
 import { MAX_ARTISTS_TO_SHOW_PER_TURN } from '../../constants'
 
 describe('<Match />', () => {
-  const artistIdMock = '12MAX_ARTISTS_TO_SHOW_PER_TURN'
+  const artistIdMock = '12123'
+
   const setLikedArtistsMock = jest.fn()
   const refetchMock = jest.fn()
 
@@ -65,6 +66,17 @@ describe('<Match />', () => {
     )
 
     expect(screen.getByText(/something wrong! :\(/i)).toBeInTheDocument()
+
+    const tryAgainButton = screen.getByRole('button', {
+      name: /try again/i
+    })
+    expect(tryAgainButton).toBeInTheDocument()
+
+    act(() => {
+      if (tryAgainButton) userEvent.click(tryAgainButton)
+    })
+
+    expect(refetchMock).toHaveBeenCalled()
   })
 
   it('should be render a loading component ', () => {
@@ -103,32 +115,6 @@ describe('<Match />', () => {
     )
 
     expect(container.firstChild).toBeNull()
-  })
-
-  it('should be able to refetch recommendations', () => {
-    const usePlaylistMutationMock = jest.fn().mockReturnValue({
-      ...returnValue,
-      data: { data: mockRecommendations.slice(0, MAX_ARTISTS_TO_SHOW_PER_TURN) }
-    })
-
-    render(
-      <Match
-        likedArtists={[]}
-        artistId={artistIdMock}
-        setLikedArtists={setLikedArtistsMock}
-        useRecommendation={usePlaylistMutationMock}
-      />
-    )
-
-    const refreshButton = screen.getByLabelText('dislike')
-    expect(refreshButton).toBeInTheDocument()
-
-    act(() => {
-      if (refreshButton.firstChild)
-        userEvent.click(refreshButton.firstChild as Element)
-    })
-
-    expect(refetchMock).toHaveBeenCalled()
   })
 
   it('should be render a refetching component ', () => {
@@ -170,5 +156,57 @@ describe('<Match />', () => {
     )
 
     expect(refetchMock).toHaveBeenCalledTimes(1)
+  })
+
+  it('should be able to dislike a recommendations', () => {
+    const usePlaylistMutationMock = jest.fn().mockReturnValue({
+      ...returnValue,
+      data: { data: mockData }
+    })
+
+    render(
+      <Match
+        likedArtists={[]}
+        artistId={artistIdMock}
+        setLikedArtists={setLikedArtistsMock}
+        useRecommendation={usePlaylistMutationMock}
+      />
+    )
+
+    const dislikeButton = screen.getByLabelText('dislike')
+    expect(dislikeButton).toBeInTheDocument()
+
+    act(() => {
+      if (dislikeButton.firstChild)
+        userEvent.click(dislikeButton.firstChild as Element)
+    })
+
+    expect(refetchMock).toHaveBeenCalled()
+  })
+
+  it('should be able to like a recommendation', () => {
+    const usePlaylistMutationMock = jest.fn().mockReturnValue({
+      ...returnValue,
+      data: { data: mockData }
+    })
+
+    render(
+      <Match
+        likedArtists={[]}
+        artistId={artistIdMock}
+        setLikedArtists={setLikedArtistsMock}
+        useRecommendation={usePlaylistMutationMock}
+      />
+    )
+
+    const likeButton = screen.getByLabelText('like')
+    expect(likeButton).toBeInTheDocument()
+
+    act(() => {
+      if (likeButton.firstChild)
+        userEvent.click(likeButton.firstChild as Element)
+    })
+
+    expect(setLikedArtistsMock).toHaveBeenCalled()
   })
 })

@@ -1,3 +1,3 @@
 export { Playlist } from './playlist'
-export { Picture } from './picture'
+export { ImageCollage } from './image-collage'
 export { Match } from './match'

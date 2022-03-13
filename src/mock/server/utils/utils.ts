@@ -13,13 +13,15 @@ const responseError = {
 }
 
 export const forceRequestError = ({
-  method = 'get'
+  method = 'get',
+  status = 400
 }: {
   method: HttpMethod
+  status?: number
 }) => {
   server.use(
     rest?.[method]('*', (_req, res, ctx) => {
-      return res(ctx.status(400), ctx.json(responseError))
+      return res(ctx.status(status), ctx.json(responseError))
     })
   )
 }

@@ -1,8 +1,22 @@
 import { render, screen, waitFor } from '@testing-library/react'
 import { forceRequestError, renderWithClient } from 'mock'
-import Index from 'pages/index'
+import { GetServerSidePropsContext } from 'next'
+import Index, { getServerSideProps } from 'pages/index'
+
+jest.mock('utils', () => ({
+  Cookies: {
+    getAll: jest.fn().mockReturnValue({
+      authorization: 'token'
+    }),
+    destroy: jest.fn()
+  }
+}))
 
 describe('<Index />', () => {
+  beforeAll(() => {
+    jest.clearAllMocks()
+  })
+
   it('when user is not logged should be render a landing index page', () => {
     render(<Index artistId="" auth="" />)
 
@@ -53,6 +67,35 @@ describe('<Index />', () => {
       await waitFor(() => rendered.getByText('Something wrong! :('))
 
       expect(screen.getByText('Something wrong! :(')).toBeInTheDocument()
+    })
+  })
+
+  describe('testing getServerSideProps', () => {
+    const context = {
+      res: {
+        writeHead: jest.fn().mockReturnValue({
+          end: jest.fn()
+        })
+      }
+    } as unknown as GetServerSidePropsContext
+
+    it('should be able to return valid artistId and auth props', async () => {
+      const { props } = await getServerSideProps(context)
+      expect(props?.auth).toBe('token')
+      expect(props.artistId).toBeTruthy()
+    })
+
+    it('should be able to return invalid artistId and auth', async () => {
+      console.error = jest.fn()
+      forceRequestError({
+        method: 'get',
+        status: 401
+      })
+
+      const { props } = await getServerSideProps(context)
+
+      expect(props?.auth).toBeNull()
+      expect(props.artistId).toBeNull()
     })
   })
 })

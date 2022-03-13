@@ -6,9 +6,18 @@ module.exports = {
     'stories.tsx',
     '/mock',
     '/constants',
-    '/styles'
+    '/styles',
+    '_app.tsx',
+    '_document.tsx'
   ],
-  coveragePathIgnorePatterns: ['stories.tsx', '/mock', '/constants', '/styles'],
+  coveragePathIgnorePatterns: [
+    'stories.tsx',
+    '/mock',
+    '/constants',
+    '/styles',
+    '_app.tsx',
+    '_document.tsx'
+  ],
   transformIgnorePatterns: ['node_modules/(?!imask|react-extras)'],
   collectCoverage: true,
   collectCoverageFrom: ['src/**/*.ts(x)?'],

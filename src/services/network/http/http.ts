@@ -16,10 +16,6 @@ type SetCustomHeader = {
   value: CustomHeader
 }
 
-type GetCustomHeader = {
-  key: string
-}
-
 type CustomAxiosRequestConfig = AxiosRequestConfig & {
   ctx?: Partial<NextPageContext>
 }
@@ -47,7 +43,8 @@ function responseSuccessInterceptor(response: AxiosResponse) {
 }
 function responseErrorInterceptor(error: AxiosError) {
   if (error.response?.status === 401) {
-    console.log(error.response.data)
+    console.error('authorization error')
+    console.error(error.response.data)
   }
 
   return Promise.reject(error)
@@ -56,8 +53,6 @@ function responseErrorInterceptor(error: AxiosError) {
 const httpInstance = axios.create({
   baseURL
 })
-
-/* */
 
 httpInstance.interceptors.request.use(requestInterceptor)
 httpInstance.interceptors.response.use(
@@ -68,9 +63,6 @@ httpInstance.interceptors.response.use(
 export const setCustomHeader = ({ key, value }: SetCustomHeader) => {
   httpInstance.defaults.headers.common[key] = value
 }
-
-export const getCustomHeader = ({ key }: GetCustomHeader) =>
-  httpInstance.defaults.headers.common[key]
 
 export function http<T>(config: CustomAxiosRequestConfig) {
   return httpInstance(config) as AxiosPromise<T>

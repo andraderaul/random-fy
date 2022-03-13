@@ -72,7 +72,7 @@ export const Match = ({
   }
 
   if (isError) {
-    return <GenericError tryAgain={() => refetch} />
+    return <GenericError tryAgain={() => refetch()} />
   }
 
   return likedArtists.length < MAX_RANDOM_FY_ITEMS ? (
