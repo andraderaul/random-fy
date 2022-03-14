@@ -8,7 +8,7 @@ export const scopes = [
   // 'user-read-email',
   // 'user-read-private',
   // 'playlist-read-collaborative',
-  // 'playlist-modify-public', TODO: add this scope in the future
+  'playlist-modify-public',
   // 'playlist-read-private',
   // 'playlist-modify-private',
   // 'user-library-modify',
