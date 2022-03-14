@@ -12,7 +12,7 @@ import { Content } from 'components'
 import { Recommendation } from 'types'
 
 import { AudioContext } from 'contexts'
-import { Match, ImageCollage, Playlist } from 'features'
+import { Match, ImageCollage, Playlist, Festival } from 'features'
 
 type AuthenticatedProps = {
   artistId: string
@@ -36,6 +36,7 @@ export const Authenticated = ({ artistId }: AuthenticatedProps) => {
         />
         <Playlist artists={likedArtists} />
         <ImageCollage artists={likedArtists} />
+        <Festival artists={likedArtists} />
       </Content>
     </AudioContext.Provider>
   )
