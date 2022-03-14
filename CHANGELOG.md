@@ -1,3 +1,10 @@
+## [1.15.4](https://github.com/andraderaul/random-fy/compare/v1.15.3...v1.15.4) (2022-03-14)
+
+
+### Bug Fixes
+
+* add playlist scope ([2138e3a](https://github.com/andraderaul/random-fy/commit/2138e3af645a31f6ba4513b6ef011f8f530f98b3))
+
 ## [1.15.3](https://github.com/andraderaul/random-fy/compare/v1.15.2...v1.15.3) (2022-03-12)
 
 
