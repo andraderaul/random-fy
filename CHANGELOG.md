@@ -1,3 +1,10 @@
+## [1.15.5](https://github.com/andraderaul/random-fy/compare/v1.15.4...v1.15.5) (2022-03-15)
+
+
+### Bug Fixes
+
+* icon size in the image box ([f7b22a4](https://github.com/andraderaul/random-fy/commit/f7b22a4da86ccc650e2a0edf5f8dcb077571bb50))
+
 ## [1.15.4](https://github.com/andraderaul/random-fy/compare/v1.15.3...v1.15.4) (2022-03-14)
 
 
