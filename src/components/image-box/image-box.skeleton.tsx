@@ -26,9 +26,24 @@ export const ImageBoxSkeleton = () => {
           <div className="mt-4 mb-2 w-6/12 h-4 bg-gray-500 dark:bg-gray-200 rounded" />
 
           <div className="pt-2 pb-3 flex justify-around items-center">
-            <div className="rounded-full bg-gray-600 dark:bg-gray-100 h-8 w-8" />
-            <div className="rounded-full bg-gray-600 dark:bg-gray-100 h-8 w-8" />
-            <div className="rounded-full bg-gray-600 dark:bg-gray-100 h-8 w-8" />
+            <div
+              className="rounded-full bg-gray-600 
+              dark:bg-gray-100
+              h-12 w-12
+              sm:h-8 sm:w-8"
+            />
+            <div
+              className="rounded-full bg-gray-600 
+              dark:bg-gray-100
+              h-12 w-12 
+              sm:h-8 sm:w-8"
+            />
+            <div
+              className="rounded-full bg-gray-600 
+            dark:bg-gray-100
+            h-12 w-12 
+            sm:h-8 sm:w-8"
+            />
           </div>
         </div>
       </div>

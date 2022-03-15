@@ -56,7 +56,7 @@ export const ImageBox = ({
         <div className="flex justify-around items-center">
           <XIcon
             aria-label="dislike"
-            className="h-20 w-20 sm:h-10 sm:w-10 stroke-gray-600 dark:stroke-gray-50 hover:stroke-red-500
+            className="h-14 w-14 sm:h-10 sm:w-10 stroke-gray-600 dark:stroke-gray-50 hover:stroke-red-500
            hover:fill-red-500 hover:scale-110 cursor-pointer 
            transition duration-200 ease-out hover:ease-in"
             onClick={onDislike}
@@ -66,7 +66,7 @@ export const ImageBox = ({
 
           <HeartIcon
             aria-label="like"
-            className="h-20 w-20 sm:h-10 sm:w-10 stroke-gray-600 dark:stroke-gray-50 hover:stroke-spotifyGreen
+            className="h-14 w-14 sm:h-10 sm:w-10 stroke-gray-600 dark:stroke-gray-50 hover:stroke-spotifyGreen
            hover:fill-spotifyGreen hover:scale-110 cursor-pointer 
            transition duration-200 ease-out hover:ease-in"
             onClick={onLike}
