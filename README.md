@@ -12,6 +12,33 @@ Disclaimer: Randomfy is not affiliated with Spotify. The site was build with Nex
 
 This project shows artists and songs based on your Spotify recommendation. When the user signs in the application, a recommendation is shown. The user can like or dislike the recommendation, just like on Tinder. After that, you can make a playlist with the liked artists and share it with your friends. Also, you can create an image with these artists.
 
+## Quickstart
+
+You can start cloning the repository:
+
+```bash
+
+git clone git@github.com:andraderaul/random-fy.git
+```
+
+Then install all dependencies:
+
+```bash
+
+yarn install
+```
+
+Finally, start the application:
+
+```bash
+
+yarn dev
+```
+
+## Environments
+
+Important: you must have a spotify developer account with an app created. Then add the `SPOTIFY_CLIENT_ID` and `SPOTIFY_CLIENT_SECRET` from your app created to `.env`.
+
 ## Todo
 
 - [ ] refresh token
