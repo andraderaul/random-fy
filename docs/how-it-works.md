@@ -14,8 +14,6 @@ To the end of the twenty recommendations It's possible to makes a playlist with 
 
 # Architecture
 
-O randomfy foi feito usando serverless functions e hospedado na vercel.
-
 The `randomfy` was made using serverless functions and hosted in the vercel.
 
 ![random-fy-arch](./arch/random-fy-arch.png)
