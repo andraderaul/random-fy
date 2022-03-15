@@ -42,6 +42,7 @@ Important: you must have a spotify developer account with an app created. Then a
 ## Todo
 
 - [ ] refresh token
+- [ ] i18n
 
 ## Demo
 

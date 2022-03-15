@@ -14,7 +14,7 @@ Ao final de 20 recomendações é possivel criar uma playlist com os artistas go
 
 # Arquitetura
 
-O randomfy foi feito usando serverless functions e hospedado na vercel.
+O `randomfy` foi feito usando serverless functions e hospedado na vercel.
 
 ![random-fy-arch](./arch/random-fy-arch.png)
 

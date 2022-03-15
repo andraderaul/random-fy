@@ -1,31 +1,33 @@
 # How it works
 
-Atualmente as recomendações funcionam da seguinte maneira, é selecionado um artista entre os 50 artistas mais ouvidos do Spotify do usuário logado e esse artista é usado para encontrar artistas similares a ele, para então o randomfy gerar uma recomendação.
+Currently the recommendations working that way, It's selected an artist in between the fifty most listened Spotify artists from logged user and this artist is used to find new simmilar artist to him, after that the randomfly will generated a recommendation.
 
-As músicas são selecionadas a partir do top musicas mais ouvidas do artista do Spotify.
+The songs are selected from top listened song from artist on Spotify.
 
-Quando um usuário acessa o aplicativo pela primeira vez será solicitado as credenciais dele do Spotify. Após o usuário fornecer as credenciais a autenticação é feita.
+When a user access the app for the first time will solicited the Spotify credentials. After the user to provide credentials, the authenticated flow is done.
 
-Com o usuário autenticado o `randomfy` escolhe aleatoriamente um artista para ser o seed das recomendações, ou seja, o artista escolhido de forma aleatoria não será o artista recomendado, mas sim os artistas relacionados a ele.
+With the user authenticated the `randomfy` choose randomly an artist to be the seed of the recommendations, in the other words, the artist chose from randomly way wont be the recommendated artist, but the artists relacionated to him.
 
-Quando o usuário da like em um artista o `randomfy` solicita ao Spotify artistas relacionados ao artista que recebeu o like e escolhe um para exibir ao usuário logado.
+When the user like an artist the `randomfy` makes a request to Spotify by related artists to him and choose one to shown.
 
-Ao final de 20 recomendações é possivel criar uma playlist com os artistas gostados.
+To the end of the twenty recommendations It's possible to makes a playlist with the liked artists.
 
 # Architecture
 
 O randomfy foi feito usando serverless functions e hospedado na vercel.
 
+The `randomfy` was made using serverless functions and hosted in the vercel.
+
 ![random-fy-arch](./arch/random-fy-arch.png)
 
 ### Functions
 
-- login: que cria a url de autorização do Spotify;
+- login: makes the authenticated url of the Spotify;
 
-- callback: após a url de authorização ser criada e executada o Spotify envia os tokens de autenticação para a callback function;
+- callback: after the authenticated url created the Spotify send the authenticated tokens to callback function;
 
-- recommendations: retorna uma recomendação de música e artista para o usuário autenticado;
+- recommendations: return a song and artist recommendation to the authenticated user;
 
-- random top artist: escolhe um artista entre os artistas mais ouvidos do usuário autenticado;
+- random top artist: choose a top listened artist from the authenticated user;
 
-- playlist: cria uma playlist com os artistas que o usuário autenticado gostou;
+- playlist: makes a playlist with the liked artists from the authenticated user;
