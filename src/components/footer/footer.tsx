@@ -6,7 +6,8 @@ export const Footer = () => {
         <span className="text-rose-600">♥️</span>
         {` by `}
         <a
-          className="border-b-blue-500 text-blue-500 hover:border-b-[1px]"
+          className="border-b-blue-500 dark:border-b-orange-400 
+          text-blue-500 dark:text-orange-400 hover:border-b-[1px]"
           href="https://github.com/andraderaul"
           target="_blank"
           rel="noreferrer"
