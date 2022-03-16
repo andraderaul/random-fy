@@ -45,7 +45,12 @@ export const ImageBox = ({
             />
           </a>
         </div>
-        <Image alt={artist} src={imgSrc} width="300" height="300" />
+        <Image
+          alt={`Image of the artist: ${artist}`}
+          src={imgSrc}
+          width="300"
+          height="300"
+        />
         <div className="flex flex-col items-start p-2">
           <strong className="w-64 truncate dark:text-neutral-200">
             {track}

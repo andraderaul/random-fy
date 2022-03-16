@@ -6,7 +6,7 @@ const About = () => {
       <Header />
       <div className="p-4 mt-8 mb-0 mx-auto sm:w-4/5 w-full">
         <SubTitle>About</SubTitle>
-        <div className="mt-8">
+        <section className="mt-8">
           <PrimaryText>
             Randomfy takes your most listened Spotify artists, selects one of
             them and shows you similar artists, so you can meet new artists
@@ -24,8 +24,8 @@ const About = () => {
               artists.
             </PrimaryText>
           </div>
-        </div>
-        <div className="mt-12">
+        </section>
+        <section className="mt-12">
           <SubTitle>How it works</SubTitle>
           <div className="mt-8">
             <PrimaryText>
@@ -42,16 +42,16 @@ const About = () => {
               these artists.
             </PrimaryText>
           </div>
-        </div>
+        </section>
 
-        <div className="mt-12">
+        <section className="mt-12">
           <SubTitle>Developer</SubTitle>
           <div className="mt-6">
             <PrimaryText>Raul Andrade</PrimaryText>
           </div>
-        </div>
+        </section>
 
-        <div className="mt-12 pb-12">
+        <section className="mt-12 pb-12">
           <SubTitle>Follow me on</SubTitle>
           <div className="mt-2 flex flex-col">
             <a
@@ -79,7 +79,7 @@ const About = () => {
               Twitter
             </a>
           </div>
-        </div>
+        </section>
       </div>
     </Content>
   )

@@ -4,8 +4,8 @@ type ContentProps = Record<string, unknown>
 
 export const Content = ({ children }: PropsWithChildren<ContentProps>) => {
   return (
-    <div className="max-w-6xl my-0 mx-auto  bg-neutral-50 dark:bg-neutral-700">
+    <main className="max-w-6xl my-0 mx-auto  bg-neutral-50 dark:bg-neutral-700">
       {children}
-    </div>
+    </main>
   )
 }
