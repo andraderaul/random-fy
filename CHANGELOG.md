@@ -1,3 +1,10 @@
+## [1.15.6](https://github.com/andraderaul/random-fy/compare/v1.15.5...v1.15.6) (2022-03-17)
+
+
+### Bug Fixes
+
+* warning on console ([a5b87ee](https://github.com/andraderaul/random-fy/commit/a5b87ee4fa0dfad48755e10d8dd735281dd86b6d))
+
 ## [1.15.5](https://github.com/andraderaul/random-fy/compare/v1.15.4...v1.15.5) (2022-03-15)
 
 
