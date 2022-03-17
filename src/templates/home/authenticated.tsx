@@ -1,5 +1,13 @@
 import { useState } from 'react'
-import { Content, Header } from 'components'
+import dynamic from 'next/dynamic'
+
+import type { HeaderProps } from 'components/header'
+const DynamicHeader = dynamic<HeaderProps>(
+  () => import('components/header').then((mod) => mod.Header),
+  { ssr: false }
+)
+
+import { Content } from 'components'
 
 import { Recommendation } from 'types'
 
@@ -20,7 +28,7 @@ export const Authenticated = ({ artistId }: AuthenticatedProps) => {
       value={{ source: currentPlaying, setSource: setCurrentPlaying }}
     >
       <Content>
-        <Header />
+        <DynamicHeader />
         <Match
           artistId={artistId}
           likedArtists={likedArtists}

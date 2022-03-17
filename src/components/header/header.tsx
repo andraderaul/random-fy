@@ -3,7 +3,7 @@ import { Title } from 'components'
 import { Cookies as CookiesUtils } from 'utils'
 import { useMemo } from 'react'
 
-type HeaderProps = {
+export type HeaderProps = {
   cookies?: typeof CookiesUtils
 }
 
