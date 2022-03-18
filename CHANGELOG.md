@@ -1,3 +1,10 @@
+## [1.15.7](https://github.com/andraderaul/random-fy/compare/v1.15.6...v1.15.7) (2022-03-18)
+
+
+### Bug Fixes
+
+* footer position ([9255bdd](https://github.com/andraderaul/random-fy/commit/9255bdd1354e27733ad36c1429442f1072d18338))
+
 ## [1.15.6](https://github.com/andraderaul/random-fy/compare/v1.15.5...v1.15.6) (2022-03-17)
 
 
