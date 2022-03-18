@@ -3,9 +3,7 @@ export const Footer = () => {
     <footer
       className="p-4 flex 
       justify-center font-thin dark:text-gray-300 
-      text-gray-700 fixed bottom-0 left-0 right-0
-      bg-neutral-50 dark:bg-neutral-700
-      "
+      text-gray-700"
     >
       <p>
         {`Created with `}
