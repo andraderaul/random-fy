@@ -5,18 +5,19 @@
     {
       "src": "/img/icon-192.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "192x192",
+      "purpose": "any maskable"
     },
     {
       "src": "/img/icon-512.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "512x512",
+      "purpose": "any maskable"
     }
   ],
   "background_color": "#fafafa",
   "description": "Randomfy takes your most listened Spotify artists, selects one of them and shows you similar artists, so you can meet new artists based on the previous selected one.",
   "display": "fullscreen",
   "start_url": "/",
-  "theme_color": "#fafafa",
-  "purpose": "any maskable"
+  "theme_color": "#fafafa"
 }
