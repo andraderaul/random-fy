@@ -17,5 +17,6 @@
   "description": "Randomfy takes your most listened Spotify artists, selects one of them and shows you similar artists, so you can meet new artists based on the previous selected one.",
   "display": "fullscreen",
   "start_url": "/",
-  "theme_color": "#fafafa"
+  "theme_color": "#fafafa",
+  "purpose": "any maskable"
 }
