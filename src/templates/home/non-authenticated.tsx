@@ -6,7 +6,7 @@ export const NonAuthenticated = () => {
   return (
     <Content>
       <Header />
-      <div className="p-4 mt-8 mb-0 mx-auto sm:w-4/5 w-full">
+      <div className="p-4 mt-2 sm:mt-10 mb-0 mx-auto sm:w-4/5 w-full">
         <SubTitle>Yeah.</SubTitle>
         <SubTitle>Hello music lover!</SubTitle>
         <div className="mt-8">
@@ -16,7 +16,7 @@ export const NonAuthenticated = () => {
           </PrimaryText>
         </div>
       </div>
-      <div className="p-4 mt-10">
+      <div className="p-4 mt-2 sm:mt-10">
         <div className="flex justify-center">
           <Link href="/api/login">
             <a
