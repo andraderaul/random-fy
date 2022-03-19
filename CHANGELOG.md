@@ -1,3 +1,10 @@
+## [1.16.1](https://github.com/andraderaul/random-fy/compare/v1.16.0...v1.16.1) (2022-03-19)
+
+
+### Bug Fixes
+
+* play icon size in the image box ([03b9dbd](https://github.com/andraderaul/random-fy/commit/03b9dbd07e7544d06ff88439c7f88709939ae833))
+
 # [1.16.0](https://github.com/andraderaul/random-fy/compare/v1.15.7...v1.16.0) (2022-03-19)
 
 
