@@ -1,3 +1,10 @@
+# [1.16.0](https://github.com/andraderaul/random-fy/compare/v1.15.7...v1.16.0) (2022-03-19)
+
+
+### Features
+
+* add pwa ([de054be](https://github.com/andraderaul/random-fy/commit/de054be2d4e3e93c50b4bc48b7c48c1333086d59))
+
 ## [1.15.7](https://github.com/andraderaul/random-fy/compare/v1.15.6...v1.15.7) (2022-03-18)
 
 
