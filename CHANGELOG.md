@@ -1,3 +1,10 @@
+## [1.16.3](https://github.com/andraderaul/random-fy/compare/v1.16.2...v1.16.3) (2022-03-19)
+
+
+### Bug Fixes
+
+* maskable icon to matrix icons ([5427d04](https://github.com/andraderaul/random-fy/commit/5427d045f7d25f7a188f6810583ced04d4b6cb70))
+
 ## [1.16.2](https://github.com/andraderaul/random-fy/compare/v1.16.1...v1.16.2) (2022-03-19)
 
 
