@@ -15,7 +15,7 @@ export const Header = ({ cookies = CookiesUtils }: HeaderProps) => {
   )
 
   return (
-    <div className="mt-8 p-4 flex justify-between items-center sm:flex-row flex-col">
+    <div className="mt-2 p-4 flex justify-between items-center sm:flex-row flex-col">
       <div className="flex items-center flex-col sm:flex-row">
         <Link href="/">
           <a>
@@ -24,19 +24,31 @@ export const Header = ({ cookies = CookiesUtils }: HeaderProps) => {
         </Link>
       </div>
 
-      <header className="flex sm:flex-col flex-row justify-between">
-        <nav className="p-1 sm:p-0 text-2xl font-thin dark:text-gray-300 text-gray-700 leading-10 tracking-wide">
+      <header className="mt-4 sm:mt-0 flex sm:flex-col flex-row justify-between">
+        <nav
+          className="p-1 sm:p-0 text-2xl font-thin 
+          dark:text-gray-300 text-gray-700 leading-10 tracking-wide
+          hover:text-blue-500 hover:dark:text-orange-400"
+        >
           <Link href="/">
             <a>Home</a>
           </Link>
         </nav>
-        <nav className="p-1 sm:p-0 text-2xl font-thin dark:text-gray-300 text-gray-700 leading-10 tracking-wide">
+        <nav
+          className="p-1 sm:p-0 text-2xl font-thin 
+          dark:text-gray-300 text-gray-700 leading-10 tracking-wide
+          hover:text-blue-500 hover:dark:text-orange-400"
+        >
           <Link href="/about">
             <a>About</a>
           </Link>
         </nav>
         {isAuthenticated && (
-          <nav className="p-1 sm:p-0 text-2xl font-thin dark:text-gray-300 text-gray-700 leading-10 tracking-wide">
+          <nav
+            className="p-1 sm:p-0 text-2xl font-thin 
+          dark:text-gray-300 text-gray-700 leading-10 tracking-wide
+          hover:text-blue-500 hover:dark:text-orange-400"
+          >
             <Link href="/logout">
               <a>Log out </a>
             </Link>

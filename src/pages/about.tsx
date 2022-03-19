@@ -55,7 +55,9 @@ const About = () => {
           <SubTitle>Follow me on</SubTitle>
           <div className="mt-2 flex flex-col">
             <a
-              className="text-2xl font-thin dark:text-gray-300 text-gray-700 leading-10 tracking-wide"
+              className="text-2xl font-thin dark:text-gray-300 
+              text-gray-700 leading-10 tracking-wide
+              hover:text-blue-500 hover:dark:text-orange-400"
               href="https://github.com/andraderaul"
               target="_blank"
               rel="noreferrer"
@@ -63,7 +65,9 @@ const About = () => {
               Github
             </a>
             <a
-              className="text-2xl font-thin dark:text-gray-300 text-gray-700 leading-10 tracking-wide"
+              className="text-2xl font-thin dark:text-gray-300 
+              text-gray-700 leading-10 tracking-wide
+              hover:text-blue-500 hover:dark:text-orange-400"
               href="https://www.linkedin.com/in/andraderaul/"
               target="_blank"
               rel="noreferrer"
@@ -71,7 +75,9 @@ const About = () => {
               Linkedin
             </a>
             <a
-              className="text-2xl font-thin dark:text-gray-300 text-gray-700 leading-10 tracking-wide"
+              className="text-2xl font-thin dark:text-gray-300 
+              text-gray-700 leading-10 tracking-wide
+              hover:text-blue-500 hover:dark:text-orange-400"
               href="https://twitter.com/theandraderaul"
               target="_blank"
               rel="noreferrer"
