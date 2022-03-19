@@ -1,3 +1,10 @@
+## [1.16.6](https://github.com/andraderaul/random-fy/compare/v1.16.5...v1.16.6) (2022-03-19)
+
+
+### Bug Fixes
+
+* improve title colors ([1f82403](https://github.com/andraderaul/random-fy/commit/1f824030cce9d2e435d6715f77f04a9148a99d11))
+
 ## [1.16.5](https://github.com/andraderaul/random-fy/compare/v1.16.4...v1.16.5) (2022-03-19)
 
 
