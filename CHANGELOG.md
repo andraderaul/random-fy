@@ -1,3 +1,10 @@
+## [1.16.5](https://github.com/andraderaul/random-fy/compare/v1.16.4...v1.16.5) (2022-03-19)
+
+
+### Bug Fixes
+
+* margin on mobile in the login page ([37d2f52](https://github.com/andraderaul/random-fy/commit/37d2f5214a0a0d57328cca2b315e673d486c198b))
+
 ## [1.16.4](https://github.com/andraderaul/random-fy/compare/v1.16.3...v1.16.4) (2022-03-19)
 
 
