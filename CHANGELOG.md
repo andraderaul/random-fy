@@ -1,3 +1,10 @@
+## [1.16.2](https://github.com/andraderaul/random-fy/compare/v1.16.1...v1.16.2) (2022-03-19)
+
+
+### Bug Fixes
+
+* maskable icon ([efc130f](https://github.com/andraderaul/random-fy/commit/efc130ffe815c837f4de1a71f25f62432a933357))
+
 ## [1.16.1](https://github.com/andraderaul/random-fy/compare/v1.16.0...v1.16.1) (2022-03-19)
 
 
