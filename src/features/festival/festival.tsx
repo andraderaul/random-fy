@@ -35,14 +35,15 @@ export const Festival = ({ artists }: FestivalProps) => {
         </PrimaryText>
       </div>
       <div
-        className="min-h-96 md:p-10 flex flex-col
+        className="min-h-96 p-10 flex flex-col
         justify-center items-center uppercase
         bg-gradient-to-t from-amber-200 via-yellow-50 to-amber-200
-        text-gray-800 relative
+        text-gray-100
         overflow-hidden
+        bg-[url('/img/bg.jpg')]
       "
       >
-        <div className="z-10 md:mb-32 text-center">
+        <div className="mb-32 text-center">
           <div
             className="text-5xl md:text-7xl flex flex-col 
           p-10 md:mb-32 font-extrabold text-red-500 font-mono"
@@ -80,11 +81,6 @@ export const Festival = ({ artists }: FestivalProps) => {
             ))}
           </div>
         </div>
-
-        <img
-          className="absolute bottom-0 opacity-50 blur-sm"
-          src="/img/bg.jpg"
-        />
         <span>Randomfy</span>
       </div>
       <div className="flex justify-center p-10">
