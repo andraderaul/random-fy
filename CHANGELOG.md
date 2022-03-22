@@ -1,3 +1,10 @@
+# [1.17.0](https://github.com/andraderaul/random-fy/compare/v1.16.6...v1.17.0) (2022-03-22)
+
+
+### Features
+
+* add festival ([#3](https://github.com/andraderaul/random-fy/issues/3)) ([1be7058](https://github.com/andraderaul/random-fy/commit/1be70584379660cba25158b0319cea9e13902b21))
+
 ## [1.16.6](https://github.com/andraderaul/random-fy/compare/v1.16.5...v1.16.6) (2022-03-19)
 
 
