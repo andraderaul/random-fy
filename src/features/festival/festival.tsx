@@ -35,44 +35,44 @@ export const Festival = ({ artists }: FestivalProps) => {
         </PrimaryText>
       </div>
       <div
-        className="min-h-96 p-10 flex flex-col
+        className="min-h-96 md:p-10 flex flex-col
         justify-center items-center uppercase
         bg-gradient-to-t from-amber-200 via-yellow-50 to-amber-200
         text-gray-800 relative
         overflow-hidden
       "
       >
-        <div className="z-10 mb-32 text-center">
+        <div className="z-10 md:mb-32 text-center">
           <div
-            className="text-7xl flex flex-col 
-          p-10 mb-32 font-extrabold text-red-500 font-mono"
+            className="text-5xl md:text-7xl flex flex-col 
+          p-10 md:mb-32 font-extrabold text-red-500 font-mono"
           >
             <span>randomfest</span>
             <span>{YEAR}</span>
           </div>
 
-          <div className="text-8xl p-4">
+          <div className="text-6xl md:text-8xl p-4">
             {artistsName.slice(0, 1).map((artist) => (
               <span className="p-2" key={artist}>
                 {artist}
               </span>
             ))}
           </div>
-          <div className="text-6xl flex flex-wrap justify-evenly items-center pb-4">
+          <div className="text-4xl md:text-6xl flex flex-wrap justify-evenly items-center pb-4">
             {artistsName.slice(1, 3).map((artist) => (
               <span className="max-w-md" key={artist}>
                 {artist}
               </span>
             ))}
           </div>
-          <div className="text-5xl flex flex-wrap justify-around items-center pb-4">
+          <div className="text-2xl md:text-5xl flex flex-wrap justify-around items-center pb-4">
             {artistsName.slice(3, 6).map((artist) => (
               <span className="max-w-xs" key={artist}>
                 {artist}
               </span>
             ))}
           </div>
-          <div className="text-2xl flex flex-wrap justify-around">
+          <div className="text-xl md:text-2xl flex flex-wrap justify-around">
             {artistsName.slice(6).map((artist) => (
               <span className="" key={artist}>
                 {artist}
@@ -82,7 +82,7 @@ export const Festival = ({ artists }: FestivalProps) => {
         </div>
 
         <img
-          className="hidden md:block absolute bottom-0 opacity-50 blur-sm"
+          className="absolute bottom-0 opacity-50 blur-sm"
           src="/img/bg.jpg"
         />
         <span>Randomfy</span>
