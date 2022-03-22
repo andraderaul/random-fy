@@ -5,5 +5,6 @@ export type Recommendation = {
   images: Array<Image>
   type: string
   name: string
+  popularity: number
   track: Track
 }

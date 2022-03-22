@@ -52,6 +52,7 @@ export default async function handler(
       images: artist.images,
       type: artist.type,
       name: artist.name,
+      popularity: artist.popularity,
       track: {
         id: topTrackCollection[index].id,
         uri: topTrackCollection[index].uri,
