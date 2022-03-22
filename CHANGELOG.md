@@ -1,3 +1,10 @@
+## [1.17.1](https://github.com/andraderaul/random-fy/compare/v1.17.0...v1.17.1) (2022-03-22)
+
+
+### Bug Fixes
+
+* festival responsivity on mobile ([7b659ea](https://github.com/andraderaul/random-fy/commit/7b659ea5085dd1338035882b2bdf5bd0e088db80))
+
 # [1.17.0](https://github.com/andraderaul/random-fy/compare/v1.16.6...v1.17.0) (2022-03-22)
 
 
