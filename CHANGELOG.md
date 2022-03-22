@@ -1,3 +1,10 @@
+## [1.17.2](https://github.com/andraderaul/random-fy/compare/v1.17.1...v1.17.2) (2022-03-22)
+
+
+### Bug Fixes
+
+* add image background to festival feat ([d9b3968](https://github.com/andraderaul/random-fy/commit/d9b396858bd38e98d56f12af95d0d1b959c611d0))
+
 ## [1.17.1](https://github.com/andraderaul/random-fy/compare/v1.17.0...v1.17.1) (2022-03-22)
 
 
