@@ -40,6 +40,7 @@ export const recommendationBuilder = build<Recommendation>('recommendation', {
   fields: {
     id: fake((f) => f.datatype.uuid()),
     images: imagesBuilder(),
+    popularity: fake((f) => f.datatype.number(100)),
     type: fake((f) => f.random.word()),
     name: fake((f) => f.name.findName()),
     track: trackBuilder()

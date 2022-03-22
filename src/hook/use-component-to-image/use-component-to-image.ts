@@ -3,11 +3,17 @@ import html2canvas from 'html2canvas'
 type UseComponentToImage = {
   fileName: string
   elementName: string
+  button?: string
+  subtitle?: string
 }
 
-export const onClone = (document: Document) => {
-  const button = document.getElementById('download')
-  const subtitle = document.getElementById('subtitle')
+export const onClone = (
+  document: Document,
+  buttonName = 'download',
+  subtitleText = 'subtitle'
+) => {
+  const button = document.getElementById(buttonName)
+  const subtitle = document.getElementById(subtitleText)
 
   if (button && subtitle) {
     button.style.visibility = 'hidden'
@@ -25,7 +31,9 @@ export const canvasCallback = (canvas: HTMLCanvasElement, fileName: string) => {
 
 export const useComponentToImage = ({
   fileName,
-  elementName
+  elementName,
+  button,
+  subtitle
 }: UseComponentToImage) => {
   const downloadImage = () => {
     const domElement = document.getElementById(elementName)
@@ -33,7 +41,7 @@ export const useComponentToImage = ({
     if (!domElement) return
 
     html2canvas(domElement, {
-      onclone: onClone
+      onclone: (document) => onClone(document, button, subtitle)
     }).then((canvas) => canvasCallback(canvas, fileName))
   }
 
