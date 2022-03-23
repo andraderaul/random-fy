@@ -1,11 +1,11 @@
 import { waitFor } from '@testing-library/react'
 import { renderWithClient } from 'mock'
 
-import { Authenticated } from './authenticated'
+import { Home } from './home'
 
-describe('<Authenticated/>', () => {
-  it('should be render a NonAuthenticated template', async () => {
-    const rendered = renderWithClient(<Authenticated artistId="123" />)
+describe('<Home />', () => {
+  it('should be render a Home template', async () => {
+    const rendered = renderWithClient(<Home />)
 
     await waitFor(() => rendered.getAllByLabelText('image box'))
 

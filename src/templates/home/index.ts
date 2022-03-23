@@ -1,1 +1,1 @@
-export { NonAuthenticated } from './non-authenticated'
+export { Home } from './home'

@@ -2,7 +2,7 @@ import Image from 'next/image'
 import { Content, SubTitle, PrimaryText, Header } from 'components'
 import Link from 'next/link'
 
-export const NonAuthenticated = () => {
+export const Login = () => {
   return (
     <Content>
       <Header />
