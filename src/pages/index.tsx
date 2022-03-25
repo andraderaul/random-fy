@@ -1,5 +1,5 @@
 import type { GetServerSidePropsContext, NextPage } from 'next'
-import { getRandomArtist, setCustomHeader } from 'services'
+import { setCustomHeader } from 'services'
 import { Cookies } from 'utils'
 import { Home as HomeTemplate, Login } from 'templates'
 
