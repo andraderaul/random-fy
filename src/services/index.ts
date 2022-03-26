@@ -4,5 +4,6 @@ export {
   getRecomendations,
   getRandomArtist,
   setCustomHeader,
-  createPlaylist
+  createPlaylist,
+  getRelatedArtists
 } from './network'

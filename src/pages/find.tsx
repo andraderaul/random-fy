@@ -21,8 +21,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
       value: cookies['authorization'] ?? ''
     })
 
-    console.log({ cookies })
-
     const initialArtistResponse = await getRandomArtist()
     const artistId = initialArtistResponse.data.id ?? null
 
