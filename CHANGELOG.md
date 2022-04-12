@@ -1,3 +1,10 @@
+## [1.17.3](https://github.com/andraderaul/random-fy/compare/v1.17.2...v1.17.3) (2022-04-12)
+
+
+### Bug Fixes
+
+* random top artist range ([71906ea](https://github.com/andraderaul/random-fy/commit/71906ea5f17955f3e36d7dfbfe8714fee9139c4d))
+
 ## [1.17.2](https://github.com/andraderaul/random-fy/compare/v1.17.1...v1.17.2) (2022-03-22)
 
 
