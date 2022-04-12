@@ -18,7 +18,7 @@ export default async function handler(
 
     const index = Rnd.getRndNumber({
       min: 0,
-      max: 50
+      max: myTopArtists.body.items.length
     })
 
     res.status(200).json(myTopArtists.body.items[index])
