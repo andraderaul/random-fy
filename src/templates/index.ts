@@ -1,4 +1,3 @@
-export { Home } from './home'
-export { Find } from './find'
+export { HomeTemplate } from './home'
 export { Login } from './login'
-export { AutoFind } from './auto-find'
+export { FindTemplate } from './find'

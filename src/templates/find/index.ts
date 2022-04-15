@@ -1,1 +1,1 @@
-export { Find } from './find'
+export { FindTemplate } from './find'

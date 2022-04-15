@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import dynamic from 'next/dynamic'
 
 import type { HeaderProps } from 'components/header'
@@ -6,17 +7,37 @@ const DynamicHeader = dynamic<HeaderProps>(
   { ssr: false }
 )
 
-import { Content, Card } from 'components'
+import { Content } from 'components'
 
-export const Home = () => {
+import { Recommendation } from 'types'
+
+import { AudioContext } from 'contexts'
+import { Match, ImageCollage, Playlist, Festival } from 'features'
+
+type HomeTemplateProps = {
+  artistId: string
+}
+
+export const HomeTemplate = ({ artistId }: HomeTemplateProps) => {
+  const [likedArtists, setLikedArtists] = useState<Array<Recommendation>>([])
+
+  const [currentPlaying, setCurrentPlaying] = useState('')
+
   return (
-    <Content>
-      <DynamicHeader />
-
-      <div className="p-10 flex justify-around flex-wrap">
-        <Card label="I want to meet a new artists" href="/find" />
-        <Card label="I want to search artist by name" href="/auto-find" />
-      </div>
-    </Content>
+    <AudioContext.Provider
+      value={{ source: currentPlaying, setSource: setCurrentPlaying }}
+    >
+      <Content>
+        <DynamicHeader />
+        <Match
+          artistId={artistId}
+          likedArtists={likedArtists}
+          setLikedArtists={setLikedArtists}
+        />
+        <Playlist artists={likedArtists} />
+        <ImageCollage artists={likedArtists} />
+        <Festival artists={likedArtists} />
+      </Content>
+    </AudioContext.Provider>
   )
 }

@@ -19,12 +19,15 @@ export default async function handler(
     )
 
     const searchedArtist = searchResponse.body.artists?.items[0]
+    console.log({ searchedArtist })
 
     const relatedArtistsResponse = await spotifyApi.getArtistRelatedArtists(
       searchedArtist?.id || ''
     )
 
     const relatedArtists = relatedArtistsResponse.body.artists
+
+    console.log({ relatedArtists })
 
     const topTrackCollection: any[] = []
     for (const artist of relatedArtists) {

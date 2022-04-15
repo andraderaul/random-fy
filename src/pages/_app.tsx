@@ -6,6 +6,7 @@ import { useRef } from 'react'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { Hydrate } from 'react-query/hydration'
 import { ReactQueryDevtools } from 'react-query/devtools'
+import { Toaster } from 'react-hot-toast'
 
 function MyApp({ Component, pageProps }: AppProps) {
   const queryClientRef = useRef<QueryClient>()
@@ -36,6 +37,16 @@ function MyApp({ Component, pageProps }: AppProps) {
             height={3}
           />
           <Component {...pageProps} />
+          <Toaster
+            toastOptions={{
+              error: {
+                style: {
+                  background: 'red',
+                  color: 'white'
+                }
+              }
+            }}
+          />
         </Hydrate>
         <ReactQueryDevtools />
       </QueryClientProvider>
