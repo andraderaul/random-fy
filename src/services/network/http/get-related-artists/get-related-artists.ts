@@ -1,4 +1,4 @@
-import { Recommendation } from '../../../../types'
+import { Recommendation } from 'types'
 import { http } from '../http'
 
 export const getRelatedArtists = async (name: string) => {

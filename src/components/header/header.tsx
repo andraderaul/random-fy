@@ -41,8 +41,8 @@ export const Header = ({ cookies = CookiesUtils }: HeaderProps) => {
           dark:text-gray-300 text-gray-700 leading-10 tracking-wide
           hover:text-blue-500 hover:dark:text-orange-400"
             >
-              <Link href="/find">
-                <a>Find</a>
+              <Link href="/search">
+                <a>Search</a>
               </Link>
             </nav>
             <nav

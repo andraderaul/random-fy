@@ -4,13 +4,15 @@ import { setupServer } from 'msw/node'
 import {
   playlistHandlers,
   randomArtistHandlers,
-  recommendationsHandlers
+  recommendationsHandlers,
+  relatedHandlers
 } from './handlers'
 
 const handlers = [
   ...playlistHandlers,
   ...randomArtistHandlers,
-  ...recommendationsHandlers
+  ...recommendationsHandlers,
+  ...relatedHandlers
 ]
 
 const server = setupServer(...handlers)

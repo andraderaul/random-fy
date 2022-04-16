@@ -1,4 +1,9 @@
-import { mockArtist, mockPlaylist, mockRecommendations } from 'mock'
+import {
+  mockArtist,
+  mockPlaylist,
+  mockRecommendations,
+  mockRelated
+} from 'mock'
 import { rest } from 'msw'
 import { Artist, Recommendation } from 'types'
 
@@ -21,6 +26,15 @@ export const recommendationsHandlers = [
     composeEndpoint('/recommendations'),
     (_req, res, ctx) => {
       return res(ctx.status(200), ctx.json(mockRecommendations))
+    }
+  )
+]
+
+export const relatedHandlers = [
+  rest.get<Array<Recommendation>>(
+    composeEndpoint('/search-artists'),
+    (_req, res, ctx) => {
+      return res(ctx.status(200), ctx.json(mockRelated))
     }
   )
 ]

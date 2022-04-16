@@ -12,7 +12,7 @@ import { Content, PrimaryButton, PrimaryText } from 'components'
 import { useRelatedArtistsMutation } from 'queries'
 import { Festival, ImageCollage, Playlist } from 'features'
 
-export const FindTemplate = () => {
+export const SearchTemplate = () => {
   const [search, setSearch] = useState('')
   const { mutate, data, isLoading } = useRelatedArtistsMutation()
 

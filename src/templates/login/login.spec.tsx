@@ -14,12 +14,6 @@ describe('<Login />', () => {
 
     expect(
       screen.getByRole('link', {
-        name: /home/i
-      })
-    ).toBeInTheDocument()
-
-    expect(
-      screen.getByRole('link', {
         name: /about/i
       })
     ).toBeInTheDocument()

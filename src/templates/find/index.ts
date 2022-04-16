@@ -1,1 +1,0 @@
-export { FindTemplate } from './find'

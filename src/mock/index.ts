@@ -14,7 +14,8 @@ export {
   mockPlaylist,
   mockRecommendations,
   mockArtists,
-  mockTracks
+  mockTracks,
+  mockRelated
 } from './fixtures'
 export { rest, server, forceRequestError } from './server'
 export { wrapperReactQuery, renderWithClient } from './wrappers'

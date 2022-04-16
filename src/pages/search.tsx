@@ -1,14 +1,14 @@
 import type { GetServerSidePropsContext, NextPage } from 'next'
 
 import { protectedRoutes } from 'utils'
-import { FindTemplate } from 'templates'
+import { SearchTemplate } from 'templates'
 
-type FindProps = {
+type SearchProps = {
   auth: string
 }
 
-const AutoFind: NextPage<FindProps> = () => {
-  return <FindTemplate />
+const Search: NextPage<SearchProps> = () => {
+  return <SearchTemplate />
 }
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
@@ -21,4 +21,4 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   }
 }
 
-export default AutoFind
+export default Search
