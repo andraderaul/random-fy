@@ -36,7 +36,7 @@ export default async function handler(
 
     const artistCollection = response.body.artists.slice(sliceStart, sliceEnd)
 
-    const topTrackCollection: any[] = []
+    const topTrackCollection: Array<SpotifyApi.TrackObjectFull> = []
     for (const artist of artistCollection) {
       const topTrack = await spotifyApi.getArtistTopTracks(artist.id, 'BR')
       const topTrackSelected = Rnd.getRndNumber({

@@ -111,7 +111,7 @@ jest.mock('utils', () => {
   }
 })
 
-describe('testing create playlist', () => {
+describe('testing create recommendations', () => {
   const jsonMock = jest.fn()
   const statusMock = jest.fn(() => ({
     json: jsonMock
