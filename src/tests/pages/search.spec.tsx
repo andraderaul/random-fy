@@ -1,4 +1,4 @@
-import { screen, act } from '@testing-library/react'
+import { screen, act, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { renderWithClient } from 'mock'
 import Search, { getServerSideProps } from 'pages/search'
@@ -25,7 +25,7 @@ describe('<Search />', () => {
   })
 
   it('should be able to search by artist', async () => {
-    renderWithClient(<Search auth="123" />)
+    const rendered = renderWithClient(<Search auth="123" />)
 
     const inputSearch = screen.getByRole('textbox', {
       name: /search/i
@@ -43,6 +43,12 @@ describe('<Search />', () => {
     await act(async () => {
       userEvent.click(searchButton)
     })
+
+    await waitFor(() =>
+      rendered.getByRole('button', {
+        name: /create playlist button/i
+      })
+    )
 
     expect(
       screen.getByRole('button', {
