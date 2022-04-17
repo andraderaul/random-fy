@@ -36,14 +36,12 @@ jobs:
       - name: Lint
         run: yarn lint --fix
 
-      - name: Coverage
-        run: yarn test:coverage
-
   coverage:
     permissions:
       checks: write
       pull-requests: write
     runs-on: ubuntu-latest
     steps:
+      - name: Get coverage report
       - uses: actions/checkout@v1
       - uses: ArtiomTr/jest-coverage-report-action@v2
