@@ -8,7 +8,7 @@ const DynamicHeader = dynamic<HeaderProps>(
   { ssr: false }
 )
 
-import { Content, PrimaryButton, PrimaryText, Skeleton } from 'components'
+import { Content, PrimaryButton, PrimaryText } from 'components'
 import { useRelatedArtistsMutation } from 'queries'
 import { Festival, ImageCollage, Playlist } from 'features'
 
@@ -34,7 +34,9 @@ export const SearchTemplate = () => {
       {!data?.data && (
         <form
           onSubmit={handleSubmit}
-          className="max-w-2xl my-0 mx-auto flex flex-col items-center"
+          className={`max-w-2xl my-0 mx-auto flex flex-col items-center ${
+            isLoading ? 'animate-pulse' : ''
+          }`}
         >
           <div className="p-4 mb-2">
             <PrimaryText>
@@ -63,9 +65,13 @@ export const SearchTemplate = () => {
           <div className="flex justify-center p-10">
             <PrimaryButton type="submit">Search</PrimaryButton>
           </div>
+          {isLoading && (
+            <p className="font-thin dark:text-gray-300 text-gray-700 leading-10 tracking-wide">
+              Loading...
+            </p>
+          )}
         </form>
       )}
-      {isLoading && <Skeleton />}
       {isEmpty && (
         <PrimaryText>
           We can&apos;t found any related artist, try a different artist.
