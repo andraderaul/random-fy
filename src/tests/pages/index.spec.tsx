@@ -17,18 +17,12 @@ describe('<Index />', () => {
     jest.clearAllMocks()
   })
 
-  it('when user is not logged should be render a landing index page', () => {
+  it('when user is not logged should be render a login template', () => {
     render(<Index artistId="" auth="" />)
 
     expect(
       screen.getByRole('heading', {
         name: /randomfy/i
-      })
-    ).toBeInTheDocument()
-
-    expect(
-      screen.getByRole('link', {
-        name: /home/i
       })
     ).toBeInTheDocument()
 
@@ -45,7 +39,7 @@ describe('<Index />', () => {
     ).toBeInTheDocument()
   })
 
-  describe('user is logged', () => {
+  describe('when the user is logged should render a home template', () => {
     it('when the recommendations are loading should be display the skeleton loader', () => {
       renderWithClient(<Index artistId="123" auth="321" />)
 

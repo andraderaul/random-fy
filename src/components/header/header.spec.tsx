@@ -23,7 +23,7 @@ describe('<Header />', () => {
 
     expect(
       screen.getByRole('link', {
-        name: /home/i
+        name: /search/i
       })
     ).toBeInTheDocument()
 
@@ -61,16 +61,11 @@ describe('<Header />', () => {
 
     expect(
       screen.getByRole('link', {
-        name: /home/i
-      })
-    ).toBeInTheDocument()
-
-    expect(
-      screen.getByRole('link', {
         name: /about/i
       })
     ).toBeInTheDocument()
 
     expect(queryByText(/log out/i)).not.toBeInTheDocument()
+    expect(queryByText(/search/i)).not.toBeInTheDocument()
   })
 })

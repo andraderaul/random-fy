@@ -1,20 +1,14 @@
 import { render, screen } from '@testing-library/react'
 
-import { NonAuthenticated } from './non-authenticated'
+import { Login } from './login'
 
-describe('<NonAuthenticated />', () => {
-  it('should be render a NonAuthenticated template', () => {
-    render(<NonAuthenticated />)
+describe('<Login />', () => {
+  it('should be render a Login template', () => {
+    render(<Login />)
 
     expect(
       screen.getByRole('heading', {
         name: /randomfy/i
-      })
-    ).toBeInTheDocument()
-
-    expect(
-      screen.getByRole('link', {
-        name: /home/i
       })
     ).toBeInTheDocument()
 

@@ -1,10 +1,10 @@
 import { Recommendation } from 'types'
 import { http } from '../http'
 
-export const getRecomendations = async (name: string) => {
+export const getRelatedArtists = async (name: string) => {
   return await http<Array<Recommendation>>({
     method: 'GET',
-    url: '/recommendations',
+    url: '/search-artists',
     params: {
       name
     }

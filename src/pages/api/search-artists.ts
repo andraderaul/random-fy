@@ -1,4 +1,3 @@
-import { MAX_ARTISTS_TO_SHOW_PER_TURN } from '../../constants'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 import { spotifyApi } from 'services'
@@ -7,37 +6,28 @@ import { Rnd } from 'utils'
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
-): Promise<void> {
+) {
   try {
     const token = req.headers.authorization as string
     spotifyApi.setAccessToken(token)
 
-    const response = await spotifyApi.getArtistRelatedArtists(
-      req.query?.name as string
+    const searchResponse = await spotifyApi.searchArtists(
+      req.query?.name as string,
+      {
+        limit: 1
+      }
     )
 
-    const artists = response.body.artists
+    const searchedArtist = searchResponse.body.artists?.items[0]
 
-    /* falback when there aren't recommendations */
-    if (artists.length === 0 || artists === undefined) {
-      const topArtists = await spotifyApi.getMyTopArtists({
-        limit: 50
-      })
-      req.query.name = topArtists.body.items[0].id
+    const relatedArtistsResponse = await spotifyApi.getArtistRelatedArtists(
+      searchedArtist?.id || ''
+    )
 
-      return handler(req, res)
-    }
-
-    const sliceEnd = Rnd.getRndNumber({
-      min: MAX_ARTISTS_TO_SHOW_PER_TURN,
-      max: artists.length
-    })
-    const sliceStart = sliceEnd - MAX_ARTISTS_TO_SHOW_PER_TURN
-
-    const artistCollection = response.body.artists.slice(sliceStart, sliceEnd)
+    const relatedArtists = relatedArtistsResponse.body.artists
 
     const topTrackCollection: Array<SpotifyApi.TrackObjectFull> = []
-    for (const artist of artistCollection) {
+    for (const artist of relatedArtists) {
       const topTrack = await spotifyApi.getArtistTopTracks(artist.id, 'BR')
       const topTrackSelected = Rnd.getRndNumber({
         min: 0,
@@ -47,7 +37,7 @@ export default async function handler(
       topTrackCollection.push(topTrack.body.tracks[topTrackSelected])
     }
 
-    const result = artistCollection.map((artist, index) => ({
+    const result = relatedArtists.map((artist, index) => ({
       id: artist.id,
       images: artist.images,
       type: artist.type,

@@ -3,5 +3,6 @@ export {
   mockPlaylist,
   mockRecommendations,
   mockArtists,
-  mockTracks
+  mockTracks,
+  mockRelated
 } from './fixtures'

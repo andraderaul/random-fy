@@ -1,25 +1,22 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-
 import { mockArtist } from 'mock'
-import handler from 'pages/api/recommendations'
+
+import handler from 'pages/api/search-artists'
 
 jest.mock('services', () => {
   return {
     spotifyApi: {
       setAccessToken: jest.fn(),
-      getMyTopArtists: jest.fn().mockResolvedValueOnce({
+      searchArtists: jest.fn().mockResolvedValue({
         body: {
-          items: Array.from({ length: 50 }, () => mockArtist)
+          artists: {
+            items: Array.from({ length: 50 }, () => mockArtist)
+          }
         }
       }),
       getArtistRelatedArtists: jest
         .fn()
         .mockRejectedValueOnce({ statusCode: 401 })
-        .mockResolvedValueOnce({
-          body: {
-            artists: []
-          }
-        })
         .mockResolvedValue({
           body: {
             artists: [
@@ -111,7 +108,7 @@ jest.mock('utils', () => {
   }
 })
 
-describe('testing create recommendations', () => {
+describe('testing search artists', () => {
   const jsonMock = jest.fn()
   const statusMock = jest.fn(() => ({
     json: jsonMock
@@ -122,7 +119,7 @@ describe('testing create recommendations', () => {
       authorization: 'token'
     },
     query: {
-      name: 'bring me the horizon'
+      id: '1232131'
     }
   } as unknown as NextApiRequest
 
@@ -141,28 +138,6 @@ describe('testing create recommendations', () => {
     expect(jsonMock).toHaveBeenCalledWith({ statusCode: 401 })
   })
 
-  it("should be return a fallback artists when there aren't recommendations", async () => {
-    await handler(req, res)
-
-    expect(statusMock).toHaveBeenCalledWith(200)
-    expect(jsonMock).toHaveBeenCalledWith([
-      {
-        id: '54321',
-        images: [],
-        type: 'artist',
-        name: 'a day to remember',
-        track: {
-          id: 'cba1234',
-          uri: 'uri track 2',
-          name: 'track 2',
-          previewUrl: 'url 2',
-          images: [],
-          hrefSpotify: 'spotify url'
-        }
-      }
-    ])
-  })
-
   it('should be able to return a recommendation', async () => {
     await handler(req, res)
 
@@ -173,6 +148,52 @@ describe('testing create recommendations', () => {
         images: [],
         type: 'artist',
         name: 'a day to remember',
+        popularity: undefined,
+        track: {
+          id: 'cba1234',
+          uri: 'uri track 2',
+          name: 'track 2',
+          previewUrl: 'url 2',
+          images: [],
+          hrefSpotify: 'spotify url'
+        }
+      },
+      {
+        id: '09876',
+        images: [],
+        type: 'artist',
+        name: 'asking alexandria',
+        popularity: undefined,
+        track: {
+          id: 'cba1234',
+          uri: 'uri track 2',
+          name: 'track 2',
+          previewUrl: 'url 2',
+          images: [],
+          hrefSpotify: 'spotify url'
+        }
+      },
+      {
+        id: '54321',
+        images: [],
+        type: 'artist',
+        name: 'paramore',
+        popularity: undefined,
+        track: {
+          id: 'cba1234',
+          uri: 'uri track 2',
+          name: 'track 2',
+          previewUrl: 'url 2',
+          images: [],
+          hrefSpotify: 'spotify url'
+        }
+      },
+      {
+        id: '54311',
+        images: [],
+        type: 'artist',
+        name: 'olivia rodrigo',
+        popularity: undefined,
         track: {
           id: 'cba1234',
           uri: 'uri track 2',

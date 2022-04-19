@@ -14,11 +14,11 @@ import { Recommendation } from 'types'
 import { AudioContext } from 'contexts'
 import { Match, ImageCollage, Playlist, Festival } from 'features'
 
-type AuthenticatedProps = {
+type HomeTemplateProps = {
   artistId: string
 }
 
-export const Authenticated = ({ artistId }: AuthenticatedProps) => {
+export const HomeTemplate = ({ artistId }: HomeTemplateProps) => {
   const [likedArtists, setLikedArtists] = useState<Array<Recommendation>>([])
 
   const [currentPlaying, setCurrentPlaying] = useState('')

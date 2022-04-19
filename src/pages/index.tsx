@@ -1,8 +1,7 @@
 import type { GetServerSidePropsContext, NextPage } from 'next'
 import { getRandomArtist, setCustomHeader } from 'services'
 import { Cookies } from 'utils'
-import { NonAuthenticated } from 'templates'
-import { Authenticated } from 'templates/home/authenticated'
+import { HomeTemplate, Login } from 'templates'
 
 type HomeProps = {
   auth: string
@@ -11,10 +10,10 @@ type HomeProps = {
 
 const Home: NextPage<HomeProps> = ({ auth, artistId }) => {
   if (!auth) {
-    return <NonAuthenticated />
+    return <Login />
   }
 
-  return <Authenticated artistId={artistId} />
+  return <HomeTemplate artistId={artistId} />
 }
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
