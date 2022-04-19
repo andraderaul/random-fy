@@ -1,5 +1,4 @@
 import { useMemo, useState } from 'react'
-import { SearchIcon } from '@heroicons/react/outline'
 import dynamic from 'next/dynamic'
 
 import type { HeaderProps } from 'components/header'

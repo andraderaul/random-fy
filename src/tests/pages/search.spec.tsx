@@ -1,7 +1,13 @@
 import { screen, act, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { renderWithClient } from 'mock'
+import { GetServerSidePropsContext } from 'next'
 import Search, { getServerSideProps } from 'pages/search'
+
+jest.mock('utils', () => ({
+  ...jest.requireActual('utils'),
+  protectedRoutes: jest.fn().mockResolvedValue('token')
+}))
 
 describe('<Search />', () => {
   beforeEach(() => {
@@ -55,5 +61,14 @@ describe('<Search />', () => {
         name: /create playlist button/i
       })
     ).toBeInTheDocument()
+  })
+
+  describe('testing getServerSideProps', () => {
+    it('should return auth props when user is authenticated', async () => {
+      const props = await getServerSideProps(
+        {} as unknown as GetServerSidePropsContext
+      )
+      expect(props).toEqual({ props: { auth: 'token' } })
+    })
   })
 })
