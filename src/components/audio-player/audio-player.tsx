@@ -43,23 +43,22 @@ export const AudioPlayer = ({
     setSource?.(src)
   }
 
+  const commonStyle = `h-14 w-14 sm:h-10 sm:w-10 dark:fill-gray-100 fill-gray-600 
+    cursor-pointer hover:scale-110 transition duration-200 ease-out hover:ease-in`
+
   return (
     <div className="flex justify-center p-2">
       {audio}
       {state.playing ? (
         <PauseIcon
           aria-label="pause-icon"
-          className="h-14 w-14 sm:h-10 sm:w-10 dark:fill-gray-100 fill-gray-600 cursor-pointer
-          hover:scale-110
-          transition duration-200 ease-out hover:ease-in"
+          className={commonStyle}
           onClick={pause}
         />
       ) : (
         <PlayIcon
           aria-label="play-icon"
-          className="h-14 w-14 sm:h-10 sm:w-10 dark:fill-gray-100 fill-gray-600 cursor-pointer
-          hover:scale-110
-          transition duration-200 ease-out hover:ease-in"
+          className={commonStyle}
           onClick={handlePlay}
         />
       )}
