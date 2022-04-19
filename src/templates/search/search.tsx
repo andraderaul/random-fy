@@ -22,7 +22,7 @@ export const SearchTemplate = () => {
 
   const handleSubmit: React.FormEventHandler = (e) => {
     e.preventDefault()
-    console.log('asda')
+
     mutate(search)
   }
 
