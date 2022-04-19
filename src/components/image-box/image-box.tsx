@@ -2,6 +2,12 @@ import Image from 'next/image'
 import { AudioPlayer } from '..'
 import { HeartIcon, XIcon } from '@heroicons/react/outline'
 
+const getCommonStyle = (
+  color: 'spotifyGreen' | 'red-500'
+) => `h-14 w-14 sm:h-10 sm:w-10 stroke-gray-600 dark:stroke-gray-50 
+hover:stroke-${color} hover:fill-${color} 
+hover:scale-110 cursor-pointer transition duration-200 ease-out hover:ease-in`
+
 type ImageBoxProps = {
   href: string
   artist: string
@@ -61,19 +67,13 @@ export const ImageBox = ({
         <div className="flex justify-around items-center">
           <XIcon
             aria-label="dislike"
-            className="h-14 w-14 sm:h-10 sm:w-10 stroke-gray-600 dark:stroke-gray-50 hover:stroke-red-500
-           hover:fill-red-500 hover:scale-110 cursor-pointer 
-           transition duration-200 ease-out hover:ease-in"
+            className={getCommonStyle('red-500')}
             onClick={onDislike}
           />
-
           <AudioPlayer src={audioSrc} />
-
           <HeartIcon
             aria-label="like"
-            className="h-14 w-14 sm:h-10 sm:w-10 stroke-gray-600 dark:stroke-gray-50 hover:stroke-spotifyGreen
-           hover:fill-spotifyGreen hover:scale-110 cursor-pointer 
-           transition duration-200 ease-out hover:ease-in"
+            className={getCommonStyle('spotifyGreen')}
             onClick={onLike}
           />
         </div>
