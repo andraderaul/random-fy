@@ -1,3 +1,10 @@
+# [1.18.0](https://github.com/andraderaul/random-fy/compare/v1.17.3...v1.18.0) (2022-04-19)
+
+
+### Features
+
+* search artist by name ([#5](https://github.com/andraderaul/random-fy/issues/5)) ([dd6957b](https://github.com/andraderaul/random-fy/commit/dd6957bdaf29105e0eacc6c6d837c93907f208fd))
+
 ## [1.17.3](https://github.com/andraderaul/random-fy/compare/v1.17.2...v1.17.3) (2022-04-12)
 
 
