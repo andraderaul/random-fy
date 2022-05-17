@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 import { spotifyApi } from 'services'
-import { Rnd } from 'utils'
+import { Rnd, parseToRecommendation, asyncMap } from 'utils'
 
 export default async function handler(
   req: NextApiRequest,
@@ -25,33 +25,17 @@ export default async function handler(
     )
 
     const relatedArtists = relatedArtistsResponse.body.artists
-
-    const topTrackCollection: Array<SpotifyApi.TrackObjectFull> = []
-    for (const artist of relatedArtists) {
-      const topTrack = await spotifyApi.getArtistTopTracks(artist.id, 'BR')
+    const result = await asyncMap(relatedArtists, async (artist) => {
+      const topTracks = await spotifyApi.getArtistTopTracks(artist.id, 'BR')
       const topTrackSelected = Rnd.getRndNumber({
         min: 0,
-        max: topTrack.body.tracks.length
+        max: topTracks.body.tracks.length
       })
 
-      topTrackCollection.push(topTrack.body.tracks[topTrackSelected])
-    }
+      const topTrack = topTracks.body.tracks[topTrackSelected]
 
-    const result = relatedArtists.map((artist, index) => ({
-      id: artist.id,
-      images: artist.images,
-      type: artist.type,
-      name: artist.name,
-      popularity: artist.popularity,
-      track: {
-        id: topTrackCollection[index].id,
-        uri: topTrackCollection[index].uri,
-        name: topTrackCollection[index].name,
-        previewUrl: topTrackCollection[index].preview_url,
-        images: topTrackCollection[index].album.images,
-        hrefSpotify: topTrackCollection[index].external_urls.spotify
-      }
-    }))
+      return parseToRecommendation(artist, topTrack)
+    })
 
     res.status(200).json(result)
   } catch (error: any) {

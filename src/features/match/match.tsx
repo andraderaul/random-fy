@@ -90,7 +90,7 @@ export const Match = ({
             <ImageBox
               key={artist.id}
               imgSrc={artist.track.images[1].url}
-              audioSrc={artist.track.previewUrl}
+              audioSrc={artist.track.previewUrl ?? ''}
               track={artist.track.name}
               artist={artist.name}
               onLike={() => handleLike(artist)}

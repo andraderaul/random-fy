@@ -4,7 +4,7 @@ export type Track = {
   id: string
   uri: string
   name: string
-  previewUrl: string
+  previewUrl: string | null
   images: Array<Image>
   hrefSpotify: string
 }

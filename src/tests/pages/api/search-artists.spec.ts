@@ -102,6 +102,7 @@ jest.mock('services', () => {
 
 jest.mock('utils', () => {
   return {
+    ...jest.requireActual('utils'),
     Rnd: {
       getRndNumber: jest.fn().mockReturnValue(1)
     }

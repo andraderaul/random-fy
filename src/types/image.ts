@@ -1,5 +1,5 @@
 export type Image = {
-  height: number
+  height?: number
   url: string
-  width: number
+  width?: number
 }
