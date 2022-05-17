@@ -5,7 +5,7 @@ import axios, {
   AxiosResponse
 } from 'axios'
 import { NextPageContext } from 'next'
-import { Cookies } from 'utils'
+import { Cookies, getLocale } from 'utils'
 
 const baseURL = process.env.NEXT_PUBLIC_API || '/api'
 
@@ -51,6 +51,9 @@ function responseErrorInterceptor(error: AxiosError) {
 }
 
 const httpInstance = axios.create({
+  headers: {
+    'x-origin-id': getLocale()
+  },
   baseURL
 })
 

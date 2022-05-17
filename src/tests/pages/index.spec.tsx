@@ -4,6 +4,7 @@ import { GetServerSidePropsContext } from 'next'
 import Index, { getServerSideProps } from 'pages/index'
 
 jest.mock('utils', () => ({
+  ...jest.requireActual('utils'),
   Cookies: {
     getAll: jest.fn().mockReturnValue({
       authorization: 'token'

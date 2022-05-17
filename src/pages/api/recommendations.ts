@@ -9,6 +9,7 @@ export default async function handler(
   res: NextApiResponse
 ): Promise<void> {
   try {
+    const originId = req.headers['x-origin-id'] as string
     const token = req.headers.authorization as string
     spotifyApi.setAccessToken(token)
 
@@ -37,7 +38,7 @@ export default async function handler(
     const artistCollection = response.body.artists.slice(sliceStart, sliceEnd)
 
     const result = await asyncMap(artistCollection, async (artist) => {
-      const topTracks = await spotifyApi.getArtistTopTracks(artist.id, 'BR')
+      const topTracks = await spotifyApi.getArtistTopTracks(artist.id, originId)
 
       const topTrackSelected = Rnd.getRndNumber({
         min: 0,

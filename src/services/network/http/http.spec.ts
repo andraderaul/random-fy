@@ -4,6 +4,7 @@ import { Cookies } from 'utils'
 import { AxiosError } from 'axios'
 
 jest.mock('utils', () => ({
+  ...jest.requireActual('utils'),
   Cookies: {
     getAll: jest.fn().mockReturnValue({
       authorization: 'token'

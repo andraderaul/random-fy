@@ -1,6 +1,6 @@
 import { asyncMap } from './async-map'
 
-describe('Testing parseToRecommendation', () => {
+describe('Testing asyncMap', () => {
   const array = [1, 2, 3, 4]
 
   const fn = async (x: number) => Promise.resolve(x * 2)

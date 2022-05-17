@@ -8,6 +8,7 @@ export default async function handler(
   res: NextApiResponse
 ) {
   try {
+    const originId = req.headers['x-origin-id'] as string
     const token = req.headers.authorization as string
     spotifyApi.setAccessToken(token)
 
@@ -26,7 +27,7 @@ export default async function handler(
 
     const relatedArtists = relatedArtistsResponse.body.artists
     const result = await asyncMap(relatedArtists, async (artist) => {
-      const topTracks = await spotifyApi.getArtistTopTracks(artist.id, 'BR')
+      const topTracks = await spotifyApi.getArtistTopTracks(artist.id, originId)
       const topTrackSelected = Rnd.getRndNumber({
         min: 0,
         max: topTracks.body.tracks.length
