@@ -42,7 +42,6 @@ describe('http testing', () => {
   })
 
   it('should be able to call custom response error interceptor', async () => {
-    console.error = jest.fn()
     forceRequestError({
       method: 'get',
       status: 401
@@ -54,7 +53,6 @@ describe('http testing', () => {
         url: '/recommendations'
       })
     } catch (error) {
-      expect(console.error).toHaveBeenCalledWith('authorization error')
       expect((error as AxiosError)?.request?.statusText).toBe('Unauthorized')
     }
   })

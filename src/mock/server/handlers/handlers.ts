@@ -2,7 +2,8 @@ import {
   mockArtist,
   mockPlaylist,
   mockRecommendations,
-  mockRelated
+  mockRelated,
+  mockRefreshToken
 } from 'mock'
 import { rest } from 'msw'
 import { Artist, Recommendation } from 'types'
@@ -37,4 +38,10 @@ export const relatedHandlers = [
       return res(ctx.status(200), ctx.json(mockRelated))
     }
   )
+]
+
+export const refreshTokenHandlers = [
+  rest.post(composeEndpoint('/refresh-token'), (_req, res, ctx) => {
+    return res(ctx.status(200), ctx.json(mockRefreshToken))
+  })
 ]

@@ -5,14 +5,16 @@ import {
   playlistHandlers,
   randomArtistHandlers,
   recommendationsHandlers,
-  relatedHandlers
+  relatedHandlers,
+  refreshTokenHandlers
 } from './handlers'
 
 const handlers = [
   ...playlistHandlers,
   ...randomArtistHandlers,
   ...recommendationsHandlers,
-  ...relatedHandlers
+  ...relatedHandlers,
+  ...refreshTokenHandlers
 ]
 
 const server = setupServer(...handlers)

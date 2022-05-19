@@ -6,6 +6,7 @@ import axios, {
 } from 'axios'
 import { NextPageContext } from 'next'
 import { Cookies, getLocale } from 'utils'
+import { refreshTokenService } from './refresh-token-service'
 
 const baseURL = process.env.NEXT_PUBLIC_API || '/api'
 
@@ -16,6 +17,12 @@ type SetCustomHeader = {
   value: CustomHeader
 }
 
+type CustomAxiosError = AxiosError & {
+  config: AxiosRequestConfig & {
+    isRetry: boolean
+  }
+}
+
 type CustomAxiosRequestConfig = AxiosRequestConfig & {
   ctx?: Partial<NextPageContext>
 }
@@ -24,7 +31,6 @@ const requestInterceptor = async (config: CustomAxiosRequestConfig) => {
   try {
     const cookies = Cookies.getAll()
 
-    // TODO: Refresh token
     if (cookies['authorization']) {
       config.headers = {
         ...config.headers,
@@ -41,10 +47,36 @@ const requestInterceptor = async (config: CustomAxiosRequestConfig) => {
 function responseSuccessInterceptor(response: AxiosResponse) {
   return response
 }
-function responseErrorInterceptor(error: AxiosError) {
-  if (error.response?.status === 401) {
-    console.error('authorization error')
-    console.error(error.response.data)
+
+async function responseErrorInterceptor(error: CustomAxiosError) {
+  try {
+    const originalRequest = error.config
+    const cookies = Cookies.getAll()
+    const userIsUnauthenticated = error.response?.status === 401
+    const refreshToken = cookies['refreshToken'] ?? null
+    const accessToken = cookies['authorization'] ?? null
+    const shouldRefreshToken =
+      refreshToken &&
+      accessToken &&
+      userIsUnauthenticated &&
+      !originalRequest.isRetry
+
+    if (shouldRefreshToken) {
+      originalRequest.isRetry = true
+      const refreshResponse = await refreshTokenService(
+        accessToken,
+        refreshToken
+      )
+
+      if (refreshResponse.status === 200 && refreshResponse.data.accessToken) {
+        setCustomHeader({
+          key: 'authorization',
+          value: refreshResponse.data.accessToken
+        })
+      }
+    }
+  } catch (err) {
+    return Promise.reject(error)
   }
 
   return Promise.reject(error)

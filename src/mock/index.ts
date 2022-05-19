@@ -7,7 +7,8 @@ export {
   recommendationsBuilder,
   trackBuilder,
   artistsBuilder,
-  tracksBuilder
+  tracksBuilder,
+  refreshTokenBuilder
 } from './builder'
 export {
   mockArtist,
@@ -15,7 +16,8 @@ export {
   mockRecommendations,
   mockArtists,
   mockTracks,
-  mockRelated
+  mockRelated,
+  mockRefreshToken
 } from './fixtures'
 export { rest, server, forceRequestError } from './server'
 export { wrapperReactQuery, renderWithClient } from './wrappers'

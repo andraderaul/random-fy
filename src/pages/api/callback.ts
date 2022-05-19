@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 
 import { spotifyApi } from 'services'
 import { Cookies } from 'utils'
+import { MAX_AGE_COOKIES } from '../../constants/values'
 
 export default async function handler(
   req: NextApiRequest,
@@ -18,19 +19,28 @@ export default async function handler(
   try {
     const data = await spotifyApi.authorizationCodeGrant(code as string)
 
-    const access_token = data.body['access_token']
-    const refresh_token = data.body['refresh_token']
-    // const expires_in = data.body['expires_in']
+    const accessToken = data.body['access_token']
+    const refreshToken = data.body['refresh_token']
 
-    spotifyApi.setAccessToken(access_token)
-    spotifyApi.setRefreshToken(refresh_token)
+    spotifyApi.setAccessToken(accessToken)
+    spotifyApi.setRefreshToken(refreshToken)
 
     Cookies.set({
       name: 'authorization',
-      value: access_token,
+      value: accessToken,
       options: {
         res: res,
-        maxAge: 30 * 24 * 60 * 60,
+        maxAge: MAX_AGE_COOKIES,
+        path: '/'
+      }
+    })
+
+    Cookies.set({
+      name: 'refreshToken',
+      value: refreshToken,
+      options: {
+        res: res,
+        maxAge: MAX_AGE_COOKIES,
         path: '/'
       }
     })

@@ -16,6 +16,7 @@ This project has some amazing features, and can be described as follow:
 2. The user likes or dislikes the recommendation, just like on Tinder.
 
 After that Randomfy makes available:
+
 - A playlist with the liked artists that the user can listen and share with their friends;
 - An image with the image of the songs available for download;
 - An festival image with the artists available for download.
@@ -49,7 +50,6 @@ Important: you must have a [spotify developer](https://developer.spotify.com/) a
 
 ## Todo
 
-- [ ] refresh token
 - [ ] i18n
 
 ## Demo

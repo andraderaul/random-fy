@@ -4,5 +4,6 @@ export {
   mockRecommendations,
   mockArtists,
   mockTracks,
-  mockRelated
+  mockRelated,
+  mockRefreshToken
 } from './fixtures'

@@ -7,5 +7,6 @@ export {
   recommendationsBuilder,
   trackBuilder,
   artistsBuilder,
-  tracksBuilder
+  tracksBuilder,
+  refreshTokenBuilder
 } from './builder'
