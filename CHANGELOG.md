@@ -1,3 +1,10 @@
+# [1.20.0](https://github.com/andraderaul/random-fy/compare/v1.19.0...v1.20.0) (2022-05-19)
+
+
+### Features
+
+* add refresh token ([24cb98f](https://github.com/andraderaul/random-fy/commit/24cb98fd7531ed9155bb00c02e322f6e5b40fba5))
+
 # [1.19.0](https://github.com/andraderaul/random-fy/compare/v1.18.0...v1.19.0) (2022-05-17)
 
 
