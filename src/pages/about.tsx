@@ -1,46 +1,31 @@
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { Content, Header, PrimaryText, SubTitle } from 'components'
 
 const About = () => {
+  const { t } = useTranslation('about')
+
   return (
     <Content>
       <Header />
       <div className="p-4 mt-8 mb-0 mx-auto sm:w-4/5 w-full">
-        <SubTitle>About</SubTitle>
+        <SubTitle>{t('title')}</SubTitle>
         <section className="mt-8">
-          <PrimaryText>
-            Randomfy takes your most listened Spotify artists, selects one of
-            them and shows you similar artists, so you can meet new artists
-            based on the previous selected one.
-          </PrimaryText>
+          <PrimaryText>{t('subtitle')}</PrimaryText>
           <div className="mt-6">
-            <PrimaryText>
-              Disclaimer: Randomfy is not affiliated with Spotify. The site was
-              build with Nextjs, React and the Spotify API.
-            </PrimaryText>
+            <PrimaryText>{t('disclaimer')}</PrimaryText>
           </div>
           <div className="mt-6">
-            <PrimaryText>
-              Why are you reading this? You must be bored. Go listen to new
-              artists.
-            </PrimaryText>
+            <PrimaryText>{t('ready')}</PrimaryText>
           </div>
         </section>
         <section className="mt-12">
-          <SubTitle>How it works</SubTitle>
+          <SubTitle>{t('howItWorks.title')}</SubTitle>
           <div className="mt-8">
-            <PrimaryText>
-              This project shows artists and songs based on your Spotify
-              recommendation. When the user signs in the application, a
-              recommendation is shown.
-            </PrimaryText>
+            <PrimaryText>{t('howItWorks.p1')}</PrimaryText>
           </div>
           <div className="mt-8">
-            <PrimaryText>
-              The user can like or dislike the recommendation, just like on
-              Tinder. After that, you can make a playlist with the liked artists
-              and share it with your friends. Also, you can create an image with
-              these artists.
-            </PrimaryText>
+            <PrimaryText>{t('howItWorks.p2')}</PrimaryText>
           </div>
         </section>
 
@@ -90,5 +75,11 @@ const About = () => {
     </Content>
   )
 }
+
+export const getStaticProps = async ({ locale }: { locale: string }) => ({
+  props: {
+    ...(await serverSideTranslations(locale, ['about', 'common']))
+  }
+})
 
 export default About

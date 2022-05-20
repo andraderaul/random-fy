@@ -31,7 +31,7 @@ export default async function handler(
       options: {
         res: res,
         maxAge: MAX_AGE_COOKIES,
-        path: '/'
+        path: '/pt'
       }
     })
 
@@ -41,7 +41,7 @@ export default async function handler(
       options: {
         res: res,
         maxAge: MAX_AGE_COOKIES,
-        path: '/'
+        path: '/pt'
       }
     })
 

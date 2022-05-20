@@ -12,13 +12,18 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
       ctx: context
     }
   })
+  Cookies.destroy({
+    name: 'refreshToken',
+    options: {
+      ctx: context
+    }
+  })
 
   context.res
     .writeHead(302, {
       Location: '/'
     })
     .end()
-
   return {
     props: {}
   }

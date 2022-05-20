@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { useTranslation } from 'next-i18next'
 import { Title } from 'components'
 import { Cookies as CookiesUtils } from 'utils'
 import { useMemo } from 'react'
@@ -24,6 +25,8 @@ export type HeaderProps = {
 }
 
 export const Header = ({ cookies = CookiesUtils }: HeaderProps) => {
+  const { t } = useTranslation('common')
+
   const allCookies = cookies.getAll()
   const isAuthenticated = useMemo(
     () => Boolean(allCookies['authorization']),
@@ -41,11 +44,11 @@ export const Header = ({ cookies = CookiesUtils }: HeaderProps) => {
       </div>
 
       <header className="mt-4 sm:mt-0 flex sm:flex-col flex-row justify-between">
-        <NavLink label="About" href="/about" />
+        <NavLink label={t('about')} href="/about" />
         {isAuthenticated && (
           <>
-            <NavLink label="Search" href="/search" />
-            <NavLink label="Log out" href="/logout" />
+            <NavLink label={t('search')} href="/search" />
+            <NavLink label={t('logout')} href="/logout" />
           </>
         )}
       </header>
