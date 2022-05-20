@@ -1,24 +1,24 @@
+import { useTranslation } from 'next-i18next'
 import Image from 'next/image'
 import { Content, SubTitle, PrimaryText, Header } from 'components'
 import Link from 'next/link'
 
 export const Login = () => {
+  const { t } = useTranslation('login')
+
   return (
     <Content>
       <Header />
       <div className="p-4 mt-2 sm:mt-10 mb-0 mx-auto sm:w-4/5 w-full">
-        <SubTitle>Yeah.</SubTitle>
-        <SubTitle>Hello music lover!</SubTitle>
+        <SubTitle>{t('title')}</SubTitle>
+        <SubTitle>{t('subtitle')}</SubTitle>
         <div className="mt-8">
-          <PrimaryText>
-            Are you ready to meet new Spotify artists and create a playlist with
-            them?
-          </PrimaryText>
+          <PrimaryText>{t('description')}</PrimaryText>
         </div>
       </div>
       <div className="p-4 mt-2 sm:mt-10">
         <div className="flex justify-center">
-          <Link href="/api/login">
+          <Link href="/sign-in">
             <a
               className="flex justify-evenly items-center w-56 p-3 rounded-full font-semibold 
               text-center text-gray-100 dark:text-gray-800 bg-gray-900 dark:bg-gray-200"
@@ -30,7 +30,7 @@ export const Login = () => {
                 width="30"
                 height="30"
               />
-              Login with spotify
+              {t('button')}
             </a>
           </Link>
         </div>

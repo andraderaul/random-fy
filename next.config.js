@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 /** @type {import('next').NextConfig} */
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const withPWA = require('next-pwa')
+const { i18n } = require('./next-i18next.config')
 
 const isProd = process.env.NODE_ENV === 'production'
 
@@ -13,7 +14,8 @@ const nextConfig = withPWA({
   reactStrictMode: true,
   images: {
     domains: ['i.scdn.co']
-  }
+  },
+  i18n
 })
 
 module.exports = nextConfig
