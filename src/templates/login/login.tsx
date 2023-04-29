@@ -18,20 +18,19 @@ export const Login = () => {
       </div>
       <div className="p-4 mt-2 sm:mt-10">
         <div className="flex justify-center">
-          <Link href="/api/login">
-            <a
-              className="flex justify-evenly items-center w-56 p-3 rounded-full font-semibold 
+          <Link
+            href="/api/login"
+            className="flex justify-evenly items-center w-56 p-3 rounded-full font-semibold 
               text-center text-gray-100 dark:text-gray-800 bg-gray-900 dark:bg-gray-200"
-              aria-label="login button"
-            >
-              <Image
-                alt="spotify icon"
-                src="/img/Spotify_Icon_RGB_Green.png"
-                width="30"
-                height="30"
-              />
-              Login with spotify
-            </a>
+            aria-label="login button"
+          >
+            <Image
+              alt="spotify icon"
+              src="/img/Spotify_Icon_RGB_Green.png"
+              width="30"
+              height="30"
+            />
+            Login with spotify
           </Link>
         </div>
       </div>

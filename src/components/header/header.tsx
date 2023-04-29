@@ -13,9 +13,7 @@ const NavLink = ({ href, label }: NavLinkProps) => (
 dark:text-gray-300 text-gray-700 leading-10 tracking-wide
 hover:text-blue-500 hover:dark:text-orange-400"
   >
-    <Link href={href}>
-      <a>{label}</a>
-    </Link>
+    <Link href={href}>{label}</Link>
   </nav>
 )
 
@@ -34,9 +32,7 @@ export const Header = ({ cookies = CookiesUtils }: HeaderProps) => {
     <div className="mt-2 p-4 flex justify-between items-center sm:flex-row flex-col">
       <div className="flex items-center flex-col sm:flex-row">
         <Link href="/">
-          <a>
-            <Title>Randomfy</Title>
-          </a>
+          <Title>Randomfy</Title>
         </Link>
       </div>
 

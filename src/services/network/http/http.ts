@@ -2,6 +2,7 @@ import axios, {
   AxiosError,
   AxiosPromise,
   AxiosRequestConfig,
+  InternalAxiosRequestConfig,
   AxiosResponse
 } from 'axios'
 import { NextPageContext } from 'next'
@@ -18,7 +19,7 @@ type SetCustomHeader = {
 }
 
 type CustomAxiosError = AxiosError & {
-  config: AxiosRequestConfig & {
+  config: InternalAxiosRequestConfig & {
     isRetry: boolean
   }
 }
