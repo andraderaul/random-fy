@@ -1,4 +1,7 @@
+import { useTranslation } from 'next-i18next'
+
 export const Footer = () => {
+  const { t } = useTranslation('footer')
   return (
     <footer
       className="p-4 flex 
@@ -6,9 +9,9 @@ export const Footer = () => {
       text-gray-700"
     >
       <p>
-        {`Created with `}
+        {t('initial')}
         <span className="text-rose-600">♥️</span>
-        {` by `}
+        {t('prep')}
         <a
           className="border-b-blue-500 dark:border-b-orange-400 
           text-blue-500 dark:text-orange-400 hover:border-b-[1px]"
@@ -16,7 +19,7 @@ export const Footer = () => {
           target="_blank"
           rel="noreferrer"
         >
-          Raul Andrade
+          {t('name')}
         </a>
       </p>
     </footer>
