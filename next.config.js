@@ -1,15 +1,15 @@
 /** @type {import('next').NextConfig} */
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const withPWA = require('next-pwa')
-
 const isProd = process.env.NODE_ENV === 'production'
 
+const runtimeCaching = require('next-pwa/cache')
+const withPWA = require('next-pwa')({
+  dest: "public",
+  disable: !isProd,
+  runtimeCaching
+})
+
 const nextConfig = withPWA({
-  pwa: {
-    dest: 'public',
-    disable: !isProd
-  },
   reactStrictMode: true,
   images: {
     domains: ['i.scdn.co']

@@ -1,4 +1,4 @@
-import { renderHook } from '@testing-library/react-hooks'
+import { renderHook, waitFor } from '@testing-library/react'
 import html2canvas from 'html2canvas'
 import {
   useComponentToImage,
@@ -15,7 +15,7 @@ describe('useComponentToImage', () => {
       fileName: 'fileName'
     }
 
-    const { result, waitFor } = renderHook(() => useComponentToImage(props))
+    const { result } = renderHook(() => useComponentToImage(props))
     await waitFor(() => result.current.downloadImage())
 
     expect(result.current.downloadImage()).toBeUndefined()
@@ -30,7 +30,7 @@ describe('useComponentToImage', () => {
       fileName: 'fileName'
     }
 
-    const { result, waitFor } = renderHook(() => useComponentToImage(props))
+    const { result } = renderHook(() => useComponentToImage(props))
     await waitFor(() => result.current.downloadImage())
 
     expect(html2canvas).toHaveBeenCalledWith(domElement, {

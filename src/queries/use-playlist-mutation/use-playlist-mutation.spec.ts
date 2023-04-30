@@ -1,4 +1,4 @@
-import { renderHook } from '@testing-library/react-hooks'
+import { renderHook, waitFor } from '@testing-library/react'
 import {
   wrapperReactQuery,
   forceRequestError,
@@ -10,7 +10,7 @@ import { usePlaylistMutation } from './use-playlist-mutation'
 
 describe('usePlaylistMutation', () => {
   it('when playlist mutate is loading return undefined data', async () => {
-    const { result, waitFor } = renderHook(() => usePlaylistMutation(), {
+    const { result } = renderHook(() => usePlaylistMutation(), {
       wrapper: wrapperReactQuery
     })
     result.current.mutate(mockRecommendations)
@@ -21,7 +21,7 @@ describe('usePlaylistMutation', () => {
   })
 
   it('when playlist mutate is success return a data', async () => {
-    const { result, waitFor } = renderHook(() => usePlaylistMutation(), {
+    const { result } = renderHook(() => usePlaylistMutation(), {
       wrapper: wrapperReactQuery
     })
     result.current.mutate(mockRecommendations)
@@ -31,7 +31,7 @@ describe('usePlaylistMutation', () => {
 
   it('when playlist mutate is error return a data error', async () => {
     forceRequestError({ method: 'post' })
-    const { result, waitFor } = renderHook(() => usePlaylistMutation(), {
+    const { result } = renderHook(() => usePlaylistMutation(), {
       wrapper: wrapperReactQuery
     })
 
