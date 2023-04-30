@@ -15,7 +15,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14.x]
+        node-version: [16.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
@@ -35,6 +35,6 @@ jobs:
 
       - name: Lint
         run: yarn lint --fix
-      
+
       - name: Coverage
         run: yarn test:coverage

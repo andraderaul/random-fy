@@ -19,6 +19,9 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage"
   },
+  "engines": {
+    "node": ">=16.8.0"
+  },
   "dependencies": {
     "@babel/preset-typescript": "^7.16.7",
     "@heroicons/react": "^1.0.5",
