@@ -51,6 +51,7 @@ Important: you must have a [spotify developer](https://developer.spotify.com/) a
 ## Todo
 
 - [ ] i18n
+- [ ] Performance
 
 ## Demo
 
