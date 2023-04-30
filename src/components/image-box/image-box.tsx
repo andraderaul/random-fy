@@ -50,6 +50,7 @@ export const ImageBox = ({
           src={imgSrc}
           width="300"
           height="300"
+          priority
         />
         <div className="flex flex-col items-start p-2">
           <strong className="w-64 truncate dark:text-neutral-200">

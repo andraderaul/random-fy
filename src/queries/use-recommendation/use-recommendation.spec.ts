@@ -1,11 +1,11 @@
-import { renderHook } from '@testing-library/react-hooks'
+import { renderHook, waitFor } from '@testing-library/react'
 import { wrapperReactQuery, forceRequestError, mockRecommendations } from 'mock'
 
 import { useRecommendation } from './use-recommendation'
 
 describe('useRecommendation', () => {
   it('when use recommendation query is loading return undefined data', async () => {
-    const { result, waitFor } = renderHook(
+    const { result } = renderHook(
       () => useRecommendation('artistId', 'trackId'),
       {
         wrapper: wrapperReactQuery
@@ -19,7 +19,7 @@ describe('useRecommendation', () => {
   })
 
   it('when use recommendation query is success return a data', async () => {
-    const { result, waitFor } = renderHook(
+    const { result } = renderHook(
       () => useRecommendation('artistId', 'trackId'),
       {
         wrapper: wrapperReactQuery
@@ -33,7 +33,7 @@ describe('useRecommendation', () => {
   it('when use recommendation query is error return a data error', async () => {
     forceRequestError({ method: 'get' })
 
-    const { result, waitFor } = renderHook(
+    const { result } = renderHook(
       () => useRecommendation('artistId', 'trackId'),
       {
         wrapper: wrapperReactQuery

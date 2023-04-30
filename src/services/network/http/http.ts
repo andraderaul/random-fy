@@ -2,6 +2,7 @@ import axios, {
   AxiosError,
   AxiosPromise,
   AxiosRequestConfig,
+  InternalAxiosRequestConfig,
   AxiosResponse
 } from 'axios'
 import { NextPageContext } from 'next'
@@ -17,25 +18,24 @@ type SetCustomHeader = {
   value: CustomHeader
 }
 
+type CustomConfig = InternalAxiosRequestConfig & {
+  isRetry: boolean
+}
+
 type CustomAxiosError = AxiosError & {
-  config: AxiosRequestConfig & {
-    isRetry: boolean
-  }
+  config: CustomConfig
 }
 
 type CustomAxiosRequestConfig = AxiosRequestConfig & {
   ctx?: Partial<NextPageContext>
 }
 
-const requestInterceptor = async (config: CustomAxiosRequestConfig) => {
+const requestInterceptor = async (config: InternalAxiosRequestConfig) => {
   try {
     const cookies = Cookies.getAll()
 
     if (cookies['authorization']) {
-      config.headers = {
-        ...config.headers,
-        authorization: cookies['authorization']
-      }
+      config.headers.setAuthorization(cookies['authorization'])
     }
 
     return config

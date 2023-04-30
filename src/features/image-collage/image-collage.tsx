@@ -27,6 +27,7 @@ export const ImageCollage = ({ artists }: PictureProps) => {
             src={artist.track.images[0].url}
             width="300"
             height="300"
+            priority
           />
         ))}
       </div>
