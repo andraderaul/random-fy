@@ -31,12 +31,11 @@ export async function getServerSideProps(
     }
   })
 
-  // Cookies.destroy({
-  //   name: 'refreshToken',
-  //   options: {
-  //     ctx: context
-  //   }
-  // })
+  // context.res
+  //   .writeHead(302, {
+  //     Location: '/'
+  //   })
+  //   .end()
 
   return {
     props: {
