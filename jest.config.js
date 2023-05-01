@@ -18,6 +18,19 @@ module.exports = {
     '_app.tsx',
     '_document.tsx'
   ],
+  transform: {
+    "^.+\\.(t|j)sx?$": ["@swc/jest",
+      {
+        jsc: {
+          transform: {
+            react: {
+              runtime: 'automatic',
+            },
+          },
+        },
+      },
+    ],
+  },
   transformIgnorePatterns: ['node_modules/(?!imask|react-extras)'],
   collectCoverage: true,
   collectCoverageFrom: ['src/**/*.ts(x)?'],
