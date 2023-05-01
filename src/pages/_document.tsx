@@ -1,5 +1,4 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
-import { Footer } from 'components'
 export default class MyDocument extends Document {
   render() {
     return (
