@@ -15,7 +15,7 @@ describe('useRelatedArtistsMutation', () => {
     })
     result.current.mutate(mockArtist.name)
     await waitFor(() => {
-      result.current.isLoading
+      // expect(result.current.isLoading).toBe(true)
       expect(result.current.data).toBe(undefined)
     })
   })
@@ -25,8 +25,10 @@ describe('useRelatedArtistsMutation', () => {
       wrapper: wrapperReactQuery
     })
     result.current.mutate(mockArtist.name)
-    await waitFor(() => result.current.isSuccess)
-    expect(result.current.data?.data).toEqual(mockRelated)
+    await waitFor(() => {
+      expect(result.current.isSuccess).toBe(true)
+      expect(result.current.data?.data).toEqual(mockRelated)
+    })
   })
 
   it('when related artists mutate is error return a data error', async () => {
@@ -36,9 +38,11 @@ describe('useRelatedArtistsMutation', () => {
     })
 
     result.current.mutate(mockArtist.name)
-    await waitFor(() => result.current.isError)
-    expect(result.current.error?.response?.data).toEqual({
-      error: 'Invalid data'
+    await waitFor(() => {
+      expect(result.current.isError).toBe(true)
+      expect(result.current.error?.response?.data).toEqual({
+        error: 'Invalid data'
+      })
     })
   })
 })

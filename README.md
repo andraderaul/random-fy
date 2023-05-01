@@ -52,6 +52,7 @@ Important: you must have a [spotify developer](https://developer.spotify.com/) a
 
 - [ ] Performance
 - [ ] Cookies
+- [ ] fix tests
 
 ## Demo
 

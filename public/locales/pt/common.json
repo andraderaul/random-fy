@@ -1,5 +1,13 @@
 {
     "about": "Sobre",
     "search": "Pesquisar",
-    "logout": "Sair"
+    "logout": "Sair",
+    "error": {
+        "title": "Algo deu errado! :(",
+        "subtitle": "Tentar novamente"
+    },
+    "toast": {
+        "success": "A Playlist foi criada com sucesso!",
+        "error": "Algo de errado aconteceu com a Playlist!"
+    }
 }

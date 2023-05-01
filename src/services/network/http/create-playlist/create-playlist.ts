@@ -1,8 +1,8 @@
 import { Recommendation, Playlist } from 'types'
 import { http } from '../http'
 
-export const createPlaylist = async (data: Array<Recommendation>) => {
-  return await http<Playlist>({
+export const createPlaylist = (data: Array<Recommendation>) => {
+  return http<Playlist>({
     method: 'POST',
     url: '/playlist',
     data: data

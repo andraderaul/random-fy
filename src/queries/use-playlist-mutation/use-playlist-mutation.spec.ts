@@ -15,7 +15,6 @@ describe('usePlaylistMutation', () => {
     })
     result.current.mutate(mockRecommendations)
     await waitFor(() => {
-      result.current.isLoading
       expect(result.current.data).toBe(undefined)
     })
   })
@@ -25,8 +24,10 @@ describe('usePlaylistMutation', () => {
       wrapper: wrapperReactQuery
     })
     result.current.mutate(mockRecommendations)
-    await waitFor(() => result.current.isSuccess)
-    expect(result.current.data?.data).toEqual(mockPlaylist)
+    await waitFor(() => {
+      expect(result.current.isSuccess).toBe(true)
+      expect(result.current.data?.data).toEqual(mockPlaylist)
+    })
   })
 
   it('when playlist mutate is error return a data error', async () => {
@@ -36,9 +37,11 @@ describe('usePlaylistMutation', () => {
     })
 
     result.current.mutate(mockRecommendations)
-    await waitFor(() => result.current.isError)
-    expect(result.current.error?.response?.data).toEqual({
-      error: 'Invalid data'
+    await waitFor(() => {
+      expect(result.current.isError).toBe(true)
+      expect(result.current.error?.response?.data).toEqual({
+        error: 'Invalid data'
+      })
     })
   })
 })

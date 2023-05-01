@@ -13,17 +13,18 @@ describe('<Logout />', () => {
   it('should be render a Logout page', () => {
     render(<Logout />)
 
-    expect(screen.getByText(/logout\.\.\./i)).toBeInTheDocument()
+    expect(screen.getByText(/title/i)).toBeInTheDocument()
   })
 
-  it('should be able to detroy cookies and redirect to login', async () => {
+  it('should be able to destroy cookies and redirect to login', async () => {
     const context = {
+      locale: 'en',
       res: {
         writeHead: jest.fn().mockReturnValue({
           end: jest.fn()
         })
       }
-    } as unknown as GetServerSidePropsContext
+    } as unknown as GetServerSidePropsContext & { locale: string }
 
     const props = await getServerSideProps(context)
     expect(Cookies.destroy).toHaveBeenCalledWith({
@@ -36,6 +37,6 @@ describe('<Logout />', () => {
     expect(context.res.writeHead).toHaveBeenCalledWith(302, {
       Location: '/'
     })
-    expect(props).toEqual({ props: {} })
+    expect(props).toHaveProperty('props._nextI18Next')
   })
 })

@@ -37,7 +37,7 @@ describe('<Playlist />', () => {
     expect(container.firstChild).toBeNull()
   })
 
-  it('should be able to create a playlist', () => {
+  it('should be able to create a playlist', async () => {
     render(
       <Playlist
         artists={mockRecommendations}
@@ -49,9 +49,7 @@ describe('<Playlist />', () => {
       name: /create playlist button/i
     })
 
-    act(() => {
-      userEvent.click(createPlaylistButton)
-    })
+    await userEvent.click(createPlaylistButton)
 
     expect(mutateMock).toHaveBeenCalled()
   })

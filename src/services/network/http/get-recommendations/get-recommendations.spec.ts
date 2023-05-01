@@ -1,10 +1,10 @@
-import { getRecomendations } from './get-recomendations'
+import { getRecommendations } from './get-recommendations'
 
 import { mockArtist, mockRecommendations } from 'mock'
 
 describe('get recommendations', () => {
   it('should be able to get a recommendations', async () => {
-    const response = await getRecomendations(mockArtist.name)
+    const response = await getRecommendations(mockArtist.name)
 
     expect(response.request.method).toBe('GET')
     expect(response.config.url).toBe('/recommendations')

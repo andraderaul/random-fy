@@ -17,16 +17,16 @@ describe('<About />', () => {
       })
     ).toBeInTheDocument()
 
-    expect(
-      screen.getByRole('heading', {
-        name: /about/i
-      })
-    ).toBeInTheDocument()
+    expect(screen.getByText(/subtitle/i)).toBeInTheDocument()
+    expect(screen.getByText(/disclaimer/i)).toBeInTheDocument()
+    expect(screen.getByText(/ready/i)).toBeInTheDocument()
 
     expect(
       screen.getByRole('heading', {
-        name: /how it works/i
+        name: /howitworks\.title/i
       })
     ).toBeInTheDocument()
+    expect(screen.getByText(/howitworks\.p1/i)).toBeInTheDocument()
+    expect(screen.getByText(/howitworks\.p2/i)).toBeInTheDocument()
   })
 })

@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/react'
+import { render, screen, waitFor, act } from '@testing-library/react'
 import { forceRequestError, renderWithClient } from 'mock'
 import { GetServerSidePropsContext } from 'next'
 import Index, { getServerSideProps } from 'pages/index'
@@ -41,10 +41,12 @@ describe('<Index />', () => {
   })
 
   describe('when the user is logged should render a home template', () => {
-    it('when the recommendations are loading should be display the skeleton loader', () => {
+    it('when the recommendations are loading should be display the skeleton loader', async () => {
       renderWithClient(<Index artistId="123" auth="321" />)
 
-      expect(screen.getByLabelText('image loading')).toBeInTheDocument()
+      await act(async () => {
+        expect(screen.getByLabelText('image loading')).toBeInTheDocument()
+      })
     })
 
     it('when user is logged should be render a recommendation index page', async () => {
@@ -59,20 +61,21 @@ describe('<Index />', () => {
       forceRequestError({ method: 'get' })
       const rendered = renderWithClient(<Index artistId="123" auth="321" />)
 
-      await waitFor(() => rendered.getByText('Something wrong! :('))
+      await waitFor(() => rendered.getByText('error.title'))
 
-      expect(screen.getByText('Something wrong! :(')).toBeInTheDocument()
+      expect(screen.getByText('error.title')).toBeInTheDocument()
     })
   })
 
   describe('testing getServerSideProps', () => {
     const context = {
+      locale: 'en',
       res: {
         writeHead: jest.fn().mockReturnValue({
           end: jest.fn()
         })
       }
-    } as unknown as GetServerSidePropsContext
+    } as unknown as GetServerSidePropsContext & { locale: string }
 
     it('should be able to return valid artistId and auth props', async () => {
       const { props } = await getServerSideProps(context)

@@ -33,11 +33,10 @@ export const Playlist = ({
       >
         {playlistCreated?.id ? (
           <iframe
-            className="max-w-5xl my-0 mx-auto rounded-xl"
+            className="max-w-5xl my-0 mx-auto rounded-xl border-0"
             src={`https://open.spotify.com/embed/playlist/${playlistCreated.id}?utm_source=generator&theme=0`}
             width="100%"
             height="380"
-            frameBorder="0"
             allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
           ></iframe>
         ) : (

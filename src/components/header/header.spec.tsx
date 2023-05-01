@@ -35,7 +35,7 @@ describe('<Header />', () => {
 
     expect(
       screen.getByRole('link', {
-        name: /log out/i
+        name: /logout/i
       })
     ).toBeInTheDocument()
   })

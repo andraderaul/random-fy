@@ -1,4 +1,4 @@
-import { render, screen, act } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { mockRecommendations } from 'mock'
 import { useComponentToImage } from 'hook'
@@ -31,7 +31,7 @@ describe('<ImageCollage />', () => {
     expect(container.firstChild).toBeNull()
   })
 
-  it('should be able to download the generated Image', () => {
+  it('should be able to download the generated Image', async () => {
     render(<ImageCollage artists={mockRecommendations} />)
 
     expect(useComponentToImage).toHaveBeenCalledWith({
@@ -48,9 +48,7 @@ describe('<ImageCollage />', () => {
       name: /download button/i
     })
 
-    act(() => {
-      userEvent.click(downloadButton)
-    })
+    await userEvent.click(downloadButton)
 
     expect(downloadImage).toHaveBeenCalled()
   })

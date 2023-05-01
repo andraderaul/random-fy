@@ -1,8 +1,8 @@
 import { Artist } from '../../../../types'
 import { http } from '../http'
 
-export const getRandomArtist = async () => {
-  return await http<Artist>({
+export const getRandomArtist = () => {
+  return http<Artist>({
     method: 'GET',
     url: '/random-top-artist'
   })

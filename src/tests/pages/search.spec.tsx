@@ -14,20 +14,24 @@ describe('<Search />', () => {
     jest.clearAllMocks()
   })
 
-  it('should be able to render a search page', () => {
+  it('should be able to render a search page', async () => {
     renderWithClient(<Search auth="123" />)
 
-    expect(
-      screen.getByRole('textbox', {
-        name: /search/i
-      })
-    ).toBeInTheDocument()
+    await act(async () => {
+      expect(
+        screen.getByRole('textbox', {
+          name: /search/i
+        })
+      ).toBeInTheDocument()
+    })
 
-    expect(
-      screen.getByRole('button', {
-        name: /search/i
-      })
-    ).toBeInTheDocument()
+    await act(async () => {
+      expect(
+        screen.getByRole('button', {
+          name: /search/i
+        })
+      ).toBeInTheDocument()
+    })
   })
 
   it('should be able to search by artist', async () => {
@@ -41,20 +45,14 @@ describe('<Search />', () => {
       name: /search/i
     })
 
-    await act(async () => {
-      const text = 'bring me the horizon'
-      userEvent.type(inputSearch, text)
-    })
+    const text = 'bring me the horizon'
+    await userEvent.type(inputSearch, text)
 
-    await act(async () => {
-      userEvent.click(searchButton)
-    })
+    await userEvent.click(searchButton)
 
-    await waitFor(() =>
-      rendered.getByRole('button', {
-        name: /create playlist button/i
-      })
-    )
+    rendered.getByRole('button', {
+      name: /create playlist button/i
+    })
 
     expect(
       screen.getByRole('button', {

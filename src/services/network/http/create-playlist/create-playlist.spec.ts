@@ -9,7 +9,7 @@ describe('create playlist', () => {
     expect(response.request.method).toBe('POST')
     expect(response.config.url).toBe('/playlist')
     expect(response.status).toBe(201)
-    expect(response.request.data).toBe(JSON.stringify(mockRecommendations))
+    expect(response.config.data).toBe(JSON.stringify(mockRecommendations))
     expect(response.data).toEqual(mockPlaylist)
   })
 })

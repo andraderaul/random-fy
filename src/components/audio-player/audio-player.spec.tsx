@@ -1,4 +1,4 @@
-import { render, act } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import { AudioPlayer } from './audio-player'
@@ -6,14 +6,12 @@ import { AudioPlayer } from './audio-player'
 const Component = () => <audio>audio</audio>
 
 describe('<AudioPlayer />', () => {
-  const iconPath = 'div > div > svg > path'
-
   const playMock = jest.fn()
   const pauseMock = jest.fn()
   const volumeMock = jest.fn()
 
   const useAudioMock = jest.fn().mockReturnValue([
-    Component,
+    <Component key={0} />,
     { playing: false },
     {
       volume: volumeMock,
@@ -27,35 +25,29 @@ describe('<AudioPlayer />', () => {
   })
 
   it('should be render a AudioPlayer component', () => {
-    const { container } = render(
-      <AudioPlayer src="audio" useAudio={useAudioMock} />
-    )
+    render(<AudioPlayer src="audio" useAudio={useAudioMock} />)
 
     expect(useAudioMock).toHaveBeenCalled()
     expect(volumeMock).toHaveBeenCalled()
 
-    expect(container.querySelector(iconPath)).toBeInTheDocument()
+    expect(screen.getByTestId('play-icon')).toBeInTheDocument()
   })
 
-  it('should be able to click in the play button', () => {
-    const { container } = render(
-      <AudioPlayer src="audio" useAudio={useAudioMock} />
-    )
+  it('should be able to click in the play button', async () => {
+    render(<AudioPlayer src="audio" useAudio={useAudioMock} />)
 
     expect(useAudioMock).toHaveBeenCalled()
 
-    const playButton = container.querySelector(iconPath)
+    const playButton = screen.getByTestId('play-icon')
 
-    act(() => {
-      if (playButton) userEvent.click(playButton)
-    })
+    await userEvent.click(playButton)
 
     expect(playMock).toHaveBeenCalled()
   })
 
-  it('should be able to click in the pause button', () => {
+  it('should be able to click in the pause button', async () => {
     const useAudioMock = jest.fn().mockReturnValue([
-      jest.fn(),
+      <Component key={0} />,
       { playing: true },
       {
         volume: volumeMock,
@@ -64,17 +56,13 @@ describe('<AudioPlayer />', () => {
       }
     ])
 
-    const { container } = render(
-      <AudioPlayer src="audio" useAudio={useAudioMock} />
-    )
+    render(<AudioPlayer src="audio" useAudio={useAudioMock} />)
 
     expect(useAudioMock).toHaveBeenCalled()
 
-    const playButton = container.querySelector(iconPath)
+    const pauseButton = screen.getByTestId('pause-icon')
 
-    act(() => {
-      if (playButton) userEvent.click(playButton)
-    })
+    await userEvent.click(pauseButton)
 
     expect(pauseMock).toHaveBeenCalled()
   })

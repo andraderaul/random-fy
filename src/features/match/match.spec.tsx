@@ -50,7 +50,7 @@ describe('<Match />', () => {
     )
   })
 
-  it('should be render a error component ', () => {
+  it('should be render a error component ', async () => {
     const usePlaylistMutationMock = jest.fn().mockReturnValue({
       ...returnValue,
       isError: true
@@ -65,16 +65,14 @@ describe('<Match />', () => {
       />
     )
 
-    expect(screen.getByText(/something wrong! :\(/i)).toBeInTheDocument()
+    expect(screen.getByText(/error.title/i)).toBeInTheDocument()
 
     const tryAgainButton = screen.getByRole('button', {
-      name: /try again/i
+      name: /error.subtitle/i
     })
     expect(tryAgainButton).toBeInTheDocument()
 
-    act(() => {
-      if (tryAgainButton) userEvent.click(tryAgainButton)
-    })
+    await userEvent.click(tryAgainButton)
 
     expect(refetchMock).toHaveBeenCalled()
   })
@@ -158,7 +156,7 @@ describe('<Match />', () => {
     expect(refetchMock).toHaveBeenCalledTimes(1)
   })
 
-  it('should be able to dislike a recommendations', () => {
+  it('should be able to dislike a recommendations', async () => {
     const usePlaylistMutationMock = jest.fn().mockReturnValue({
       ...returnValue,
       data: { data: mockData }
@@ -176,15 +174,12 @@ describe('<Match />', () => {
     const dislikeButton = screen.getByLabelText('dislike')
     expect(dislikeButton).toBeInTheDocument()
 
-    act(() => {
-      if (dislikeButton.firstChild)
-        userEvent.click(dislikeButton.firstChild as Element)
-    })
+    await userEvent.click(dislikeButton)
 
     expect(refetchMock).toHaveBeenCalled()
   })
 
-  it('should be able to like a recommendation', () => {
+  it('should be able to like a recommendation', async () => {
     const usePlaylistMutationMock = jest.fn().mockReturnValue({
       ...returnValue,
       data: { data: mockData }
@@ -202,10 +197,7 @@ describe('<Match />', () => {
     const likeButton = screen.getByLabelText('like')
     expect(likeButton).toBeInTheDocument()
 
-    act(() => {
-      if (likeButton.firstChild)
-        userEvent.click(likeButton.firstChild as Element)
-    })
+    await userEvent.click(likeButton)
 
     expect(setLikedArtistsMock).toHaveBeenCalled()
   })

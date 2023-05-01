@@ -13,7 +13,7 @@ describe('useRecommendation', () => {
     )
 
     await waitFor(() => {
-      result.current.isLoading
+      expect(result.current.isLoading).toBe(true)
       expect(result.current.data).toBe(undefined)
     })
   })
@@ -26,23 +26,27 @@ describe('useRecommendation', () => {
       }
     )
 
-    await waitFor(() => result.current.isSuccess)
-    expect(result.current.data?.data).toEqual(mockRecommendations)
+    await waitFor(() => {
+      expect(result.current.isSuccess).toBe(true)
+      expect(result.current.data?.data).toEqual(mockRecommendations)
+    })
   })
 
   it('when use recommendation query is error return a data error', async () => {
     forceRequestError({ method: 'get' })
 
     const { result } = renderHook(
-      () => useRecommendation('artistId', 'trackId'),
+      () => useRecommendation('artistIdError', 'trackIdError'),
       {
         wrapper: wrapperReactQuery
       }
     )
 
-    await waitFor(() => result.current.isError)
-    expect(result.current.error?.response?.data).toEqual({
-      error: 'Invalid data'
+    await waitFor(() => {
+      expect(result.current.isError).toBe(true)
+      expect(result.current.error?.response?.data).toEqual({
+        error: 'Invalid data'
+      })
     })
   })
 })

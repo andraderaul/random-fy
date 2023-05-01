@@ -1,5 +1,13 @@
 {
     "about": "About",
     "search": "Search",
-    "logout": "Log out"
+    "logout": "Log out",
+    "error": {
+        "title": "Something wrong! :(",
+        "subtitle": "Try Again"
+    },
+    "toast": {
+        "success": "Playlist was created with success!",
+        "error": "Something wrong with the Playlist!"
+    }
 }

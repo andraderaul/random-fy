@@ -1,7 +1,7 @@
 export {
   spotifyApi,
   http,
-  getRecomendations,
+  getRecommendations,
   getRandomArtist,
   setCustomHeader,
   createPlaylist,

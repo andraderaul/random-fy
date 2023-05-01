@@ -8,7 +8,7 @@ describe('get refresh token service', () => {
 
     expect(response.request.method).toBe('POST')
     expect(response.config.url).toBe('/refresh-token')
-    expect(response.request.data).toBe(
+    expect(response.config.data).toBe(
       JSON.stringify({
         accessToken: 'accessToken',
         refreshToken: 'refreshToken'

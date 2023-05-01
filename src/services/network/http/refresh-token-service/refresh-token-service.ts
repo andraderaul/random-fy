@@ -1,11 +1,11 @@
 import { RefreshToken } from 'types'
 import { http } from '../http'
 
-export const refreshTokenService = async (
+export const refreshTokenService = (
   accessToken: string,
   refreshToken: string
 ) => {
-  return await http<RefreshToken>({
+  return http<RefreshToken>({
     method: 'POST',
     url: '/refresh-token',
     data: {

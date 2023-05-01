@@ -51,12 +51,14 @@ export const AudioPlayer = ({
       {audio}
       {state.playing ? (
         <PauseIcon
+          data-testid="pause-icon"
           aria-label="pause-icon"
           className={commonStyle}
           onClick={pause}
         />
       ) : (
         <PlayIcon
+          data-testid="play-icon"
           aria-label="play-icon"
           className={commonStyle}
           onClick={handlePlay}

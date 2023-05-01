@@ -1,4 +1,4 @@
-import { render, screen, act } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { ImageBox } from './image-box'
 
@@ -34,7 +34,7 @@ describe('<ImageBox />', () => {
     expect(screen.getByLabelText('like')).toBeInTheDocument()
   })
 
-  it('should be to click on like', () => {
+  it('should be to click on like', async () => {
     render(
       <ImageBox
         href="https://i.scdn.co/image/0a1865649e26dc7d377e4d16447a6e785f0b781d"
@@ -48,13 +48,11 @@ describe('<ImageBox />', () => {
     )
 
     const likeButton = screen.getByLabelText('like')
-    act(() => {
-      userEvent.click(likeButton)
-    })
+    await userEvent.click(likeButton)
     expect(onLikeMock).toHaveBeenCalled()
   })
 
-  it('should be to click on dislike', () => {
+  it('should be to click on dislike', async () => {
     render(
       <ImageBox
         href="https://i.scdn.co/image/0a1865649e26dc7d377e4d16447a6e785f0b781d"
@@ -68,9 +66,7 @@ describe('<ImageBox />', () => {
     )
 
     const dislikeButton = screen.getByLabelText('dislike')
-    act(() => {
-      userEvent.click(dislikeButton)
-    })
+    await userEvent.click(dislikeButton)
     expect(onDislikeMock).toHaveBeenCalled()
   })
 })

@@ -3,7 +3,7 @@ export {
   http,
   setCustomHeader,
   getRandomArtist,
-  getRecomendations,
+  getRecommendations,
   createPlaylist,
   getRelatedArtists
 } from './http'

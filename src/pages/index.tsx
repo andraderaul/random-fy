@@ -28,7 +28,6 @@ export async function getServerSideProps(
   try {
     const cookies = Cookies.getAll({ ctx: context })
     const auth = cookies['authorization'] ?? null
-    console.log({ auth })
 
     setCustomHeader({
       key: 'authorization',
