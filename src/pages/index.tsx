@@ -25,6 +25,7 @@ export async function getServerSideProps(
     'common',
     'footer'
   ])
+  console.log({ locales })
   try {
     const cookies = Cookies.getAll({ ctx: context })
     const auth = cookies['authorization'] ?? null
@@ -54,7 +55,7 @@ export async function getServerSideProps(
       })
     }
 
-    console.error(error)
+    console.error('Unauthorized')
 
     return {
       props: {
