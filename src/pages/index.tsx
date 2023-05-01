@@ -1,4 +1,5 @@
 import type { GetServerSidePropsContext, NextPage } from 'next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { getRandomArtist, setCustomHeader } from 'services'
 import { Cookies } from 'utils'
 import { HomeTemplate, Login } from 'templates'
@@ -16,10 +17,18 @@ const Home: NextPage<HomeProps> = ({ auth, artistId }) => {
   return <HomeTemplate artistId={artistId} />
 }
 
-export async function getServerSideProps(context: GetServerSidePropsContext) {
+export async function getServerSideProps(
+  context: GetServerSidePropsContext & { locale: string }
+) {
+  const locales = await serverSideTranslations(context.locale, [
+    'login',
+    'common',
+    'footer'
+  ])
   try {
     const cookies = Cookies.getAll({ ctx: context })
     const auth = cookies['authorization'] ?? null
+    console.log({ auth })
 
     setCustomHeader({
       key: 'authorization',
@@ -32,7 +41,8 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     return {
       props: {
         artistId,
-        auth
+        auth,
+        ...locales
       }
     }
   } catch (error: any) {
@@ -50,7 +60,8 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     return {
       props: {
         auth: null,
-        artistId: null
+        artistId: null,
+        ...locales
       }
     }
   }

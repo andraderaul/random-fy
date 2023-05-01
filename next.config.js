@@ -8,12 +8,15 @@ const withPWA = require('next-pwa')({
   disable: !isProd,
   runtimeCaching
 })
+const { i18n } = require('./next-i18next.config')
+
 
 const nextConfig = withPWA({
   reactStrictMode: true,
   images: {
     domains: ['i.scdn.co']
-  }
+  },
+  i18n
 })
 
 module.exports = nextConfig
