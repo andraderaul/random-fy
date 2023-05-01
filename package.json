@@ -20,7 +20,7 @@
     "test:coverage": "jest --coverage"
   },
   "engines": {
-    "node": ">=16.8.0"
+    "node": ">=18.x.x"
   },
   "dependencies": {
     "@babel/preset-typescript": "^7.16.7",
