@@ -25,7 +25,7 @@ export async function getServerSideProps(
     'common',
     'footer'
   ])
-  console.log({ locales })
+  console.log(JSON.stringify(locales, null, 2), context.locale)
   try {
     const cookies = Cookies.getAll({ ctx: context })
     const auth = cookies['authorization'] ?? null
@@ -47,12 +47,12 @@ export async function getServerSideProps(
     }
   } catch (error: any) {
     if (error?.response?.status === 401) {
-      Cookies.destroy({
-        name: 'authorization',
-        options: {
-          ctx: context
-        }
-      })
+      // Cookies.destroy({
+      //   name: 'authorization',
+      //   options: {
+      //     ctx: context
+      //   }
+      // })
     }
 
     console.error('Unauthorized')
