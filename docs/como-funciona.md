@@ -1,31 +1,31 @@
-# Como funciona
+# Como Funciona
 
-Atualmente as recomendações funcionam da seguinte maneira, é selecionado um artista entre os 50 artistas mais ouvidos do Spotify do usuário logado e esse artista é usado para encontrar artistas similares a ele, para então o randomfy gerar uma recomendação.
+Atualmente, as recomendações no `randomfy` funciona da seguinte maneira:
 
-As músicas são selecionadas a partir do top musicas mais ouvidas do artista do Spotify.
+1. Ele seleciona um artista entre os cinquenta artistas mais ouvidos pelo usuário no Spotify.
+2. Usando o artista selecionado, ele encontra novos artistas semelhantes para o usuário.
+3. As recomendações são geradas com base nesses resultados.
 
-Quando um usuário acessa o aplicativo pela primeira vez será solicitado as credenciais dele do Spotify. Após o usuário fornecer as credenciais a autenticação é feita.
+As músicas para as recomendações são selecionadas a partir das músicas mais ouvidas do artista escolhido no Spotify.
 
-Com o usuário autenticado o `randomfy` escolhe aleatoriamente um artista para ser o seed das recomendações, ou seja, o artista escolhido de forma aleatoria não será o artista recomendado, mas sim os artistas relacionados a ele.
+Quando um usuário acessa o aplicativo pela primeira vez, o `randomfy` solicita que ele forneça suas credenciais do Spotify. Assim que as credenciais são fornecidas, o processo de autenticação é concluído.
 
-Quando o usuário da like em um artista o `randomfy` solicita ao Spotify artistas relacionados ao artista que recebeu o like e escolhe um para exibir ao usuário logado.
+Após a autenticação, o `randomfy` seleciona aleatoriamente um artista para ser a "semente" das recomendações. Isso significa que o artista escolhido aleatoriamente não será o artista recomendado, mas sim os artistas relacionados a ele.
 
-Ao final de 20 recomendações é possivel criar uma playlist com os artistas gostados.
+Quando um usuário curte um artista, o `randomfy` faz uma solicitação ao Spotify para obter artistas relacionados e seleciona um para exibir como recomendação.
 
-# Arquitetura
+Após vinte recomendações, o usuário tem a opção de criar uma playlist com as músicas dos artistas curtidos.
 
-O `randomfy` foi feito usando serverless functions e hospedado na vercel.
+## Arquitetura
+
+O `randomfy` é construído usando funções serverless e está hospedado na Vercel.
 
 ![random-fy-arch](./arch/random-fy-arch.png)
 
-### Functions
+### Funções
 
-- login: que cria a url de autorização do Spotify;
-
-- callback: após a url de authorização ser criada e executada o Spotify envia os tokens de autenticação para a callback function;
-
-- recommendations: retorna uma recomendação de música e artista para o usuário autenticado;
-
-- random top artist: escolhe um artista entre os artistas mais ouvidos do usuário autenticado;
-
-- playlist: cria uma playlist com os artistas que o usuário autenticado gostou;
+- `login`: Essa função cria a URL autenticada para o login no Spotify.
+- `callback`: Após o processo de login, essa função recebe os tokens autenticados do Spotify.
+- `recommendations`: Essa função retorna uma música e uma recomendação de artista para o usuário autenticado.
+  random top artist: Essa função seleciona um artista mais ouvido da conta autenticada do usuário.
+- `playlist`: Essa função cria uma playlist com as músicas dos artistas curtidos pelo usuário autenticado.

@@ -4,22 +4,23 @@
 
 ## About
 
-Randomfy takes your most listened Spotify artists, selects one of them and shows you similar artists, so you can meet new artists based on the previous selected one.
+`randomfy` takes your most listened Spotify artists, selects one of them and shows you similar artists, so you can meet new artists based on the previous selected one.
 
-Disclaimer: Randomfy is not affiliated with Spotify. The site was build with Nextjs, React and the Spotify API.
+Disclaimer: `randomfy` is not affiliated with Spotify. The site was build with Nextjs, React and the Spotify API.
 
-## How it works
+## [How it works](./docs//how-it-works.md)
 
-This project has some amazing features, and can be described as follow:
+This project has some amazing features and can be described as follows:
 
-1. When the user signs in the application, a recommendation is shown;
-2. The user likes or dislikes the recommendation, just like on Tinder.
+1. When the user logs into the application, a recommendation is displayed.
+2. The user can like or dislike the recommendation, just like on Tinder.
 
-After that Randomfy makes available:
+After that, `randomfy` provides:
 
-- A playlist with the liked artists that the user can listen and share with their friends;
-- An image with the image of the songs available for download;
-- An festival image with the artists available for download.
+- A playlist with the liked artists that the user can listen to and share with their friends.
+- An image with the album artwork of the available songs for download.
+- A festival image with the participating artists available for download.
+  These additional features enhance the overall experience for `randomfy` users, making it more engaging and enjoyable.
 
 ## Quickstart
 
@@ -55,17 +56,17 @@ Important: you must have a [spotify developer](https://developer.spotify.com/) a
 
 ## Demo
 
-[randomfy](https://random-fy.vercel.app/)
+[`randomfy`](https://random-fy.vercel.app/)
 
 ## Screenshots
 
 - Light Mode
 
-![randomfy screen light mode](./public/screenshots/2.png)
+![`randomfy` screen light mode](./public/screenshots/2.png)
 
 - Dark Mode
 
-![randomfy screen dark mode](./public/screenshots/1.png)
+![`randomfy` screen dark mode](./public/screenshots/1.png)
 
 ## Stack
 
