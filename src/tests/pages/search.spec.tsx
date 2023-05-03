@@ -1,4 +1,4 @@
-import { screen, act, waitFor } from '@testing-library/react'
+import { screen, act } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { renderWithClient } from 'mock'
 import { GetServerSidePropsContext } from 'next'
@@ -63,9 +63,9 @@ describe('<Search />', () => {
 
   describe('testing getServerSideProps', () => {
     it('should return auth props when user is authenticated', async () => {
-      const props = await getServerSideProps(
-        {} as unknown as GetServerSidePropsContext
-      )
+      const props = await getServerSideProps({
+        locale: 'en'
+      } as unknown as GetServerSidePropsContext & { locale: string })
       expect(props).toEqual({ props: { auth: 'token' } })
     })
   })

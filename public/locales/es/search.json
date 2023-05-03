@@ -1,0 +1,7 @@
+{
+    "title": "Busca un artista por su nombre y crearemos una lista de reproducción para ti",
+    "placeholder": "Buscar artista...",
+    "button": "Buscar",
+    "loading": "Cargando...",
+    "empty": "No se encontraron artistas relacionados, prueba con un artista diferente."
+}

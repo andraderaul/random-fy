@@ -1,0 +1,13 @@
+{
+    "about": "Acerca de",
+    "search": "Buscar",
+    "logout": "Cerrar sesión",
+    "error": {
+        "title": "¡Algo salió mal! :(",
+        "subtitle": "Inténtalo de nuevo"
+    },
+    "toast": {
+        "success": "¡La lista de reproducción se creó con éxito!",
+        "error": "¡Algo salió mal con la lista de reproducción!"
+    }
+}

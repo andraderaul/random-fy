@@ -1,0 +1,11 @@
+{
+    "title": "Acerca de",
+    "subtitle": "Randomfy toma tus artistas más escuchados en Spotify, selecciona uno de ellos y te muestra artistas similares para que puedas descubrir nuevos artistas basados en el seleccionado anteriormente.",
+    "disclaimer": "Descargo de responsabilidad: Randomfy no está afiliado con Spotify. El sitio fue construido con Nextjs, React y la API de Spotify.",
+    "ready": "¿Por qué estás leyendo esto? Debes estar aburrido. Ve a escuchar nuevos artistas.",
+    "howItWorks": {
+        "title": "Cómo funciona",
+        "p1": "Este proyecto muestra artistas y canciones basados en tus recomendaciones de Spotify. Cuando el usuario inicia sesión en la aplicación, se muestra una recomendación.",
+        "p2": "El usuario puede dar like o dislike a la recomendación, al igual que en Tinder. Después de eso, puedes crear una lista de reproducción con los artistas que te gustaron y compartirla con tus amigos. Además, puedes crear una imagen con estos artistas."
+    }
+}

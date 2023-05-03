@@ -10,7 +10,9 @@ describe('<InputSearch />', () => {
   const mockOnChange = jest.fn()
 
   it('should be able to render Input search component', () => {
-    render(<InputSearch value="" onChange={mockOnChange} />)
+    render(
+      <InputSearch placeholder="placeholder" value="" onChange={mockOnChange} />
+    )
 
     expect(
       screen.getByRole('textbox', {
@@ -20,7 +22,9 @@ describe('<InputSearch />', () => {
   })
 
   it('should be able to call onChange function when input is typed', async () => {
-    render(<InputSearch value="" onChange={mockOnChange} />)
+    render(
+      <InputSearch placeholder="placeholder" value="" onChange={mockOnChange} />
+    )
     const text = 'this is a text'
     const input = screen.getByRole('textbox', {
       name: /search/i

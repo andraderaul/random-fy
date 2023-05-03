@@ -1,0 +1,7 @@
+{
+    "title": "Digite o nome de um artista e nós criaremos uma playlist personalizada para você",
+    "placeholder": "Pesquise por um artista...",
+    "button": "Pesquisar",
+    "loading": "Carregando...",
+    "empty": "Não encontramos nenhum artista relacionado. Por favor, tente pesquisar por outro artista"
+}

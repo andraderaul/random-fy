@@ -10,8 +10,10 @@ const DynamicHeader = dynamic<HeaderProps>(
 import { Content, InputSearch, PrimaryButton, PrimaryText } from 'components'
 import { useRelatedArtistsMutation } from 'queries'
 import { Festival, ImageCollage, Playlist } from 'features'
+import { useTranslation } from 'next-i18next'
 
 export const SearchTemplate = () => {
+  const { t } = useTranslation('search')
   const [search, setSearch] = useState('')
   const { mutate, data, isLoading } = useRelatedArtistsMutation()
 
@@ -38,26 +40,24 @@ export const SearchTemplate = () => {
           }`}
         >
           <div className="p-4 mb-2">
-            <PrimaryText>
-              Search a artist by name and we&apos;ll make a playlist for you
-            </PrimaryText>
+            <PrimaryText>{t('title')}</PrimaryText>
           </div>
-          <InputSearch onChange={handleOnChange} value={search} />
+          <InputSearch
+            placeholder={t('placeholder')}
+            onChange={handleOnChange}
+            value={search}
+          />
           <div className="flex justify-center p-10">
-            <PrimaryButton type="submit">Search</PrimaryButton>
+            <PrimaryButton type="submit">{t('button')}</PrimaryButton>
           </div>
           {isLoading && (
             <p className="font-thin dark:text-gray-300 text-gray-700 leading-10 tracking-wide">
-              Loading...
+              {t('loading')}
             </p>
           )}
         </form>
       )}
-      {isEmpty && (
-        <PrimaryText>
-          We can&apos;t found any related artist, try a different artist.
-        </PrimaryText>
-      )}
+      {isEmpty && <PrimaryText>{t('empty')}</PrimaryText>}
       {data?.data && (
         <>
           <Playlist artists={data.data} />

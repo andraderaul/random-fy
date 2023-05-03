@@ -3,11 +3,11 @@
     "search": "Search",
     "logout": "Log out",
     "error": {
-        "title": "Something wrong! :(",
-        "subtitle": "Try Again"
+        "title": "Oops! Something went wrong.",
+        "subtitle": "Please try again."
     },
     "toast": {
-        "success": "Playlist was created with success!",
-        "error": "Something wrong with the Playlist!"
+        "success": "Playlist created successfully!",
+        "error": "Something went wrong with the playlist."
     }
 }

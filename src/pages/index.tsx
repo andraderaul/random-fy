@@ -25,7 +25,7 @@ export async function getServerSideProps(
     'common',
     'footer'
   ])
-  console.log(JSON.stringify(locales, null, 2), context.locale)
+
   try {
     const cookies = Cookies.getAll({ ctx: context })
     const auth = cookies['authorization'] ?? null
