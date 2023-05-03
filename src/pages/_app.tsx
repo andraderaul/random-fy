@@ -20,8 +20,8 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Head>
         <meta name="viewport" content="width=device-width" />
         <title>randomfy</title>
-        <link rel="shortcut icon" href="/img/icon-512.png" />
-        <link rel="apple-touch-icon" href="/img/icon-512.png" />
+        <link rel="shortcut icon" href="/img/icon-528.png" />
+        <link rel="apple-touch-icon" href="/img/icon-528.png" />
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#fafafa" />
         <meta

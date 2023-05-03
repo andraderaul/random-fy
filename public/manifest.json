@@ -3,15 +3,39 @@
   "short_name": "random-fy",
   "icons": [
     {
-      "src": "/img/icon-192.png",
+      "src": "/img/icon-16.png",
       "type": "image/png",
-      "sizes": "192x192",
+      "sizes": "16x16",
       "purpose": "any maskable"
     },
     {
-      "src": "/img/icon-512.png",
+      "src": "/img/icon-32.png",
       "type": "image/png",
-      "sizes": "512x512",
+      "sizes": "32x32",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/img/icon-64.png",
+      "type": "image/png",
+      "sizes": "64x64",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/img/icon-128.png",
+      "type": "image/png",
+      "sizes": "128x128",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/img/icon-264.png",
+      "type": "image/png",
+      "sizes": "264x264",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/img/icon-528.png",
+      "type": "image/png",
+      "sizes": "528x528",
       "purpose": "any maskable"
     }
   ],
