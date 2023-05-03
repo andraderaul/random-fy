@@ -1,13 +1,20 @@
-import { Content, Footer, Header, PrimaryText, SubTitle } from 'components'
+import dynamic from 'next/dynamic'
+import { Content, Footer, PrimaryText, SubTitle } from 'components'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+
+import type { HeaderProps } from 'components/header'
+const DynamicHeader = dynamic<HeaderProps>(
+  () => import('components/header').then((mod) => mod.Header),
+  { ssr: false }
+)
 
 const About = () => {
   const { t } = useTranslation('about')
   return (
     <>
       <Content>
-        <Header />
+        <DynamicHeader />
         <div className="p-4 mt-8 mb-0 mx-auto sm:w-4/5 w-full">
           <SubTitle>{t('title')}</SubTitle>
           <section className="mt-8">

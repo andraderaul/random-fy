@@ -3,11 +3,11 @@
     "search": "Pesquisar",
     "logout": "Sair",
     "error": {
-        "title": "Algo deu errado! :(",
-        "subtitle": "Tentar novamente"
+        "title": "Ops! Algo deu errado.",
+        "subtitle": "Por favor, tente novamente."
     },
     "toast": {
         "success": "A Playlist foi criada com sucesso!",
-        "error": "Algo de errado aconteceu com a Playlist!"
+        "error": "Algo deu errado com a Playlist!"
     }
 }

@@ -1,0 +1,7 @@
+{
+    "title": "Search for an artist by name and we'll create a playlist for you",
+    "placeholder": "Search for an artist...",
+    "button": "Search",
+    "loading": "Loading...",
+    "empty": "We couldn't find any related artists. Please try searching for a different artist."
+}
