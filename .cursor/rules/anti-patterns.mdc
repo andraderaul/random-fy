@@ -1,0 +1,38 @@
+---
+description: Catalog of patterns to actively avoid across architecture, React, state management, and testing. Apply when writing or reviewing any TypeScript or React code. If any of these patterns are detected, flag and fix them.
+globs: **/*.tsx, **/*.ts
+alwaysApply: false
+---
+
+## Architecture Violations
+
+- ❌ Feature importing another feature directly (use `index.ts` public API or lift to App)
+- ❌ Business logic inside `components/` (move to a feature action or hook)
+- ❌ `lib/` importing from `features/` or `components/`
+
+## React Anti-patterns
+
+- ❌ Calling hooks conditionally or inside loops
+- ❌ Overusing `useMemo` / `useCallback` without a measurable reason
+- ❌ Passing inline objects or functions as props (creates new reference on every render)
+
+```tsx
+// ❌ BAD — new object reference on every render
+<Component style={{ color: 'red' }} />
+
+// ✅ GOOD — stable reference
+const style = { color: 'red' };
+<Component style={style} />
+```
+
+- ❌ Using array index as list key (causes incorrect reconciliation on reorder/delete)
+
+## State Issues
+
+- ❌ Using global state (Zustand, Context) when local state would suffice
+- ❌ Lifting state higher than needed — keep it close to usage
+
+## Testing Issues
+
+- ❌ Testing implementation details (internal state, private methods)
+- ❌ Not mocking external dependencies (network, cookies, modules) in unit tests

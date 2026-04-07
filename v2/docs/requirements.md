@@ -1,0 +1,83 @@
+# Requisitos Funcionais
+
+- [x] RF 0001: O sistema deve permitir que o usuário faça login via conta do Spotify usando OAuth 2.0
+- [x] RF 0002: O sistema deve redirecionar o usuário para a página principal após autenticação bem-sucedida
+- [x] RF 0003: O sistema deve armazenar os tokens de acesso e refresh em cookies após o login
+- [x] RF 0004: O sistema deve selecionar aleatoriamente um artista entre os 50 mais ouvidos do usuário no Spotify como ponto de partida
+- [x] RF 0005: O sistema deve buscar artistas relacionados ao artista semente selecionado
+- [x] RF 0006: O sistema deve exibir uma recomendação de artista por vez ao usuário, incluindo imagem, nome e música
+- [x] RF 0007: O usuário deve poder curtir uma recomendação de artista
+- [x] RF 0008: O usuário deve poder rejeitar (dislike) uma recomendação de artista
+- [x] RF 0009: Ao curtir um artista, o sistema deve usar esse artista como nova semente para buscar a próxima recomendação
+- [x] RF 0010: O sistema deve exibir um contador de progresso indicando quantos artistas foram curtidos (ex: 3/20)
+- [x] RF 0011: O sistema deve evitar exibir músicas que o usuário já curtiu anteriormente na sessão; complementarmente ao RF 0035, que trata da deduplicação de artistas
+- [x] RF 0012: O sistema deve permitir a reprodução de preview de áudio da música do artista recomendado, implementado como exceção controlada de interatividade client-side
+- RF 0013: O sistema deve garantir que apenas um preview de áudio seja reproduzido por vez
+- [x] RF 0014: O usuário pode criar playlist e collage ao atingir um mínimo de 5 artistas curtidos, sendo 20 o número máximo da sessão
+- [x] RF 0015: O sistema deve criar uma playlist pública no Spotify com as músicas dos artistas curtidos
+- [x] RF 0016: Após a criação da playlist, o sistema deve exibir o player embed do Spotify com a playlist gerada
+- [x] RF 0017: O sistema deve exibir um collage de imagens com as capas das músicas dos artistas curtidos ao atingir o mínimo de curtidas definido no RF 0014
+- [x] RF 0018: O usuário deve poder fazer download da imagem do collage gerada
+- [x] RF 0019: O sistema deve gerar um pôster de festival com os nomes dos artistas curtidos ordenados por popularidade, disponível exclusivamente ao atingir 20 curtidas, garantindo um layout previsível e completo
+- [x] RF 0020: O usuário deve poder fazer download do pôster de festival gerado
+- [x] RF 0021: O sistema deve permitir que o usuário faça logout, destruindo os cookies de autenticação
+- [x] RF 0022: O sistema deve possuir uma página de busca onde o usuário pesquisa um artista por nome
+- [x] RF 0023: Na busca, o sistema deve encontrar artistas relacionados ao artista pesquisado e exibir playlist e collage com os resultados, seguindo o mínimo definido no RF 0014; o pôster de festival não se aplica ao fluxo de busca
+- [x] RF 0024: A página de busca deve ser protegida e acessível apenas a usuários autenticados
+- [x] RF 0025: O sistema deve exibir um link para abrir o artista/música diretamente no Spotify
+- RF 0026: O sistema deve exibir feedback visual (toast) de sucesso ou erro ao criar uma playlist
+- [x] RF 0027: O sistema deve exibir um skeleton loader enquanto as recomendações estão sendo carregadas
+- [x] RF 0028: O sistema deve exibir um componente de erro com botão "tentar novamente" quando uma requisição falhar
+- RF 0029: O sistema deve suportar os idiomas inglês, espanhol e português
+- [x] RF 0030: O sistema deve ter uma página "Sobre" descrevendo o funcionamento da aplicação e o autor
+- [x] RF 0031: Quando não houver artistas relacionados disponíveis, o sistema deve usar os top artistas do usuário como fallback para as recomendações
+- [x] RF 0032: O sistema deve renovar o token de acesso automaticamente usando o refresh token quando receber erro 401
+- [x] RF 0033: A página de busca exibe todos os artistas relacionados diretamente, sem fluxo de curtir/rejeitar
+- [x] RF 0034: O sistema deve encerrar a sessão de recomendações ao atingir 20 artistas curtidos ou ao usuário optar por encerrar antes, respeitando o mínimo de 5 curtidas definido no RF 0014
+- [x] RF 0035: O sistema deve manter uma lista de artistas já exibidos na sessão (curtidos ou rejeitados) e nunca reapresentar o mesmo artista; complementarmente ao RF 0011, que trata da deduplicação de músicas
+- [x] RF 0036: As interações de curtir e rejeitar devem ser implementadas via Server Actions, com revalidação server-side para carregar a próxima recomendação sem estado client-side
+- [x] RF 0037: Após uma busca bem-sucedida na página de busca, o formulário de busca deve ser substituído pelos resultados; o usuário deve poder realizar uma nova busca a partir dos resultados
+- [x] RF 0038: A página de busca deve exibir um estado vazio quando a busca não retornar artistas relacionados ao termo pesquisado
+- RF 0039: O header da aplicação deve exibir links contextuais ao estado de autenticação: os links de busca e logout são exibidos apenas para usuários autenticados; o link "sobre" é exibido para todos os usuários
+- RF 0040: A playlist criada no Spotify deve ter o nome "Randomfy" e uma descrição que referencia o projeto com a URL da aplicação
+- [x] RF 0041: O embed do Spotify exibido após a criação da playlist deve usar o tema escuro (parâmetro `theme=0` na URL do embed)
+- RF 0042: O pôster de festival deve exibir o ano atual dinamicamente no layout
+- [x] RF 0043: O collage de imagens deve usar as capas de álbum das músicas dos artistas curtidos (não a imagem do artista)
+- [x] RF 0044: Ao fazer download do collage ou do pôster de festival, o botão de download e eventuais legendas devem ser ocultados da imagem gerada, garantindo um output limpo sem elementos de UI
+- [x] RF 0045: O sistema deve exibir uma página de erro global com opção de tentar novamente quando ocorrer uma falha não tratada durante a navegação (equivalente ao `error.tsx` do Next.js App Router)
+- [x] RF 0046: A aplicação deve exibir uma página 404 personalizada para rotas inexistentes
+- [x] RF 0047: A aplicação deve disponibilizar um `manifest.json` estático para suporte básico de instalabilidade (PWA lite), sem service worker ou cache offline
+
+---
+
+# Requisitos Não Funcionais
+
+- RNF 0001: A aplicação deve ser construída com Next.js na versão mais recente, utilizando App Router e Server Components como padrão arquitetural, com serverless functions para endpoints de backend
+- RNF 0002: A aplicação deve ser hospedada na Vercel
+- RNF 0003: A aplicação deve usar App Router e Server Components, com fetch nativo do Next.js e suas estratégias de cache (force-cache, no-store, revalidate)
+- [x] RNF 0004: A autenticação e dados sensíveis (tokens) devem ser armazenados em cookies com suporte a configuração de maxAge e secure
+- RNF 0005: A cobertura de testes deve ser de no mínimo 80% das linhas de código
+- RNF 0006: O projeto deve utilizar MSW (Mock Service Worker) para mock de requisições HTTP nos testes
+- RNF 0007: O sistema deve utilizar Tailwind CSS para estilização, com suporte a dark mode
+- RNF 0008: A aplicação deve ser responsiva, com suporte a dispositivos móveis e desktop
+- RNF 0009: O projeto deve seguir padrões de commit convencionais (Conventional Commits) com validação via commitlint e husky
+- RNF 0010: O projeto deve utilizar semantic-release para geração automática de versões e changelog
+- RNF 0011: O pipeline de CI/CD deve incluir etapas de typecheck, lint e cobertura de testes via GitHub Actions
+- RNF 0012: O sistema deve suportar internacionalização (i18n) com LinguiJS, com locale padrão em inglês e suporte a português e espanhol
+- RNF 0013: O sistema deve requerer Node.js na versão 20.x ou superior
+- RNF 0014: O header x-origin-id deve ser enviado nas requisições com o código do país do usuário, usado como parâmetro de mercado na API do Spotify
+- RNF 0015: O projeto deve ter tipagem estrita com TypeScript em modo strict
+- RNF 0016: O projeto deve fazer uso correto de queries e actions inspirado em CQRS, separando claramente operações de leitura (Server Components e fetch) de operações de escrita (Server Actions)
+- [x] RNF 0017: Toda comunicação com a API do Spotify deve ocorrer server-side, via Server Components ou Server Actions, eliminando chamadas autenticadas pelo cliente; o preview de áudio definido no RF 0012 é a única exceção permitida de interatividade client-side
+- [x] RNF 0018: A renovação automática do access token deve ser tratada no middleware do Next.js (middleware.ts), que verifica a validade do token antes de qualquer requisição e o renova via Spotify API quando necessário, atualizando o cookie de forma transparente
+- [x] RNF 0019: O gerenciamento de cookies de autenticação (authorization e refreshToken) deve ocorrer exclusivamente server-side, usando a API de cookies do Next.js (cookies())
+- [x] RNF 0020: Os cookies de autenticação devem ser configurados com as flags `httpOnly: true` e `sameSite: lax` além de `secure: true` em produção, evitando exposição ao JavaScript client-side e ataques CSRF
+- [x] RNF 0021: O fluxo OAuth deve gerar um `state` aleatório por requisição, armazená-lo em cookie server-side e validá-lo no callback antes de trocar o código pelo token, prevenindo CSRF no handshake com o Spotify
+- [x] RNF 0022: Os scopes solicitados ao Spotify devem ser os mínimos necessários para as funcionalidades da aplicação: `playlist-modify-public`, `user-top-read` e `user-read-recently-played`
+- RNF 0023: O atributo `lang` do elemento `<html>` deve refletir dinamicamente o locale ativo da requisição, não um valor fixo
+- RNF 0024: Todas as strings visíveis ao usuário devem ser internacionalizadas via LinguiJS; nenhum texto de interface pode ser hardcoded em inglês ou qualquer outro idioma
+- RNF 0025: Os domínios `i.scdn.co` e `mosaic.scdn.co` (CDNs de imagens do Spotify) devem ser os únicos domínios externos permitidos na configuração de `remotePatterns` do `next/image`
+- [x] RNF 0026: A aplicação deve expor metadados Open Graph (`og:title`, `og:description`, `og:image`) e Twitter Card para permitir previews em redes sociais
+- [x] RNF 0027: O projeto deve ter um contrato explícito de variáveis de ambiente, distinguindo variáveis server-side (`SPOTIFY_CLIENT_ID`, `SPOTIFY_CLIENT_SECRET`, `CALLBACK_URL`) de variáveis públicas; nenhuma credencial deve ser exposta ao cliente
+- RNF 0028: O servidor MSW nos testes deve ser configurado com `onUnhandledRequest: 'error'`, garantindo que requisições não mockadas causem falha explícita nos testes
+- RNF 0029: O sistema não deve implementar tratamento de rate limit (HTTP 429) da API do Spotify nesta versão; erros de limite devem ser propagados normalmente como falhas de requisição

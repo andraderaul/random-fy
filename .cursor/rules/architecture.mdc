@@ -1,0 +1,38 @@
+---
+description: Defines the 4-layer architecture (App → Features → Lib/Components). Use this rule when deciding where to place new code, creating new files, or reviewing imports between layers. Violations like a Feature importing another Feature, or Lib importing a Feature, must be flagged and fixed.
+alwaysApply: true
+---
+
+Follow a strict layered architecture inspired by DDD and Separation of Concerns.
+
+## Layers
+
+| Layer | Location | Responsibility |
+|-------|----------|----------------|
+| App | `src/app/` | Routing, providers, page composition |
+| Features | `src/features/` | Domain-specific business logic |
+| Lib | `src/lib/` | Shared utilities, framework-agnostic |
+| Components | `src/components/` | Presentational UI only |
+
+## Dependency Flow
+
+```
+App → Features → Lib / Components
+```
+
+Lower layers must never import from upper layers.
+
+## Critical Rules
+
+- Features must NOT import other Features directly
+- Lib must NOT import from Features or Components
+- Components must NOT contain business logic or API calls
+- Each feature exposes a public API via `index.ts`
+
+## Decision Guide
+
+| Situation | Where it goes |
+|-----------|---------------|
+| Reusable, no business logic | `lib/` or `components/` |
+| Domain-specific logic | `features/<domain>/` |
+| Routing or wiring | `app/` |

@@ -1,0 +1,113 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2026-04-05\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: en\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#~ msgid "about.developer"
+#~ msgstr "Developer"
+
+#~ msgid "about.disclaimer"
+#~ msgstr "Disclaimer: Randomfy is not affiliated with Spotify. This site was built with Next.js and the Spotify API."
+
+#~ msgid "about.followMe"
+#~ msgstr "Follow me on"
+
+#~ msgid "about.howItWorks.p1"
+#~ msgstr "When you sign in, a recommendation is shown based on your Spotify listening history."
+
+#~ msgid "about.howItWorks.p2"
+#~ msgstr "Like or pass on each artist. Once you have 5 or more, create a playlist and download your collage or festival poster."
+
+#~ msgid "about.howItWorks.title"
+#~ msgstr "How it works"
+
+#~ msgid "about.ready"
+#~ msgstr "Why are you still reading this? Go listen to some amazing new artists!"
+
+#~ msgid "about.subtitle"
+#~ msgstr "Randomfy takes your most listened to Spotify artists, selects one of them, and shows you similar artists so you can discover new artists based on your preferences."
+
+#~ msgid "about.title"
+#~ msgstr "About"
+
+#~ msgid "collage.download"
+#~ msgstr "Download collage"
+
+#~ msgid "discover.finish"
+#~ msgstr "Finish"
+
+#~ msgid "discover.noMore"
+#~ msgstr "No more artists to discover. Try again later."
+
+#~ msgid "discover.noTrack"
+#~ msgstr "No track available for this artist. Try again later."
+
+#~ msgid "festival.download"
+#~ msgstr "Download poster"
+
+#~ msgid "footer.by"
+#~ msgstr "by"
+
+#~ msgid "footer.createdWith"
+#~ msgstr "Created with"
+
+#~ msgid "login.button"
+#~ msgstr "Log in with Spotify"
+
+#~ msgid "login.description"
+#~ msgstr "Are you ready to discover new artists on Spotify and create a playlist with them?"
+
+#~ msgid "login.subtitle"
+#~ msgstr "Hello, music lover!"
+
+#~ msgid "login.title"
+#~ msgstr "Yeah!"
+
+#~ msgid "nav.about"
+#~ msgstr "About"
+
+#~ msgid "nav.logout"
+#~ msgstr "Log out"
+
+#~ msgid "nav.search"
+#~ msgstr "Search"
+
+#~ msgid "playlist.create"
+#~ msgstr "Create Spotify playlist"
+
+#~ msgid "playlist.creating"
+#~ msgstr "Creating playlist…"
+
+#~ msgid "playlist.openInSpotify"
+#~ msgstr "Open in Spotify"
+
+#~ msgid "playlist.success"
+#~ msgstr "Playlist created!"
+
+#~ msgid "result.festivalTitle"
+#~ msgstr "Your festival lineup"
+
+#~ msgid "result.title"
+#~ msgstr "Your picks"
+
+#~ msgid "search.button"
+#~ msgstr "Search"
+
+#~ msgid "search.empty"
+#~ msgstr "We couldn't find any related artists. Please try searching for a different artist."
+
+#~ msgid "search.placeholder"
+#~ msgstr "Search for an artist..."
+
+#~ msgid "search.title"
+#~ msgstr "Search for an artist by name and we'll create a playlist for you"

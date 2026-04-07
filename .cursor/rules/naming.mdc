@@ -1,0 +1,37 @@
+---
+description: File and code naming conventions for TypeScript and React files. Apply when creating or renaming files, components, hooks, services, or utilities. Enforces kebab-case for files, PascalCase for components, and specific suffix patterns per type.
+globs: **/*.tsx, **/*.ts
+alwaysApply: false
+---
+
+## File & Folder Naming
+
+- Always use **kebab-case** for file and folder names
+
+```
+✅ use-playlist-mutation.ts
+✅ playlist-embed.tsx
+✅ artist-card.skeleton.tsx
+
+❌ usePlaylistMutation.ts
+❌ PlaylistEmbed.tsx
+```
+
+## Code Naming
+
+| Type | Convention | Example |
+|------|-----------|---------|
+| React component | PascalCase | `ArtistCard` |
+| Hook | `use` + camelCase | `useAudioPlayer` |
+| Service | camelCase + `Service` | `spotifyService` |
+| Utility | descriptive camelCase | `formatDuration` |
+
+## File Suffix Conventions
+
+| Pattern | Usage |
+|---------|-------|
+| `*.container.tsx` | Container (smart) components |
+| `use-*.ts` | Custom hooks |
+| `*-service.ts` | Service modules |
+| `*.spec.ts(x)` | Unit/integration tests |
+| `*.skeleton.tsx` | Loading skeleton variants |

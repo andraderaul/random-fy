@@ -1,0 +1,35 @@
+---
+description: React performance guidelines — when to use memoization, how to place state, and how to handle lists and context. Apply when writing or reviewing React components, hooks, or state management code. Default stance is to avoid premature optimization.
+alwaysApply: true
+---
+
+Avoid premature optimization. Fix structure first, optimize later only when there is a measurable issue.
+
+## Priority Order
+
+1. Fix component hierarchy (wrong composition causes unnecessary renders)
+2. Fix state placement (state too high causes cascading re-renders)
+3. Consider memoization only after the above
+
+## Memoization
+
+Do NOT use `useMemo` / `useCallback` by default. Only use when **all** conditions are met:
+- The computation or reference is provably expensive
+- Props or dependencies are stable
+- There is a measurable performance problem
+
+## State Placement
+
+- Keep state as close to its usage as possible
+- Avoid lifting state up unless strictly required
+- Avoid global state unless multiple unrelated components need it
+
+## Lists
+
+- Always use stable, unique keys — never array index
+- Use virtualization (e.g. `react-window`) for lists with 100+ items
+
+## Context
+
+- Split contexts by update frequency to avoid unnecessary re-renders
+- Always memoize context provider values

@@ -1,0 +1,32 @@
+---
+description: Detailed responsibilities and constraints for each architecture layer (App, Features, Components, Lib). Apply when creating files inside app/, features/, components/, or lib/ to ensure each file respects its layer's boundaries.
+globs: **/app/**/*.tsx,**/app/**/*.ts,**/features/**/*.tsx,**/features/**/*.ts,**/components/**/*.tsx,**/components/**/*.ts,**/lib/**/*.ts
+alwaysApply: false
+---
+
+## Lib (`src/lib/`)
+
+- Contains: utilities, hooks, services, types, constants
+- Must be framework-agnostic when possible
+- ❌ Must NOT import from `features/` or `components/`
+
+## Components (`src/components/`)
+
+- Contains only presentational (dumb) components
+- Receives data and callbacks via props — no internal data fetching
+- ❌ No business logic, no API calls, no global state access
+- ✅ Must be pure and reusable across features
+
+## Features (`src/features/<domain>/`)
+
+- Contains all domain-specific logic: actions, queries, mutations, hooks, local components
+- Can import from `lib/` and `components/`
+- ❌ Must NOT import from other features
+- ✅ Must expose its public API through `index.ts`
+
+## App (`src/app/`)
+
+- Next.js pages and layouts — entry points only
+- Responsible for routing, providers, and composing features
+- ❌ Must NOT contain business logic
+- ❌ Must NOT be imported by any other layer
