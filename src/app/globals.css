@@ -127,3 +127,30 @@ body {
     animation: none !important;
   }
 }
+
+@layer utilities {
+  /* Navigation typography — used in NavLink and inline links */
+  .nav-text {
+    @apply text-2xl font-thin leading-10 tracking-wide;
+    @apply text-gray-700 dark:text-gray-300;
+    @apply hover:text-blue-500 dark:hover:text-orange-400;
+    @apply transition-colors duration-200;
+  }
+
+  /* Large primary text — PrimaryText component */
+  .text-display {
+    @apply text-5xl font-thin leading-10 tracking-wide;
+    @apply text-gray-700 dark:text-gray-300;
+  }
+
+  /* Default section container */
+  .section-container {
+    @apply max-w-5xl mx-auto;
+  }
+
+  /* Hover affordance for interactive icons */
+  .icon-interactive {
+    @apply cursor-pointer transition-all duration-200 ease-in-out;
+    @apply hover:scale-110;
+  }
+}

@@ -15,13 +15,7 @@ export function NavLink({
   className,
   external = false,
 }: NavLinkProps) {
-  const baseClasses = cn(
-    "text-2xl font-thin leading-10 tracking-wide",
-    "text-gray-700 dark:text-gray-300",
-    "hover:text-blue-500 hover:dark:text-orange-400",
-    "transition-all duration-200 ease-in-out",
-    className,
-  );
+  const baseClasses = cn("nav-text", className);
 
   if (external) {
     return (
