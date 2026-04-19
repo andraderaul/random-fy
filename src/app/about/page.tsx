@@ -13,7 +13,7 @@ const mutedInlineLinkClass =
 
 export default function AboutPage() {
   return (
-    <main className="relative flex flex-1 flex-col overflow-hidden bg-background">
+    <main className="relative flex flex-1 flex-col bg-background">
       <div className="pointer-events-none absolute inset-0" aria-hidden>
         <div className="pointer-events-none absolute -left-[min(40vw,280px)] -top-[min(35vw,240px)] h-[min(85vw,560px)] w-[min(85vw,560px)] rounded-full bg-primary/20 blur-[120px]" />
         <div className="pointer-events-none absolute -bottom-[min(25vw,160px)] -right-[min(35vw,220px)] h-[min(75vw,500px)] w-[min(75vw,500px)] rounded-full bg-fuchsia-600/25 blur-[120px]" />
