@@ -30,7 +30,7 @@ export function CreatePlaylistButton({ trackIds }: CreatePlaylistButtonProps) {
   if (playlist) {
     return (
       <div className="flex w-full min-w-full basis-full flex-col gap-4">
-        <Surface className="flex items-center justify-between gap-4 px-5 py-4">
+        <Surface className="flex items-center justify-between gap-4 p-4">
           <div className="flex min-w-0 flex-col gap-0.5">
             <Heading level="section" as="h2">
               Playlist ready

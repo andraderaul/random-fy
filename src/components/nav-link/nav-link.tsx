@@ -19,7 +19,7 @@ export function NavLink({
     "text-2xl font-thin leading-10 tracking-wide",
     "text-gray-700 dark:text-gray-300",
     "hover:text-blue-500 hover:dark:text-orange-400",
-    "transition-colors duration-200",
+    "transition-all duration-200 ease-in-out",
     className,
   );
 

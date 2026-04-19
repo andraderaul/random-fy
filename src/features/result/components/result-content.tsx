@@ -73,8 +73,8 @@ export async function ResultContent({ searchParams }: ResultContentProps) {
           Spotify, share the collage, print the poster.
         </p>
 
-        <div className="flex w-full max-w-xl flex-col items-center gap-4 pt-2">
-          <div className="flex w-full flex-col flex-wrap items-stretch justify-center gap-3 sm:flex-row sm:items-center sm:justify-center">
+        <div className="flex w-full max-w-xl flex-col items-center gap-4">
+          <div className="flex w-full flex-col flex-wrap items-stretch justify-center gap-3 px-4 py-8 sm:flex-row sm:items-center sm:justify-center">
             <CreatePlaylistButton trackIds={trackIds} />
             {festivalUnlocked ? (
               <Link href="/discover" className={secondaryOutlineClass}>

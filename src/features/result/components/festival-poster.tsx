@@ -83,7 +83,7 @@ export function FestivalPoster({ artists }: FestivalPosterProps) {
 
   return (
     <section className="flex w-full flex-col gap-4">
-      <div className="flex w-full items-baseline justify-between gap-4">
+      <div className="flex w-full items-baseline justify-between gap-4 p-4">
         <p className={sectionLabelClass}>Your festival lineup</p>
         <button
           type="button"
