@@ -8,7 +8,7 @@ import { server } from "../../../../test/msw/server";
 import { GET } from "./route";
 
 const SPOTIFY_TOKEN_URL = "https://accounts.spotify.com/api/token";
-const BASE_URL = "http://localhost:3000";
+const BASE_URL = "http://127.0.0.1:3000";
 const VALID_STATE = "mock-oauth-state";
 
 jest.mock("next/navigation", () => ({
@@ -42,7 +42,7 @@ const mockClearOAuthState = clearOAuthState as jest.MockedFunction<
 beforeEach(() => {
   process.env.SPOTIFY_CLIENT_ID = "test-client-id";
   process.env.SPOTIFY_CLIENT_SECRET = "test-client-secret";
-  process.env.SPOTIFY_REDIRECT_URI = "http://localhost:3000/api/callback";
+  process.env.SPOTIFY_REDIRECT_URI = "http://127.0.0.1:3000/api/callback";
   mockSetTokens.mockResolvedValue(undefined);
   mockGetOAuthState.mockResolvedValue(VALID_STATE);
   mockClearOAuthState.mockResolvedValue(undefined);

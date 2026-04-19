@@ -30,12 +30,14 @@ SPOTIFY_REDIRECT_URI=http://127.0.0.1:3000/api/callback
 
 ### Rodando localmente
 
-Inicie o servidor normalmente:
+O script `npm run dev` inicia o Next com `--hostname 127.0.0.1`, ou seja, o servidor escuta só no loopback IPv4. Isso alinha a origem do app (URLs absolutas, cookies, fetch RSC) com a URI de redirect do Spotify e evita misturar `localhost` com `127.0.0.1`.
 
 ```bash
 nvm use
 npm run dev
 ```
+
+Abra o endereço que o CLI mostrar (em geral `http://127.0.0.1:3000`).
 
 ### ⚠️ Acesse sempre via `http://127.0.0.1:3000`
 
