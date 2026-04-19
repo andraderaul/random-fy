@@ -98,7 +98,7 @@ export function ArtistCard({ artist, track, state }: ArtistCardProps) {
                     src={track.albumImageUrl}
                     alt=""
                     fill
-                    className="scale-110 object-cover opacity-[0.22] blur-md"
+                    className="scale-110 object-cover opacity-[0.22] blur-xs"
                     sizes="(max-width: 448px) 100vw, 448px"
                     priority
                   />
