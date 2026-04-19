@@ -15,8 +15,14 @@ interface ResultContentProps {
 
 function buildDiscoverResumeHref(liked?: string, albums?: string): string {
   const params = new URLSearchParams();
-  if (liked) params.set("liked", liked);
-  if (albums) params.set("albums", albums);
+  if (liked) {
+    params.set("liked", liked);
+  }
+  
+  if (albums) {
+    params.set("albums", albums);
+  }
+
   const query = params.toString();
   return query ? `/discover?${query}` : "/discover";
 }
@@ -86,12 +92,6 @@ export async function ResultContent({ searchParams }: ResultContentProps) {
               />
             )}
           </div>
-          <NavLink
-            href="/discover"
-            preset="none"
-            label="Reset"
-            className="text-sm font-medium text-muted transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
-          />
         </div>
       </section>
 
