@@ -1,5 +1,0 @@
-export { setCustomHeader, http } from './http'
-export { getRandomArtist } from './get-random-artist'
-export { getRecommendations } from './get-recommendations'
-export { createPlaylist } from './create-playlist'
-export { getRelatedArtists } from './get-related-artists'

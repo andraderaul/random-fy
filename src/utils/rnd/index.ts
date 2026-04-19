@@ -1,1 +1,0 @@
-export { Rnd } from './rnd'

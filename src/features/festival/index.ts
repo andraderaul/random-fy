@@ -1,1 +1,0 @@
-export { Festival } from './festival'

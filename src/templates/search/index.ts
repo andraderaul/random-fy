@@ -1,1 +1,0 @@
-export { SearchTemplate } from './search'
