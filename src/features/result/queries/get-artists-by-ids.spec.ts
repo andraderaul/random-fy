@@ -9,9 +9,7 @@ import { getArtistsByIds } from "./get-artists-by-ids";
 
 const SPOTIFY_BASE = "https://api.spotify.com/v1";
 
-jest.mock("@/features/auth/cookies", () => ({
-  getAccessToken: jest.fn().mockResolvedValue("mock-access-token"),
-}));
+const token = "mock-access-token";
 
 describe("getArtistsByIds", () => {
   it("returns artists mapped correctly", async () => {
@@ -25,7 +23,7 @@ describe("getArtistsByIds", () => {
       ),
     );
 
-    const result = await getArtistsByIds(["a1"]);
+    const result = await getArtistsByIds(["a1"], token);
 
     expect(result).toHaveLength(1);
     expect(result[0]).toMatchObject({
@@ -50,7 +48,7 @@ describe("getArtistsByIds", () => {
       ),
     );
 
-    const result = await getArtistsByIds(["low", "high", "mid"]);
+    const result = await getArtistsByIds(["low", "high", "mid"], token);
 
     expect(result[0]?.id).toBe("high");
     expect(result[1]?.id).toBe("mid");
@@ -69,7 +67,7 @@ describe("getArtistsByIds", () => {
       ),
     );
 
-    const result = await getArtistsByIds(["valid", "invalid-id"]);
+    const result = await getArtistsByIds(["valid", "invalid-id"], token);
 
     expect(result).toHaveLength(1);
     expect(result[0]?.id).toBe("valid");
@@ -78,7 +76,7 @@ describe("getArtistsByIds", () => {
   it("returns empty array for empty ids without calling the API", async () => {
     const fetchSpy = jest.spyOn(global, "fetch");
 
-    const result = await getArtistsByIds([]);
+    const result = await getArtistsByIds([], token);
 
     expect(result).toEqual([]);
     expect(fetchSpy).not.toHaveBeenCalled();
@@ -96,7 +94,7 @@ describe("getArtistsByIds", () => {
     );
 
     const ids = Array.from({ length: 60 }, (_, i) => `id-${i}`);
-    await getArtistsByIds(ids);
+    await getArtistsByIds(ids, token);
 
     const url = new URL(capturedUrl);
     const idsParam = url.searchParams.get("ids")?.split(",") ?? [];
@@ -110,6 +108,8 @@ describe("getArtistsByIds", () => {
       ),
     );
 
-    await expect(getArtistsByIds(["some-id"])).rejects.toThrow("Spotify API error");
+    await expect(getArtistsByIds(["some-id"], token)).rejects.toThrow(
+      "Spotify API error",
+    );
   });
 });

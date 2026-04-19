@@ -9,13 +9,11 @@ import { getTopArtists } from "./get-top-artists";
 
 const SPOTIFY_BASE = "https://api.spotify.com/v1";
 
-jest.mock("@/features/auth/cookies", () => ({
-  getAccessToken: jest.fn().mockResolvedValue("mock-access-token"),
-}));
+const token = "mock-access-token";
 
 describe("getTopArtists", () => {
   it("returns mapped top artists", async () => {
-    const result = await getTopArtists();
+    const result = await getTopArtists(token);
 
     expect(result).toHaveLength(3);
     expect(result[0]).toMatchObject({
@@ -37,7 +35,7 @@ describe("getTopArtists", () => {
       ),
     );
 
-    const result = await getTopArtists();
+    const result = await getTopArtists(token);
     expect(result[0]?.imageUrl).toBe("");
   });
 
@@ -48,6 +46,6 @@ describe("getTopArtists", () => {
       ),
     );
 
-    await expect(getTopArtists()).rejects.toThrow("Spotify API error");
+    await expect(getTopArtists(token)).rejects.toThrow("Spotify API error");
   });
 });
