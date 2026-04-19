@@ -1,6 +1,7 @@
 import { NavLink } from "@/components/nav-link";
 import { SpotifyIcon } from "@/components/icons";
 import { Button, Heading } from "@/components/ui";
+import { getCalendarYear } from "@/lib/dates";
 
 export default function LoginPage() {
   return (
@@ -17,7 +18,7 @@ export default function LoginPage() {
               <span className="text-primary" aria-hidden>
                 ●
               </span>{" "}
-              Side B · 2026 Edition
+              {`Side B · ${getCalendarYear()} Edition`}
             </Heading>
 
             <h1 className="font-display text-balance text-4xl font-semibold leading-[1.1] tracking-tight text-foreground sm:text-5xl lg:text-6xl">

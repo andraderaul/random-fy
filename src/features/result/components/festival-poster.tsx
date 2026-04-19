@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { Wordmark } from "@/components/ui";
 import { cn } from "@/lib/cn";
+import { getCalendarYear } from "@/lib/dates";
 import type { Artist } from "@/lib/types/spotify";
 
 function getArtistSizeClass(index: number): string {
@@ -118,7 +119,7 @@ export function FestivalPoster({ artists }: FestivalPosterProps) {
               Randomfest
             </p>
             <p className="font-display text-5xl font-bold leading-none tracking-tight text-[#fafafa] sm:text-6xl md:text-7xl">
-              {new Date().getFullYear()}
+              {getCalendarYear()}
             </p>
           </div>
 
