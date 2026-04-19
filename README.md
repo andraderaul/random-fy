@@ -1,103 +1,36 @@
-[![Quality](https://github.com/andraderaul/random-fy/actions/workflows/quality.yml/badge.svg)](https://github.com/andraderaul/random-fy/actions/workflows/quality.yml) [![Release](https://github.com/andraderaul/random-fy/actions/workflows/release.yml/badge.svg)](https://github.com/andraderaul/random-fy/actions/workflows/release.yml)
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-# randomfy
+## Getting Started
 
-## About
-
-`randomfy` takes your most listened Spotify artists, selects one of them and shows you similar artists, so you can meet new artists based on the previous selected one.
-
-Disclaimer: `randomfy` is not affiliated with Spotify. The site was build with Nextjs, React and the Spotify API.
-
-## [How it works](./docs//how-it-works.md)
-
-This project has some amazing features and can be described as follows:
-
-1. When the user logs into the application, a recommendation is displayed.
-2. The user can like or dislike the recommendation, just like on Tinder.
-
-After that, `randomfy` provides:
-
-- A playlist with the liked artists that the user can listen to and share with their friends.
-- An image with the album artwork of the available songs for download.
-- A festival image with the participating artists available for download.
-  These additional features enhance the overall experience for `randomfy` users, making it more engaging and enjoyable.
-
-## Quickstart
-
-You can start cloning the repository:
+First, run the development server:
 
 ```bash
-
-git clone git@github.com:andraderaul/random-fy.git
-```
-
-Then install all dependencies:
-
-```bash
-
-yarn install
-```
-
-Finally, start the application:
-
-```bash
-
+npm run dev
+# or
 yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-## Environments
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-Important: you must have a [spotify developer](https://developer.spotify.com/) account with an app created. Then add the `SPOTIFY_CLIENT_ID` and `SPOTIFY_CLIENT_SECRET` from your app created to `.env`.
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-## Todo
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-- [ ] Performance
-- [ ] Cookies
+## Learn More
 
-## Demo
+To learn more about Next.js, take a look at the following resources:
 
-[`randomfy`](https://random-fy.vercel.app/)
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-## Screenshots
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-- Light Mode
+## Deploy on Vercel
 
-![`randomfy` screen light mode](./public/screenshots/2.png)
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-- Dark Mode
-
-![`randomfy` screen dark mode](./public/screenshots/1.png)
-
-## Stack
-
-**Front-end:**
-
-- [NextJs](https://nextjs.org/docs)
-- [React](https://pt-br.reactjs.org/docs/getting-started.html)
-- [TailwindCSS](https://tailwindcss.com/docs/)
-- [React-Query](https://react-query.tanstack.com/)
-- [Axios](https://github.com/axios/axios)
-- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
-- [MSW JS](https://mswjs.io/)
-
-**Back-end:**
-
-- [NextJs](https://nextjs.org/docs)
-- [Jest](https://jestjs.io/)
-
-## Related projects
-
-- [Festify](https://salty-beach-42139.herokuapp.com/)
-- [Receiptify](https://receiptify.herokuapp.com/)
-
-## References
-
-- [Spotify Web Api](https://developer.spotify.com/documentation/web-api/reference)
-
-## License
-
-[MIT](./LICENSE)
-
-## Author
-
-- [@andraderaul](https://github.com/andraderaul)
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

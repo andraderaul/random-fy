@@ -1,40 +1,35 @@
 name: Quality
 
 on:
-  push:
-    branches:
-      - main
   pull_request:
     branches: [main]
 
 jobs:
   quality:
-    name: Code Quality
-
+    name: Typecheck, Lint, Test
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [18.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
+      - uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: v2/package-lock.json
 
       - name: Install dependencies
-        run: yarn install
+        run: npm ci
+        working-directory: v2
 
-      - name: Typechecker
-        run: yarn typecheck
+      - name: Typecheck
+        run: npm run typecheck
+        working-directory: v2
 
       - name: Lint
-        run: yarn lint --fix
+        run: npm run lint
+        working-directory: v2
 
-      - name: Coverage
-        run: yarn test:coverage
+      - name: Test
+        run: npm run test -- --ci
+        working-directory: v2
