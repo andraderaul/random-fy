@@ -10,6 +10,8 @@ const SCOPES = [
 export function buildSpotifyAuthUrl(): { url: string; state: string } {
   const clientId = process.env.SPOTIFY_CLIENT_ID;
   const redirectUri = process.env.SPOTIFY_REDIRECT_URI;
+  console.log("clientId", clientId);
+  console.log("redirectUri", redirectUri);
 
   if (!clientId || !redirectUri) {
     throw new Error("Missing Spotify OAuth environment variables");
