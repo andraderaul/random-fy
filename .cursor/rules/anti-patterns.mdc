@@ -1,7 +1,6 @@
 ---
 description: Catalog of patterns to actively avoid across architecture, React, state management, and testing. Apply when writing or reviewing any TypeScript or React code. If any of these patterns are detected, flag and fix them.
-globs: **/*.tsx, **/*.ts
-alwaysApply: false
+alwaysApply: true
 ---
 
 ## Architecture Violations
@@ -18,11 +17,11 @@ alwaysApply: false
 
 ```tsx
 // ❌ BAD — new object reference on every render
-<Component style={{ color: 'red' }} />
+;<Component style={{ color: 'red' }} />
 
 // ✅ GOOD — stable reference
-const style = { color: 'red' };
-<Component style={style} />
+const style = { color: 'red' }
+;<Component style={style} />
 ```
 
 - ❌ Using array index as list key (causes incorrect reconciliation on reorder/delete)

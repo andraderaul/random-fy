@@ -10,9 +10,9 @@
 - [x] RF 0008: O usuário deve poder rejeitar (dislike) uma recomendação de artista
 - [x] RF 0009: Ao curtir um artista, o sistema deve usar esse artista como nova semente para buscar a próxima recomendação
 - [x] RF 0010: O sistema deve exibir um contador de progresso indicando quantos artistas foram curtidos (ex: 3/20)
-- [x] RF 0011: O sistema deve evitar exibir músicas que o usuário já curtiu anteriormente na sessão; complementarmente ao RF 0035, que trata da deduplicação de artistas
+- [x] RF 0011: O sistema deve evitar exibir músicas que o usuário já curtiu anteriormente na sessão; complementarmente ao RF 0031, que trata da deduplicação de artistas
 - [x] RF 0012: O sistema deve permitir a reprodução de preview de áudio da música do artista recomendado, implementado como exceção controlada de interatividade client-side
-- RF 0013: O sistema deve garantir que apenas um preview de áudio seja reproduzido por vez
+- [x] RF 0013: O sistema deve garantir que apenas um preview de áudio seja reproduzido por vez
 - [x] RF 0014: O usuário pode criar playlist e collage ao atingir um mínimo de 5 artistas curtidos, sendo 20 o número máximo da sessão
 - [x] RF 0015: O sistema deve criar uma playlist pública no Spotify com as músicas dos artistas curtidos
 - [x] RF 0016: Após a criação da playlist, o sistema deve exibir o player embed do Spotify com a playlist gerada
@@ -21,32 +21,26 @@
 - [x] RF 0019: O sistema deve gerar um pôster de festival com os nomes dos artistas curtidos ordenados por popularidade, disponível exclusivamente ao atingir 20 curtidas, garantindo um layout previsível e completo
 - [x] RF 0020: O usuário deve poder fazer download do pôster de festival gerado
 - [x] RF 0021: O sistema deve permitir que o usuário faça logout, destruindo os cookies de autenticação
-- [x] RF 0022: O sistema deve possuir uma página de busca onde o usuário pesquisa um artista por nome
-- [x] RF 0023: Na busca, o sistema deve encontrar artistas relacionados ao artista pesquisado e exibir playlist e collage com os resultados, seguindo o mínimo definido no RF 0014; o pôster de festival não se aplica ao fluxo de busca
-- [x] RF 0024: A página de busca deve ser protegida e acessível apenas a usuários autenticados
-- [x] RF 0025: O sistema deve exibir um link para abrir o artista/música diretamente no Spotify
-- RF 0026: O sistema deve exibir feedback visual (toast) de sucesso ou erro ao criar uma playlist
-- [x] RF 0027: O sistema deve exibir um skeleton loader enquanto as recomendações estão sendo carregadas
-- [x] RF 0028: O sistema deve exibir um componente de erro com botão "tentar novamente" quando uma requisição falhar
-- RF 0029: O sistema deve suportar os idiomas inglês, espanhol e português
-- [x] RF 0030: O sistema deve ter uma página "Sobre" descrevendo o funcionamento da aplicação e o autor
-- [x] RF 0031: Quando não houver artistas relacionados disponíveis, o sistema deve usar os top artistas do usuário como fallback para as recomendações
-- [x] RF 0032: O sistema deve renovar o token de acesso automaticamente usando o refresh token quando receber erro 401
-- [x] RF 0033: A página de busca exibe todos os artistas relacionados diretamente, sem fluxo de curtir/rejeitar
-- [x] RF 0034: O sistema deve encerrar a sessão de recomendações ao atingir 20 artistas curtidos ou ao usuário optar por encerrar antes, respeitando o mínimo de 5 curtidas definido no RF 0014
-- [x] RF 0035: O sistema deve manter uma lista de artistas já exibidos na sessão (curtidos ou rejeitados) e nunca reapresentar o mesmo artista; complementarmente ao RF 0011, que trata da deduplicação de músicas
-- [x] RF 0036: As interações de curtir e rejeitar devem ser implementadas via Server Actions, com revalidação server-side para carregar a próxima recomendação sem estado client-side
-- [x] RF 0037: Após uma busca bem-sucedida na página de busca, o formulário de busca deve ser substituído pelos resultados; o usuário deve poder realizar uma nova busca a partir dos resultados
-- [x] RF 0038: A página de busca deve exibir um estado vazio quando a busca não retornar artistas relacionados ao termo pesquisado
-- RF 0039: O header da aplicação deve exibir links contextuais ao estado de autenticação: os links de busca e logout são exibidos apenas para usuários autenticados; o link "sobre" é exibido para todos os usuários
-- RF 0040: A playlist criada no Spotify deve ter o nome "Randomfy" e uma descrição que referencia o projeto com a URL da aplicação
-- [x] RF 0041: O embed do Spotify exibido após a criação da playlist deve usar o tema escuro (parâmetro `theme=0` na URL do embed)
-- RF 0042: O pôster de festival deve exibir o ano atual dinamicamente no layout
-- [x] RF 0043: O collage de imagens deve usar as capas de álbum das músicas dos artistas curtidos (não a imagem do artista)
-- [x] RF 0044: Ao fazer download do collage ou do pôster de festival, o botão de download e eventuais legendas devem ser ocultados da imagem gerada, garantindo um output limpo sem elementos de UI
-- [x] RF 0045: O sistema deve exibir uma página de erro global com opção de tentar novamente quando ocorrer uma falha não tratada durante a navegação (equivalente ao `error.tsx` do Next.js App Router)
-- [x] RF 0046: A aplicação deve exibir uma página 404 personalizada para rotas inexistentes
-- [x] RF 0047: A aplicação deve disponibilizar um `manifest.json` estático para suporte básico de instalabilidade (PWA lite), sem service worker ou cache offline
+- [x] RF 0022: O sistema deve exibir um link para abrir o artista/música diretamente no Spotify
+- [x] RF 0023: O sistema deve exibir feedback visual (toast) de sucesso ou erro ao criar uma playlist
+- [x] RF 0024: O sistema deve exibir um skeleton loader enquanto as recomendações estão sendo carregadas
+- [x] RF 0025: O sistema deve exibir um componente de erro com botão "tentar novamente" quando uma requisição falhar
+- RF 0026: O sistema deve suportar os idiomas inglês, espanhol e português
+- [x] RF 0027: O sistema deve ter uma página "Sobre" descrevendo o funcionamento da aplicação e o autor
+- [x] RF 0028: Quando não houver artistas relacionados disponíveis, o sistema deve usar os top artistas do usuário como fallback para as recomendações
+- [x] RF 0029: O sistema deve renovar o token de acesso automaticamente usando o refresh token quando receber erro 401
+- [x] RF 0030: O sistema deve encerrar a sessão de recomendações ao atingir 20 artistas curtidos ou ao usuário optar por encerrar antes, respeitando o mínimo de 5 curtidas definido no RF 0014
+- [x] RF 0031: O sistema deve manter uma lista de artistas já exibidos na sessão (curtidos ou rejeitados) e nunca reapresentar o mesmo artista; complementarmente ao RF 0011, que trata da deduplicação de músicas
+- [x] RF 0032: As interações de curtir e rejeitar devem ser implementadas via Server Actions, com revalidação server-side para carregar a próxima recomendação sem estado client-side
+- [x] RF 0033: O header da aplicação deve exibir links contextuais ao estado de autenticação: para usuários autenticados, links de navegação da sessão (Discover, Playlist/resultado e Sobre) e logout; para visitantes não autenticados, apenas o link Sobre
+- [x] RF 0034: A playlist criada no Spotify deve ter o nome "Randomfy" e uma descrição que referencia o projeto com a URL da aplicação
+- [x] RF 0035: O embed do Spotify exibido após a criação da playlist deve usar o tema escuro (parâmetro `theme=0` na URL do embed)
+- [x] RF 0036: O pôster de festival deve exibir o ano atual dinamicamente no layout
+- [x] RF 0037: O collage de imagens deve usar as capas de álbum das músicas dos artistas curtidos (não a imagem do artista)
+- [x] RF 0038: Ao fazer download do collage ou do pôster de festival, o botão de download e eventuais legendas devem ser ocultados da imagem gerada, garantindo um output limpo sem elementos de UI
+- [x] RF 0039: O sistema deve exibir uma página de erro global com opção de tentar novamente quando ocorrer uma falha não tratada durante a navegação (equivalente ao `error.tsx` do Next.js App Router)
+- [x] RF 0040: A aplicação deve exibir uma página 404 personalizada para rotas inexistentes
+- [x] RF 0041: A aplicação deve disponibilizar um `manifest.json` estático para suporte básico de instalabilidade (PWA lite), sem service worker ou cache offline
 
 ---
 

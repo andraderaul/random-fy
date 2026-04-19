@@ -1,16 +1,15 @@
 export function Footer() {
   return (
-    <footer className="py-6 text-center text-xs text-gray-400">
-      Created with{" "}
-      <span className="text-rose-500" aria-label="love">
-        ♥
-      </span>{" "}
-      by{" "}
+    <footer className="py-6 text-center text-xs text-muted">
+      <span>Randomfy</span>
+      <span aria-hidden="true" className="mx-2 opacity-30">·</span>
+      <span>Not affiliated with Spotify</span>
+      <span aria-hidden="true" className="mx-2 opacity-30">·</span>
       <a
         href="https://github.com/andraderaul"
         target="_blank"
         rel="noopener noreferrer"
-        className="hover:underline"
+        className="hover:text-foreground hover:underline transition-colors"
       >
         Raul Andrade
       </a>

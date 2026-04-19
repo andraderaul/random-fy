@@ -1,50 +1,33 @@
-import { redirect } from "next/navigation";
-import { parseAlbumImageUrls, parseLikedPairs } from "@/features/discover/session";
-import type { ResultSearchParams } from "@/features/discover/types";
-import { getArtistsByIds } from "@/features/result/queries/get-artists-by-ids";
-import { CollageGrid } from "@/features/result/components/collage-grid";
-import { CreatePlaylistButton } from "@/features/result/components/create-playlist-button";
-import { FestivalPoster } from "@/features/result/components/festival-poster";
+import { ResultContent } from "@/features/result/components/result-content";
+import type { ResultSearchParams } from "@/lib/types/spotify";
+
+const resultGlowTop =
+  "pointer-events-none absolute left-1/2 top-0 h-[min(72vmin,440px)] w-[min(92vw,720px)] -translate-x-1/2 -translate-y-[38%] rounded-full bg-primary/12 blur-[100px]";
+
+const resultGlowGreen =
+  "pointer-events-none absolute left-1/2 top-[min(28vh,220px)] h-[min(48vmin,320px)] w-[min(80vw,520px)] -translate-x-1/2 rounded-full bg-spotify/8 blur-[90px]";
+
+const resultGlowMagenta =
+  "pointer-events-none absolute -right-[min(20vw,120px)] bottom-0 h-[min(56vmin,360px)] w-[min(72vw,480px)] translate-y-[20%] rounded-full bg-fuchsia-950/35 blur-[100px]";
 
 interface ResultPageProps {
   searchParams: Promise<ResultSearchParams>;
 }
 
 export default async function ResultPage({ searchParams }: ResultPageProps) {
-  const { liked: likedParam, albums: albumsParam } = await searchParams;
-  const pairs = parseLikedPairs(likedParam);
-
-  if (pairs.length < 5) {
-    redirect("/discover");
-  }
-
-  const artistIds = pairs.map((p) => p.artistId);
-  const trackIds = pairs.map((p) => p.trackId).filter(Boolean);
-  const albumImageUrls = parseAlbumImageUrls(albumsParam);
-
-  const artists = await getArtistsByIds(artistIds);
-
-  const collageItems = artists.map((a, i) => ({
-    imageUrl: albumImageUrls[i] ?? a.imageUrl,
-    artistName: a.name,
-  }));
+  const params = await searchParams;
 
   return (
-    <main className="flex flex-1 flex-col items-center gap-10 px-4 py-10 max-w-lg mx-auto w-full">
-      <h1 className="text-2xl font-bold">Your {pairs.length} picks</h1>
+    <main className="relative flex flex-1 flex-col overflow-hidden bg-background">
+      <div className="pointer-events-none absolute inset-0" aria-hidden>
+        <div className={resultGlowTop} />
+        <div className={resultGlowGreen} />
+        <div className={resultGlowMagenta} />
+      </div>
 
-      <CreatePlaylistButton trackIds={trackIds} />
-
-      <CollageGrid artists={collageItems} />
-
-      {pairs.length === 20 && (
-        <div className="flex flex-col gap-4 items-center w-full">
-          <h2 className="text-lg font-semibold text-gray-700 dark:text-gray-300">
-            Your festival lineup
-          </h2>
-          <FestivalPoster artists={artists} />
-        </div>
-      )}
+      <div className="relative z-10 mx-auto flex w-full max-w-4xl flex-1 flex-col items-center gap-14 px-4 py-12 sm:gap-16 sm:py-16 md:py-20">
+        <ResultContent searchParams={params} />
+      </div>
     </main>
   );
 }

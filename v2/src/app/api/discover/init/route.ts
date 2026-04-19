@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { setDiscoverSeed } from "@/features/discover/cookies";
-import { buildDiscoverUrl } from "@/features/discover/session";
+import { buildDiscoverUrl, parseLikedPairs, parseIds, parseAlbumImageUrls } from "@/features/discover/session";
 
 export async function GET(request: NextRequest): Promise<NextResponse> {
   const { searchParams } = request.nextUrl;
@@ -18,10 +18,10 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
   await setDiscoverSeed(seed);
 
   const discoverUrl = buildDiscoverUrl({
-    liked: liked ? liked.split(",").filter(Boolean) : [],
-    seen: seen ? seen.split(",").filter(Boolean) : [],
-    tracks: tracks ? tracks.split(",").filter(Boolean) : [],
-    albums: albums ? albums.split("|").filter(Boolean) : [],
+    liked: parseLikedPairs(liked),
+    seen: parseIds(seen),
+    tracks: parseIds(tracks),
+    albums: parseAlbumImageUrls(albums),
   });
 
   return NextResponse.redirect(new URL(discoverUrl, request.url));

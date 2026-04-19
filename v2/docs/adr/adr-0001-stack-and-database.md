@@ -10,7 +10,7 @@
 
 O projeto `randomfy` está sendo reescrito do zero. A versão anterior utilizava Next.js com Pages Router, React Query, Axios e next-i18next — uma arquitetura centrada no cliente. Os novos requisitos (RNF 0001, 0003, 0017, 0018) determinam explicitamente o uso de App Router, Server Components e Server Actions como padrão arquitetural, com comunicação autenticada com a Spotify API ocorrendo exclusivamente server-side.
 
-Além disso, os requisitos funcionais indicam que o estado de sessão (lista de curtidos, progresso, histórico) não precisa persistir entre dispositivos ou sessões (RF 0034, RF 0035) — ele dura apenas enquanto o usuário navega.
+Além disso, os requisitos funcionais indicam que o estado de sessão (lista de curtidos, progresso, histórico) não precisa persistir entre dispositivos ou sessões (RF 0030, RF 0031) — ele dura apenas enquanto o usuário navega.
 
 ---
 

@@ -12,7 +12,7 @@ Com a stack definida na ADR-001 (Next.js 15, App Router, Server Components, Serv
 
 - Separação clara entre leitura e escrita (RNF 0016 — inspirado em CQRS)
 - Comunicação com a Spotify API exclusivamente server-side (RNF 0017)
-- Server Actions como mecanismo de escrita (RF 0036)
+- Server Actions como mecanismo de escrita (RF 0032)
 - Ausência de estado client-side para o fluxo principal
 
 A versão anterior do projeto usava uma organização flat com pastas globais (`/components`, `/queries`, `/services`, `/templates`, `/contexts`), o que tornava difícil rastrear o que pertence a qual domínio e gerava acoplamento implícito entre features.
@@ -61,8 +61,6 @@ src/
 │   │   ├── layout.tsx
 │   │   ├── discover/
 │   │   │   └── page.tsx
-│   │   ├── search/
-│   │   │   └── page.tsx
 │   │   └── result/
 │   │       └── page.tsx
 │   └── about/
@@ -83,12 +81,6 @@ src/
 │   │   │   ├── artist-card.tsx
 │   │   │   ├── artist-card.skeleton.tsx
 │   │   │   └── progress-counter.tsx
-│   │   └── types.ts
-│   ├── search/
-│   │   ├── queries/
-│   │   │   └── search-artists.ts
-│   │   ├── actions.ts
-│   │   ├── components/
 │   │   └── types.ts
 │   ├── playlist/
 │   │   ├── mutations/
@@ -135,7 +127,7 @@ Arquivos `.spec.ts` / `.spec.tsx` ficam colocalizados com o arquivo que testam.
 
 ### Separação entre `playlist` e `collage`
 
-Apesar de serem gerados a partir do fluxo de `discover` e `search`, `playlist` e `collage` são features de **output** independentes — ambas são consumidas por `discover` e `search` (RF 0014, RF 0023). A `app/` é responsável por orquestrar essa composição nas pages.
+Playlist e collage são outputs independentes construídos a partir do fluxo de `discover`, exibidos na rota `result` ao atingir o mínimo do RF 0014. A `app/` orquestra essa composição nas pages.
 
 ---
 
@@ -174,5 +166,5 @@ Descartado por overhead desnecessário para o tamanho e escopo do projeto.
 ## Referências
 
 - ADR-001 — Stack e Banco de Dados
-- `requirements.md` — RF 0036, RNF 0016, RNF 0017
+- `requirements.md` — RF 0032, RNF 0016, RNF 0017
 - [Next.js App Router — Route Groups](https://nextjs.org/docs/app/building-your-application/routing/route-groups)

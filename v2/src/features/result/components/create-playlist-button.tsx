@@ -1,9 +1,11 @@
 "use client";
 
 import { useTransition, useState } from "react";
-import { createPlaylistAction } from "@/features/playlist/actions";
-import { PlaylistEmbed } from "@/features/playlist/components/playlist-embed";
-import type { Playlist } from "@/features/playlist/types";
+import { toast } from "sonner";
+import { SpotifyIcon } from "@/components/icons";
+import { Button, Heading, Surface } from "@/components/ui";
+import { createPlaylistAction, PlaylistEmbed } from "@/features/playlist";
+import type { Playlist } from "@/features/playlist";
 
 interface CreatePlaylistButtonProps {
   trackIds: string[];
@@ -12,51 +14,55 @@ interface CreatePlaylistButtonProps {
 export function CreatePlaylistButton({ trackIds }: CreatePlaylistButtonProps) {
   const [isPending, startTransition] = useTransition();
   const [playlist, setPlaylist] = useState<Playlist | null>(null);
-  const [error, setError] = useState<string | null>(null);
 
   function handleClick() {
-    setError(null);
     startTransition(async () => {
       const result = await createPlaylistAction(trackIds);
       if ("error" in result) {
-        setError(result.error);
+        toast.error(result.error);
       } else {
         setPlaylist(result);
+        toast.success("Playlist created!");
       }
     });
   }
 
   if (playlist) {
     return (
-      <div className="flex flex-col gap-3 w-full">
-        <a
-          href={playlist.spotifyUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-sm text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 transition-colors self-center"
-        >
-          Open in Spotify ↗
-        </a>
+      <div className="flex w-full min-w-full basis-full flex-col gap-4">
+        <Surface className="flex items-center justify-between gap-4 px-5 py-4">
+          <div className="flex min-w-0 flex-col gap-0.5">
+            <Heading level="section" as="h2">
+              Playlist ready
+            </Heading>
+            <p className="truncate text-sm text-muted">
+              Saved to your Spotify account.
+            </p>
+          </div>
+          <a
+            href={playlist.spotifyUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="shrink-0 text-sm font-medium transition-opacity hover:opacity-70"
+          >
+            Open in Spotify ↗
+          </a>
+        </Surface>
         <PlaylistEmbed playlist={playlist} />
       </div>
     );
   }
 
   return (
-    <div className="flex flex-col gap-3 w-full items-center">
-      <button
-        onClick={handleClick}
-        disabled={isPending}
-        className="rounded-full bg-green-500 px-8 py-3 font-semibold text-black hover:bg-green-400 disabled:opacity-60 disabled:cursor-not-allowed transition-colors"
-      >
-        {isPending ? "Creating playlist…" : "Create Spotify playlist"}
-      </button>
-
-      {error && (
-        <div role="alert" className="rounded-lg bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-800 w-full">
-          {error}
-        </div>
-      )}
-    </div>
+    <Button
+      onClick={handleClick}
+      disabled={isPending}
+      variant="spotify"
+      size="lg"
+      className="w-full shadow-glow sm:w-auto"
+    >
+      <SpotifyIcon width={22} height={22} className="shrink-0" />
+      {isPending ? "Creating playlist…" : "Create Spotify playlist"}
+    </Button>
   );
 }

@@ -1,7 +1,6 @@
 ---
 description: Detailed responsibilities and constraints for each architecture layer (App, Features, Components, Lib). Apply when creating files inside app/, features/, components/, or lib/ to ensure each file respects its layer's boundaries.
-globs: **/app/**/*.tsx,**/app/**/*.ts,**/features/**/*.tsx,**/features/**/*.ts,**/components/**/*.tsx,**/components/**/*.ts,**/lib/**/*.ts
-alwaysApply: false
+alwaysApply: true
 ---
 
 ## Lib (`src/lib/`)

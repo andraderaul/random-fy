@@ -7,17 +7,21 @@ interface SpotifyPlaylist {
   external_urls: { spotify: string };
 }
 
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? "https://randomfy.app";
+
 export async function createPlaylist(
   userId: string,
   trackIds: string[],
+  accessToken: string,
 ): Promise<Playlist> {
   const playlist = await spotifyFetch<SpotifyPlaylist>(
+    accessToken,
     `/users/${userId}/playlists`,
     {
       method: "POST",
       body: JSON.stringify({
-        name: "My random-fy picks",
-        description: "Artists I discovered on random-fy",
+        name: "Randomfy",
+        description: `Created with Randomfy — ${APP_URL}`,
         public: true,
       }),
     },
@@ -25,10 +29,14 @@ export async function createPlaylist(
 
   const uris = trackIds.map((id) => `spotify:track:${id}`);
 
-  await spotifyFetch(`/playlists/${playlist.id}/tracks`, {
-    method: "POST",
-    body: JSON.stringify({ uris }),
-  });
+  await spotifyFetch(
+    accessToken,
+    `/playlists/${playlist.id}/tracks`,
+    {
+      method: "POST",
+      body: JSON.stringify({ uris }),
+    },
+  );
 
   return {
     id: playlist.id,

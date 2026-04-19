@@ -8,14 +8,11 @@ import { mockArtist } from "../../../../test/msw/handlers/discover";
 import { getRelatedArtists } from "./get-related-artists";
 
 const SPOTIFY_BASE = "https://api.spotify.com/v1";
-
-jest.mock("@/features/auth/cookies", () => ({
-  getAccessToken: jest.fn().mockResolvedValue("mock-access-token"),
-}));
+const ACCESS_TOKEN = "mock-access-token";
 
 describe("getRelatedArtists", () => {
   it("returns related artists for a given seed", async () => {
-    const result = await getRelatedArtists("seed-artist");
+    const result = await getRelatedArtists("seed-artist", ACCESS_TOKEN);
 
     expect(result).toHaveLength(2);
     expect(result[0]).toMatchObject({
@@ -33,7 +30,7 @@ describe("getRelatedArtists", () => {
       ),
     );
 
-    const result = await getRelatedArtists("any");
+    const result = await getRelatedArtists("any", ACCESS_TOKEN);
     expect(result[0]?.imageUrl).toBe("");
   });
 
@@ -44,6 +41,8 @@ describe("getRelatedArtists", () => {
       ),
     );
 
-    await expect(getRelatedArtists("bad-id")).rejects.toThrow("Spotify API error");
+    await expect(getRelatedArtists("bad-id", ACCESS_TOKEN)).rejects.toThrow(
+      "Spotify API error",
+    );
   });
 });

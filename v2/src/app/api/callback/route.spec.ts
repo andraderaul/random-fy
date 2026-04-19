@@ -9,6 +9,7 @@ import { GET } from "./route";
 
 const SPOTIFY_TOKEN_URL = "https://accounts.spotify.com/api/token";
 const BASE_URL = "http://localhost:3000";
+const VALID_STATE = "mock-oauth-state";
 
 jest.mock("next/navigation", () => ({
   redirect: jest.fn((url: string) => {
@@ -18,19 +19,33 @@ jest.mock("next/navigation", () => ({
 
 jest.mock("@/features/auth/cookies", () => ({
   setTokens: jest.fn(),
+  getOAuthState: jest.fn(),
+  clearOAuthState: jest.fn(),
 }));
 
 import { redirect } from "next/navigation";
-import { setTokens } from "@/features/auth/cookies";
+import {
+  setTokens,
+  getOAuthState,
+  clearOAuthState,
+} from "@/features/auth/cookies";
 
 const mockRedirect = redirect as jest.MockedFunction<typeof redirect>;
 const mockSetTokens = setTokens as jest.MockedFunction<typeof setTokens>;
+const mockGetOAuthState = getOAuthState as jest.MockedFunction<
+  typeof getOAuthState
+>;
+const mockClearOAuthState = clearOAuthState as jest.MockedFunction<
+  typeof clearOAuthState
+>;
 
 beforeEach(() => {
   process.env.SPOTIFY_CLIENT_ID = "test-client-id";
   process.env.SPOTIFY_CLIENT_SECRET = "test-client-secret";
   process.env.SPOTIFY_REDIRECT_URI = "http://localhost:3000/api/callback";
   mockSetTokens.mockResolvedValue(undefined);
+  mockGetOAuthState.mockResolvedValue(VALID_STATE);
+  mockClearOAuthState.mockResolvedValue(undefined);
 });
 
 afterEach(() => {
@@ -40,15 +55,16 @@ afterEach(() => {
   delete process.env.SPOTIFY_REDIRECT_URI;
 });
 
-function makeRequest(code?: string): NextRequest {
+function makeRequest(options: { code?: string; state?: string } = {}): NextRequest {
   const url = new URL("/api/callback", BASE_URL);
-  if (code) url.searchParams.set("code", code);
+  if (options.code) url.searchParams.set("code", options.code);
+  if (options.state) url.searchParams.set("state", options.state);
   return new NextRequest(url.toString());
 }
 
 describe("GET /api/callback", () => {
   it("redirects to /login when code param is missing", async () => {
-    const request = makeRequest();
+    const request = makeRequest({ state: VALID_STATE });
     const response = await GET(request);
 
     expect(response.status).toBe(307);
@@ -56,7 +72,7 @@ describe("GET /api/callback", () => {
   });
 
   it("exchanges code for tokens and redirects to /discover", async () => {
-    const request = makeRequest("valid-code");
+    const request = makeRequest({ code: "valid-code", state: VALID_STATE });
 
     await expect(GET(request)).rejects.toMatchObject({
       message: "NEXT_REDIRECT",
@@ -68,6 +84,37 @@ describe("GET /api/callback", () => {
       3600,
     );
     expect(mockRedirect).toHaveBeenCalledWith("/discover");
+    expect(mockClearOAuthState).toHaveBeenCalled();
+  });
+
+  it("redirects to /login when state param is missing", async () => {
+    const request = makeRequest({ code: "valid-code" });
+    const response = await GET(request);
+
+    expect(response.status).toBe(307);
+    expect(response.headers.get("location")).toContain("/login");
+    expect(mockSetTokens).not.toHaveBeenCalled();
+  });
+
+  it("redirects to /login when state cookie is missing", async () => {
+    mockGetOAuthState.mockResolvedValue(undefined);
+
+    const request = makeRequest({ code: "valid-code", state: VALID_STATE });
+    const response = await GET(request);
+
+    expect(response.status).toBe(307);
+    expect(response.headers.get("location")).toContain("/login");
+    expect(mockSetTokens).not.toHaveBeenCalled();
+  });
+
+  it("redirects to /login when state does not match stored cookie", async () => {
+    const request = makeRequest({ code: "valid-code", state: "wrong-state" });
+    const response = await GET(request);
+
+    expect(response.status).toBe(307);
+    expect(response.headers.get("location")).toContain("/login");
+    expect(mockSetTokens).not.toHaveBeenCalled();
+    expect(mockClearOAuthState).toHaveBeenCalled();
   });
 
   it("redirects to /login when Spotify token exchange fails", async () => {
@@ -77,7 +124,26 @@ describe("GET /api/callback", () => {
       ),
     );
 
-    const request = makeRequest("bad-code");
+    const request = makeRequest({ code: "bad-code", state: VALID_STATE });
+    const response = await GET(request);
+
+    expect(response.status).toBe(307);
+    expect(response.headers.get("location")).toContain("/login");
+    expect(mockSetTokens).not.toHaveBeenCalled();
+  });
+
+  it("redirects to /login when refresh_token is missing in token response", async () => {
+    server.use(
+      http.post(SPOTIFY_TOKEN_URL, () =>
+        HttpResponse.json({
+          access_token: "mock-access-token",
+          expires_in: 3600,
+          token_type: "Bearer",
+        }),
+      ),
+    );
+
+    const request = makeRequest({ code: "valid-code", state: VALID_STATE });
     const response = await GET(request);
 
     expect(response.status).toBe(307);
@@ -88,7 +154,7 @@ describe("GET /api/callback", () => {
   it("redirects to /login when env vars are missing", async () => {
     delete process.env.SPOTIFY_CLIENT_ID;
 
-    const request = makeRequest("some-code");
+    const request = makeRequest({ code: "some-code", state: VALID_STATE });
     const response = await GET(request);
 
     expect(response.status).toBe(307);

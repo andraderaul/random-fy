@@ -6,13 +6,31 @@ import { PauseIcon, PlayIcon } from "@/components/icons";
 
 let currentAudio: HTMLAudioElement | null = null;
 
+const controlButtonClass =
+  "flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-black/45 text-white backdrop-blur-md shadow-md transition-colors hover:enabled:bg-black/55 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white disabled:cursor-not-allowed disabled:opacity-50";
+
 interface AudioPlayerProps {
-  previewUrl: string;
+  previewUrl: string | null;
+  className?: string;
 }
 
-export function AudioPlayer({ previewUrl }: AudioPlayerProps) {
+export function AudioPlayer({ previewUrl, className = "" }: AudioPlayerProps) {
+  const controlClass = `${controlButtonClass} ${className}`.trim();
   const audioRef = useRef<HTMLAudioElement>(null);
   const [playing, setPlaying] = useState(false);
+
+  if (!previewUrl) {
+    return (
+      <button
+        type="button"
+        disabled
+        aria-label="Preview not available"
+        className={controlClass}
+      >
+        <PlayIcon size={18} />
+      </button>
+    );
+  }
 
   function toggle() {
     const audio = audioRef.current;
@@ -40,15 +58,16 @@ export function AudioPlayer({ previewUrl }: AudioPlayerProps) {
   }
 
   return (
-    <div className="shrink-0">
+    <>
       <audio ref={audioRef} src={previewUrl} onEnded={handleEnded} />
       <button
+        type="button"
         onClick={toggle}
         aria-label={playing ? "Pause preview" : "Play preview"}
-        className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-900 text-white dark:bg-white dark:text-gray-900 hover:opacity-80 transition-opacity"
+        className={controlClass}
       >
-        {playing ? <PauseIcon size={20} /> : <PlayIcon size={20} />}
+        {playing ? <PauseIcon size={18} /> : <PlayIcon size={18} />}
       </button>
-    </div>
+    </>
   );
 }

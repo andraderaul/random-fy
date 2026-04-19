@@ -1,5 +1,5 @@
 import { spotifyFetch } from "@/lib/spotify/client";
-import type { Track } from "../types";
+import type { Track } from "@/lib/types/spotify";
 
 interface SpotifyTrack {
   id: string;
@@ -26,9 +26,11 @@ function mapTrack(raw: SpotifyTrack): Track {
 export async function getArtistTrack(
   artistId: string,
   seenTrackIds: string[],
+  accessToken: string,
   market = "US",
 ): Promise<Track | null> {
   const data = await spotifyFetch<TopTracksResponse>(
+    accessToken,
     `/artists/${artistId}/top-tracks?market=${market}`,
   );
 

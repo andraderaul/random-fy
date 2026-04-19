@@ -7,13 +7,10 @@ import { server } from "../../../../test/msw/server";
 import { createPlaylist } from "./create-playlist";
 
 const SPOTIFY_BASE = "https://api.spotify.com/v1";
-
-jest.mock("@/features/auth/cookies", () => ({
-  getAccessToken: jest.fn().mockResolvedValue("mock-access-token"),
-}));
+const ACCESS_TOKEN = "mock-access-token";
 
 describe("createPlaylist", () => {
-  it("calls POST /users/{userId}/playlists with name and public: true", async () => {
+  it("calls POST /users/{userId}/playlists with Randomfy name, description and public: true", async () => {
     let capturedBody: Record<string, unknown> = {};
 
     server.use(
@@ -21,18 +18,20 @@ describe("createPlaylist", () => {
         capturedBody = (await request.json()) as Record<string, unknown>;
         return HttpResponse.json({
           id: "playlist-1",
-          name: "My random-fy picks",
+          name: "Randomfy",
           external_urls: { spotify: "https://open.spotify.com/playlist/playlist-1" },
         });
       }),
     );
 
-    await createPlaylist("user-123", ["track-1"]);
+    await createPlaylist("user-123", ["track-1"], ACCESS_TOKEN);
 
     expect(capturedBody).toMatchObject({
-      name: "My random-fy picks",
+      name: "Randomfy",
       public: true,
     });
+    expect(capturedBody.description).toMatch(/Randomfy/);
+    expect(capturedBody.description).toMatch(/https?:\/\//);
   });
 
   it("calls POST /playlists/{id}/tracks with URIs in spotify:track:{id} format", async () => {
@@ -45,21 +44,21 @@ describe("createPlaylist", () => {
       }),
     );
 
-    await createPlaylist("user-123", ["track-1", "track-2"]);
+    await createPlaylist("user-123", ["track-1", "track-2"], ACCESS_TOKEN);
 
     expect(capturedBody).toMatchObject({
       uris: ["spotify:track:track-1", "spotify:track:track-2"],
     });
   });
 
-  it("returns a Playlist with embedUrl in the correct format", async () => {
-    const result = await createPlaylist("user-123", ["track-1"]);
+  it("returns a Playlist with embedUrl using theme=0", async () => {
+    const result = await createPlaylist("user-123", ["track-1"], ACCESS_TOKEN);
 
     expect(result).toMatchObject({
       id: "playlist-1",
-      name: "My random-fy picks",
+      name: "Randomfy",
       spotifyUrl: "https://open.spotify.com/playlist/playlist-1",
-      embedUrl: "https://open.spotify.com/embed/playlist/playlist-1",
+      embedUrl: "https://open.spotify.com/embed/playlist/playlist-1?theme=0",
     });
   });
 
@@ -70,7 +69,9 @@ describe("createPlaylist", () => {
       ),
     );
 
-    await expect(createPlaylist("user-123", ["track-1"])).rejects.toThrow("Spotify API error");
+    await expect(
+      createPlaylist("user-123", ["track-1"], ACCESS_TOKEN),
+    ).rejects.toThrow("Spotify API error");
   });
 
   it("throws when adding tracks POST fails", async () => {
@@ -80,6 +81,8 @@ describe("createPlaylist", () => {
       ),
     );
 
-    await expect(createPlaylist("user-123", ["track-1"])).rejects.toThrow("Spotify API error");
+    await expect(
+      createPlaylist("user-123", ["track-1"], ACCESS_TOKEN),
+    ).rejects.toThrow("Spotify API error");
   });
 });

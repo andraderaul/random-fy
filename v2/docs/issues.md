@@ -1,2 +1,0 @@
-- [x] login não está sendo persistido, ou seja, apos redirect para result e voltar para discover a aplicação crasha pedindo login.
-- [x] o player de audio não está sendo reproduzido, ou seja, apos clicar no botão de play o audio não inicia.

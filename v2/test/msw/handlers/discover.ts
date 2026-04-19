@@ -17,6 +17,9 @@ export const mockTrack = (overrides: Partial<Record<string, unknown>> = {}) => (
   name: "Test Track",
   preview_url: "https://p.scdn.co/mp3-preview/test",
   external_urls: { spotify: "https://open.spotify.com/track/track-1" },
+  album: {
+    images: [{ url: "https://i.scdn.co/image/album-test.jpg", width: 640, height: 640 }],
+  },
   ...overrides,
 });
 

@@ -1,5 +1,5 @@
 import { spotifyFetch } from "@/lib/spotify/client";
-import type { Artist } from "../types";
+import type { Artist } from "@/lib/types/spotify";
 
 interface SpotifyArtist {
   id: string;
@@ -25,8 +25,12 @@ function mapArtist(raw: SpotifyArtist): Artist {
   };
 }
 
-export async function getRelatedArtists(seedArtistId: string): Promise<Artist[]> {
+export async function getRelatedArtists(
+  seedArtistId: string,
+  accessToken: string,
+): Promise<Artist[]> {
   const data = await spotifyFetch<RelatedArtistsResponse>(
+    accessToken,
     `/artists/${seedArtistId}/related-artists`,
   );
   return data.artists.map(mapArtist);

@@ -1,12 +1,18 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import { Header } from "@/components/shared/header";
+import { Fraunces, Geist_Mono, Inter } from "next/font/google";
+import { Toaster } from "sonner";
 import { Footer } from "@/components/shared/footer";
-import { getAccessToken } from "@/features/auth/cookies";
+import { Header } from "@/components/shared/header";
+import { getAccessToken, logoutAction } from "@/features/auth";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+});
+
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
   subsets: ["latin"],
 });
 
@@ -40,12 +46,13 @@ export default async function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${inter.variable} ${fraunces.variable} ${geistMono.variable} min-h-dvh antialiased font-sans`}
     >
-      <body className="min-h-full flex flex-col">
-        <Header isAuthenticated={!!token} />
-        <div className="flex flex-1 flex-col">{children}</div>
+      <body className="flex min-h-dvh flex-col">
+        <Header isAuthenticated={!!token} onLogout={logoutAction} />
+        <div className="flex min-h-0 flex-1 flex-col">{children}</div>
         <Footer />
+        <Toaster position="top-center" richColors closeButton />
       </body>
     </html>
   );

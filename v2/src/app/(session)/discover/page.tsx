@@ -1,94 +1,15 @@
 import { Suspense } from "react";
-import { headers } from "next/headers";
-import { redirect } from "next/navigation";
-import { getDiscoverSeed } from "@/features/discover/cookies";
-import { getArtistTrack } from "@/features/discover/queries/get-artist-track";
-import { getRelatedArtists } from "@/features/discover/queries/get-related-artists";
-import { getTopArtists } from "@/features/discover/queries/get-top-artists";
-import { parseDiscoverParams, pickSeed } from "@/features/discover/session";
-import type { DiscoverSearchParams } from "@/features/discover/types";
-import { ArtistCard } from "@/features/discover/components/artist-card";
+import { DiscoverContent } from "@/features/discover/components/discover-content";
 import { ArtistCardSkeleton } from "@/features/discover/components/artist-card.skeleton";
 import { ProgressCounter } from "@/features/discover/components/progress-counter";
+import { parseDiscoverParams } from "@/features/discover/session";
+import type { DiscoverSearchParams } from "@/features/discover/types";
 
-const MAX_LIKED = 20;
+const discoverGlowTop =
+  "pointer-events-none absolute left-1/2 top-0 h-[min(78vmin,480px)] w-[min(96vw,760px)] -translate-x-1/2 -translate-y-[42%] rounded-full bg-primary/14 blur-[120px]";
 
 interface DiscoverPageProps {
   searchParams: Promise<DiscoverSearchParams>;
-}
-
-async function DiscoverContent({
-  searchParams,
-}: {
-  searchParams: DiscoverSearchParams;
-}) {
-  const market = (await headers()).get("x-origin-id") ?? "US";
-  const { liked, seen, tracks } = parseDiscoverParams(searchParams);
-
-  if (liked.length >= MAX_LIKED) {
-    redirect(
-      `/result?liked=${searchParams.liked ?? ""}&albums=${searchParams.albums ?? ""}`,
-    );
-  }
-
-  const seedId = await getDiscoverSeed();
-
-  if (!seedId) {
-    const topArtists = await getTopArtists();
-    const seed = pickSeed(topArtists, seen);
-
-    if (!seed) {
-      return (
-        <p className="text-gray-500">
-          No more artists to discover. Try again later.
-        </p>
-      );
-    }
-
-    const initParams = new URLSearchParams({ seed: seed.id });
-    if (searchParams.liked) {
-      initParams.set("liked", searchParams.liked);
-    }
-    if (searchParams.seen) {
-      initParams.set("seen", searchParams.seen);
-    }
-    if (searchParams.tracks) {
-      initParams.set("tracks", searchParams.tracks);
-    }
-    if (searchParams.albums) {
-      initParams.set("albums", searchParams.albums);
-    }
-
-    redirect(`/api/discover/init?${initParams.toString()}`);
-  }
-
-  let candidates = await getRelatedArtists(seedId);
-
-  if (candidates.length === 0) {
-    candidates = await getTopArtists();
-  }
-
-  const next = pickSeed(candidates, seen);
-
-  if (!next) {
-    return (
-      <p className="text-gray-500">
-        No more artists to discover. Try again later.
-      </p>
-    );
-  }
-
-  const track = await getArtistTrack(next.id, tracks, market);
-
-  if (!track) {
-    return (
-      <p className="text-gray-500">
-        No track available for this artist. Try again later.
-      </p>
-    );
-  }
-
-  return <ArtistCard artist={next} track={track} state={searchParams} />;
 }
 
 export default async function DiscoverPage({
@@ -98,16 +19,28 @@ export default async function DiscoverPage({
   const { liked } = parseDiscoverParams(params);
 
   return (
-    <main className="flex flex-1 flex-col items-center justify-center gap-6 p-4">
-      <Suspense fallback={<ArtistCardSkeleton />}>
-        <DiscoverContent searchParams={params} />
-      </Suspense>
+    <main className="relative flex min-h-0 flex-1 flex-col overflow-hidden bg-background">
+      <div className="pointer-events-none absolute inset-0" aria-hidden>
+        <div className={discoverGlowTop} />
+      </div>
 
-      <ProgressCounter
-        likedParam={params.liked ?? ""}
-        albumsParam={params.albums ?? ""}
-        likedCount={liked.length}
-      />
+      <div className="relative z-10 flex h-full min-h-0 flex-1 flex-col items-center overflow-hidden px-4 py-2 sm:py-3">
+        <div className="flex h-full min-h-0 w-full max-w-md flex-1 flex-col gap-2 sm:gap-3">
+          <div className="shrink-0">
+            <ProgressCounter
+              likedParam={params.liked ?? ""}
+              albumsParam={params.albums ?? ""}
+              likedCount={liked.length}
+            />
+          </div>
+
+          <div className="flex h-full min-h-0 min-w-0 flex-1 flex-col overflow-hidden">
+            <Suspense fallback={<ArtistCardSkeleton />}>
+              <DiscoverContent searchParams={params} />
+            </Suspense>
+          </div>
+        </div>
+      </div>
     </main>
   );
 }

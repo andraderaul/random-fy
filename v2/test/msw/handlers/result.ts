@@ -16,7 +16,7 @@ export const mockSpotifyArtist = (overrides: Partial<Record<string, unknown>> = 
 
 export const mockSpotifyPlaylist = (overrides: Partial<Record<string, unknown>> = {}) => ({
   id: "playlist-1",
-  name: "My random-fy picks",
+  name: "Randomfy",
   external_urls: { spotify: "https://open.spotify.com/playlist/playlist-1" },
   ...overrides,
 });

@@ -8,14 +8,11 @@ import { mockTrack } from "../../../../test/msw/handlers/discover";
 import { getArtistTrack } from "./get-artist-track";
 
 const SPOTIFY_BASE = "https://api.spotify.com/v1";
-
-jest.mock("@/features/auth/cookies", () => ({
-  getAccessToken: jest.fn().mockResolvedValue("mock-access-token"),
-}));
+const ACCESS_TOKEN = "mock-access-token";
 
 describe("getArtistTrack", () => {
   it("returns the first track not in seenTrackIds", async () => {
-    const result = await getArtistTrack("any-artist", []);
+    const result = await getArtistTrack("any-artist", [], ACCESS_TOKEN);
 
     expect(result).toMatchObject({
       id: "track-of-any-artist-1",
@@ -25,16 +22,21 @@ describe("getArtistTrack", () => {
   });
 
   it("skips tracks that are in seenTrackIds", async () => {
-    const result = await getArtistTrack("any-artist", ["track-of-any-artist-1"]);
+    const result = await getArtistTrack(
+      "any-artist",
+      ["track-of-any-artist-1"],
+      ACCESS_TOKEN,
+    );
 
     expect(result?.id).toBe("track-of-any-artist-2");
   });
 
   it("returns null when all tracks have been seen", async () => {
-    const result = await getArtistTrack("any-artist", [
-      "track-of-any-artist-1",
-      "track-of-any-artist-2",
-    ]);
+    const result = await getArtistTrack(
+      "any-artist",
+      ["track-of-any-artist-1", "track-of-any-artist-2"],
+      ACCESS_TOKEN,
+    );
 
     expect(result).toBeNull();
   });
@@ -48,7 +50,7 @@ describe("getArtistTrack", () => {
       ),
     );
 
-    const result = await getArtistTrack("any", []);
+    const result = await getArtistTrack("any", [], ACCESS_TOKEN);
     expect(result?.previewUrl).toBeNull();
   });
 
@@ -59,6 +61,8 @@ describe("getArtistTrack", () => {
       ),
     );
 
-    await expect(getArtistTrack("bad", [])).rejects.toThrow("Spotify API error");
+    await expect(getArtistTrack("bad", [], ACCESS_TOKEN)).rejects.toThrow(
+      "Spotify API error",
+    );
   });
 });

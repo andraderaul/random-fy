@@ -1,3 +1,4 @@
+import { Button, Heading } from "@/components/ui";
 import { endSessionAction } from "../actions";
 
 const MAX_LIKED = 20;
@@ -9,32 +10,73 @@ interface ProgressCounterProps {
   likedCount: number;
 }
 
-export function ProgressCounter({ likedParam, albumsParam, likedCount }: ProgressCounterProps) {
+export function ProgressCounter({
+  likedParam,
+  albumsParam,
+  likedCount,
+}: ProgressCounterProps) {
   const count = likedCount;
+  const displayCount = Math.min(count, MAX_LIKED);
+
   const canEnd = count >= MIN_TO_END;
+  const festivalUnlocked = count >= MAX_LIKED;
   const endWithArgs = endSessionAction.bind(null, likedParam, albumsParam);
+  const progress = Math.min((displayCount / MAX_LIKED) * 100, 100);
+  const remainingToUnlock = Math.max(0, MIN_TO_END - count);
+
+  const badge = festivalUnlocked
+    ? "Festival unlocked"
+    : canEnd
+      ? "Playlist unlocked"
+      : null;
 
   return (
-    <div className="flex flex-col items-center gap-2 w-full max-w-sm">
-      <div className="flex justify-between w-full text-xs text-gray-400">
-        <span>{count} / {MAX_LIKED}</span>
+    <div className="flex w-full flex-col gap-4">
+      <Heading level="eyebrow" as="p" className="text-left">
+        Your picks
+      </Heading>
+
+      <div className="flex items-start justify-between gap-3">
+        <p className="font-display text-4xl font-semibold leading-none tracking-tight text-foreground">
+          {displayCount}
+          <span className="text-2xl font-normal text-muted">
+            {" "}
+            / {MAX_LIKED}
+          </span>
+        </p>
+        {badge ? (
+          <span className="shrink-0 pt-1 text-right text-xs font-semibold leading-snug text-primary">
+            {badge}
+          </span>
+        ) : null}
       </div>
-      <div className="w-full h-1 rounded-full bg-gray-100 overflow-hidden">
+
+      <div
+        className="h-2 w-full overflow-hidden rounded-full bg-black/10 dark:bg-white/10"
+        role="progressbar"
+        aria-valuenow={displayCount}
+        aria-valuemin={0}
+        aria-valuemax={MAX_LIKED}
+      >
         <div
-          className="h-full bg-green-500 transition-all duration-300"
-          style={{ width: `${(count / MAX_LIKED) * 100}%` }}
+          className="h-full bg-primary transition-all duration-300"
+          style={{ width: `${progress}%` }}
         />
       </div>
-      {canEnd && (
-        <form action={endWithArgs} className="w-full mt-2">
-          <button
-            type="submit"
-            className="w-full rounded-full bg-green-500 py-3 text-sm font-semibold text-white hover:bg-green-400 transition-colors"
-          >
-            Finish
-          </button>
+
+      {!canEnd ? (
+        <p className="text-left text-xs text-muted">
+          {remainingToUnlock} more to unlock playlist
+        </p>
+      ) : null}
+
+      {canEnd ? (
+        <form action={endWithArgs} className="w-full">
+          <Button type="submit" variant="finish" size="md" className="w-full">
+            Finish with {displayCount} picks →
+          </Button>
         </form>
-      )}
+      ) : null}
     </div>
   );
 }

@@ -14,6 +14,7 @@ export async function setDiscoverSeed(artistId: string): Promise<void> {
   cookieStore.set(DISCOVER_SEED_KEY, artistId, {
     httpOnly: true,
     secure,
+    sameSite: "lax",
     path: "/",
   });
 }

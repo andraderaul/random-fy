@@ -59,6 +59,7 @@ export async function middleware(request: NextRequest): Promise<NextResponse> {
     value: refreshed.accessToken,
     httpOnly: true,
     secure,
+    sameSite: "lax",
     maxAge: refreshed.expiresIn,
     path: "/",
   });
@@ -67,6 +68,7 @@ export async function middleware(request: NextRequest): Promise<NextResponse> {
     value: String(newExpiresAt),
     httpOnly: true,
     secure,
+    sameSite: "lax",
     maxAge: THIRTY_DAYS,
     path: "/",
   });
@@ -75,5 +77,5 @@ export async function middleware(request: NextRequest): Promise<NextResponse> {
 }
 
 export const config = {
-  matcher: ["/", "/discover/:path*", "/search/:path*", "/result/:path*"],
+  matcher: ["/", "/discover/:path*", "/result/:path*"],
 };

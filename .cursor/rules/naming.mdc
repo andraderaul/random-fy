@@ -1,7 +1,6 @@
 ---
 description: File and code naming conventions for TypeScript and React files. Apply when creating or renaming files, components, hooks, services, or utilities. Enforces kebab-case for files, PascalCase for components, and specific suffix patterns per type.
-globs: **/*.tsx, **/*.ts
-alwaysApply: false
+alwaysApply: true
 ---
 
 ## File & Folder Naming
@@ -19,19 +18,19 @@ alwaysApply: false
 
 ## Code Naming
 
-| Type | Convention | Example |
-|------|-----------|---------|
-| React component | PascalCase | `ArtistCard` |
-| Hook | `use` + camelCase | `useAudioPlayer` |
-| Service | camelCase + `Service` | `spotifyService` |
-| Utility | descriptive camelCase | `formatDuration` |
+| Type            | Convention            | Example          |
+| --------------- | --------------------- | ---------------- |
+| React component | PascalCase            | `ArtistCard`     |
+| Hook            | `use` + camelCase     | `useAudioPlayer` |
+| Service         | camelCase + `Service` | `spotifyService` |
+| Utility         | descriptive camelCase | `formatDuration` |
 
 ## File Suffix Conventions
 
-| Pattern | Usage |
-|---------|-------|
+| Pattern           | Usage                        |
+| ----------------- | ---------------------------- |
 | `*.container.tsx` | Container (smart) components |
-| `use-*.ts` | Custom hooks |
-| `*-service.ts` | Service modules |
-| `*.spec.ts(x)` | Unit/integration tests |
-| `*.skeleton.tsx` | Loading skeleton variants |
+| `use-*.ts`        | Custom hooks                 |
+| `*-service.ts`    | Service modules              |
+| `*.spec.ts(x)`    | Unit/integration tests       |
+| `*.skeleton.tsx`  | Loading skeleton variants    |

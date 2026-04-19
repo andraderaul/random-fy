@@ -1,5 +1,5 @@
 import { spotifyFetch } from "@/lib/spotify/client";
-import type { Artist } from "@/features/discover/types";
+import type { Artist } from "@/lib/types/spotify";
 
 interface SpotifyArtist {
   id: string;
@@ -25,10 +25,11 @@ function mapArtist(raw: SpotifyArtist): Artist {
   };
 }
 
-export async function getArtistsByIds(ids: string[]): Promise<Artist[]> {
+export async function getArtistsByIds(ids: string[], accessToken: string): Promise<Artist[]> {
   if (ids.length === 0) return [];
 
   const data = await spotifyFetch<ArtistsBatchResponse>(
+    accessToken,
     `/artists?ids=${ids.slice(0, 50).join(",")}`,
   );
 

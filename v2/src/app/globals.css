@@ -1,25 +1,140 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/*
+  CSS custom properties are defined in :root and overridden in dark mode.
+  @theme inline maps Tailwind utility tokens → var() so utilities like
+  bg-surface, text-muted, border-subtle adapt automatically to dark mode
+  via the CSS var cascade — no dark: prefix needed in components.
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  Primary stays green in both modes.
+*/
+
+:root {
+  --bg: #ffffff;
+  --fg: #171717;
+  --c-surface: #ffffff;
+  --c-surface-muted: #f7f7f8;
+  --c-subtle: #ececee;
+  --c-muted: #6b7280;
+  --c-spotify: #1db954;
+  --c-spotify-hover: #1ed760;
+  --c-spotify-fg: #0a0a0a;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --bg: #0a0a0a;
+    --fg: #ededed;
+    --c-surface: #111113;
+    --c-surface-muted: #1a1a1d;
+    --c-subtle: #26262a;
+    --c-muted: #9ca3af;
+    /* Brighter green + light label so the CTA reads on dark UI and green glows */
+    --c-spotify: #1ed760;
+    --c-spotify-hover: #3be477;
+    --c-spotify-fg: #0a0a0a;
   }
 }
 
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes discover-card-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgb(34 197 94 / 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 16px rgb(34 197 94 / 0);
+  }
+}
+
+@theme inline {
+  --color-background: var(--bg);
+  --color-foreground: var(--fg);
+  --color-surface: var(--c-surface);
+  --color-surface-muted: var(--c-surface-muted);
+  --color-subtle: var(--c-subtle);
+  --color-muted: var(--c-muted);
+  --color-primary: #22c55e;
+  --color-primary-hover: #4ade80;
+  /* Semantic aliases (discover actions, shadcn-style snippets) */
+  --color-border: var(--c-subtle);
+  --color-card: var(--c-surface);
+  --color-secondary: var(--c-surface-muted);
+  --color-muted-foreground: var(--c-muted);
+  --color-primary-foreground: #ffffff;
+  --background-image-gradient-primary: linear-gradient(
+    to bottom right,
+    var(--color-primary-hover),
+    var(--color-primary)
+  );
+  --shadow-glow: 0 0 44px -8px rgb(34 197 94 / 0.55),
+    0 14px 28px -10px rgb(0 0 0 / 0.45);
+  --color-spotify: var(--c-spotify);
+  --color-spotify-hover: var(--c-spotify-hover);
+  --color-spotify-fg: var(--c-spotify-fg);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --animate-fade-in: fade-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-scale-in: scale-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-discover-card: discover-card-enter 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-spin-slow: spin-slow 20s linear infinite;
+  --animate-pulse-glow: pulse-glow 2.4s ease-out infinite;
+}
+
 body {
-  background: var(--color-background);
-  color: var(--color-foreground);
+  background: var(--bg);
+  color: var(--fg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in,
+  .animate-scale-in,
+  .animate-discover-card {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+
+  .animate-pulse-glow,
+  .animate-spin-slow {
+    animation: none !important;
+  }
 }
