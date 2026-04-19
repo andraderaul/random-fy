@@ -1,5 +1,7 @@
 import type { HTMLAttributes, ReactNode } from "react";
 
+import { cn } from "@/lib/cn";
+
 type Tone = "default" | "muted" | "locked";
 
 interface SurfaceProps extends HTMLAttributes<HTMLDivElement> {
@@ -20,9 +22,8 @@ export function Surface({
   children,
   ...rest
 }: SurfaceProps) {
-  const classes = `rounded-2xl ${tones[tone]} ${className}`.trim();
   return (
-    <div className={classes} {...rest}>
+    <div className={cn("rounded-2xl", tones[tone], className)} {...rest}>
       {children}
     </div>
   );

@@ -1,5 +1,7 @@
 import type { HTMLAttributes, ReactNode } from "react";
 
+import { cn } from "@/lib/cn";
+
 type Level = "display" | "title" | "section" | "eyebrow" | "muted";
 
 interface HeadingProps extends HTMLAttributes<HTMLElement> {
@@ -32,9 +34,8 @@ export function Heading({
   ...rest
 }: HeadingProps) {
   const Tag = as ?? defaultTags[level] ?? "p";
-  const classes = `${styles[level]} ${className}`.trim();
   return (
-    <Tag className={classes} {...rest}>
+    <Tag className={cn(styles[level], className)} {...rest}>
       {children}
     </Tag>
   );

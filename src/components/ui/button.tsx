@@ -1,6 +1,8 @@
 import { forwardRef } from "react";
 import type { ButtonHTMLAttributes, ReactNode } from "react";
 
+import { cn } from "@/lib/cn";
+
 type Variant = "primary" | "secondary" | "ghost" | "spotify" | "finish";
 type Size = "sm" | "md" | "lg";
 
@@ -37,9 +39,12 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     { variant = "primary", size = "md", className = "", children, ...rest },
     ref,
   ) {
-    const classes = `${base} ${variants[variant]} ${sizes[size]} ${className}`.trim();
     return (
-      <button ref={ref} className={classes} {...rest}>
+      <button
+        ref={ref}
+        className={cn(base, variants[variant], sizes[size], className)}
+        {...rest}
+      >
         {children}
       </button>
     );

@@ -4,6 +4,7 @@ import { Toaster } from "sonner";
 import { Footer } from "@/components/shared/footer";
 import { Header } from "@/components/shared/header";
 import { getAccessToken, logoutAction } from "@/features/auth";
+import { cn } from "@/lib/cn";
 import "./globals.css";
 
 const inter = Inter({
@@ -46,7 +47,12 @@ export default async function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${fraunces.variable} ${geistMono.variable} min-h-dvh antialiased font-sans`}
+      className={cn(
+        inter.variable,
+        fraunces.variable,
+        geistMono.variable,
+        "min-h-dvh antialiased font-sans",
+      )}
     >
       <body className="flex min-h-dvh flex-col">
         <Header isAuthenticated={!!token} onLogout={logoutAction} />

@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { Wordmark } from "@/components/ui";
+import { cn } from "@/lib/cn";
 import type { Artist } from "@/lib/types/spotify";
 
 function getArtistSizeClass(index: number): string {
@@ -80,11 +81,6 @@ export function FestivalPoster({ artists }: FestivalPosterProps) {
     link.click();
   }
 
-  const row2Justify =
-    row2.length >= 2 ? "justify-between" : "justify-center";
-  const row3Justify =
-    row3.length >= 3 ? "justify-between" : row3.length === 2 ? "justify-between" : "justify-center";
-
   return (
     <section className="flex w-full flex-col gap-4">
       <div className="flex w-full items-baseline justify-between gap-4">
@@ -129,7 +125,10 @@ export function FestivalPoster({ artists }: FestivalPosterProps) {
           <div className="relative flex flex-col gap-5 font-display tracking-tight">
             {headline ? (
               <p
-                className={`text-balance text-[#f5f5f5] ${getArtistSizeClass(0)}`}
+                className={cn(
+                  "text-balance text-[#f5f5f5]",
+                  getArtistSizeClass(0),
+                )}
               >
                 {headline.name}
               </p>
@@ -137,20 +136,25 @@ export function FestivalPoster({ artists }: FestivalPosterProps) {
 
             {row2.length > 0 ? (
               <div
-                className={`flex w-full flex-row items-baseline gap-3 ${row2Justify}`}
+                className={cn(
+                  "flex w-full flex-row items-baseline gap-3",
+                  row2.length >= 2 ? "justify-between" : "justify-center",
+                )}
               >
                 {row2.map((artist, i) => {
                   const globalIndex = 1 + i;
-                  const alignClass =
-                    row2.length >= 2
-                      ? i === 0
-                        ? "text-left"
-                        : "text-right"
-                      : "text-center";
                   return (
                     <p
                       key={artist.id}
-                      className={`min-w-0 max-w-[48%] text-balance text-[#f5f5f5] ${alignClass} ${getArtistSizeClass(globalIndex)}`}
+                      className={cn(
+                        "min-w-0 max-w-[48%] text-balance text-[#f5f5f5]",
+                        row2.length >= 2
+                          ? i === 0
+                            ? "text-left"
+                            : "text-right"
+                          : "text-center",
+                        getArtistSizeClass(globalIndex),
+                      )}
                     >
                       {artist.name}
                     </p>
@@ -161,21 +165,31 @@ export function FestivalPoster({ artists }: FestivalPosterProps) {
 
             {row3.length > 0 ? (
               <div
-                className={`flex w-full flex-row items-baseline gap-2 sm:gap-3 ${row3Justify}`}
+                className={cn(
+                  "flex w-full flex-row items-baseline gap-2 sm:gap-3",
+                  row3.length >= 2 ? "justify-between" : "justify-center",
+                )}
               >
                 {row3.map((artist, i) => {
                   const globalIndex = 3 + i;
-                  let alignClass = "text-center";
-                  if (row3.length === 3) {
-                    alignClass =
-                      i === 0 ? "text-left" : i === 1 ? "text-center" : "text-right";
-                  } else if (row3.length === 2) {
-                    alignClass = i === 0 ? "text-left" : "text-right";
-                  }
                   return (
                     <p
                       key={artist.id}
-                      className={`min-w-0 flex-1 text-balance text-[#f5f5f5] ${alignClass} ${getArtistSizeClass(globalIndex)}`}
+                      className={cn(
+                        "min-w-0 flex-1 text-balance text-[#f5f5f5]",
+                        row3.length === 3
+                          ? i === 0
+                            ? "text-left"
+                            : i === 1
+                              ? "text-center"
+                              : "text-right"
+                          : row3.length === 2
+                            ? i === 0
+                              ? "text-left"
+                              : "text-right"
+                            : "text-center",
+                        getArtistSizeClass(globalIndex),
+                      )}
                     >
                       {artist.name}
                     </p>
@@ -189,7 +203,10 @@ export function FestivalPoster({ artists }: FestivalPosterProps) {
                 {wall.map((artist) => (
                   <span
                     key={artist.id}
-                    className={`text-balance text-[#f5f5f5] ${getArtistSizeClass(6)}`}
+                    className={cn(
+                      "text-balance text-[#f5f5f5]",
+                      getArtistSizeClass(6),
+                    )}
                   >
                     {artist.name}
                   </span>
@@ -198,7 +215,7 @@ export function FestivalPoster({ artists }: FestivalPosterProps) {
             ) : null}
 
             {closing ? (
-              <p className={`font-display tracking-tight ${closingNameClass}`}>
+              <p className={cn("font-display tracking-tight", closingNameClass)}>
                 {closing.name}
               </p>
             ) : null}

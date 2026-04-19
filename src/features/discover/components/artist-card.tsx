@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { HeartIcon, XIcon } from "@/components/icons";
+import { cn } from "@/lib/cn";
 import { dislikeArtistAction, likeArtistAction } from "../actions";
 import type { Artist, DiscoverSearchParams, Track } from "../types";
 import {
@@ -8,17 +9,42 @@ import {
 } from "./discover-card-surface";
 import { AudioPlayer } from "./audio-player";
 
-const posterBaseClass = `pointer-events-none absolute inset-0 ${discoverCardRadiusClass} bg-[radial-gradient(ellipse_115%_92%_at_50%_6%,#7f1d1d_0%,#450a0a_36%,#141212_100%)]`;
+const posterBaseClass = cn(
+  "pointer-events-none absolute inset-0",
+  discoverCardRadiusClass,
+  "bg-[radial-gradient(ellipse_115%_92%_at_50%_6%,#7f1d1d_0%,#450a0a_36%,#141212_100%)]",
+);
 
-const posterWarmCenterClass = `pointer-events-none absolute inset-0 ${discoverCardRadiusClass} bg-[radial-gradient(ellipse_72%_52%_at_50%_40%,rgba(248,113,113,0.14)_0%,transparent_62%)]`;
+const posterWarmCenterClass = cn(
+  "pointer-events-none absolute inset-0",
+  discoverCardRadiusClass,
+  "bg-[radial-gradient(ellipse_72%_52%_at_50%_40%,rgba(248,113,113,0.14)_0%,transparent_62%)]",
+);
 
-const posterVignetteClass = `pointer-events-none absolute inset-0 ${discoverCardRadiusClass} bg-linear-to-b from-black/30 via-transparent to-black/90`;
+const posterVignetteClass = cn(
+  "pointer-events-none absolute inset-0",
+  discoverCardRadiusClass,
+  "bg-linear-to-b from-black/30 via-transparent to-black/90",
+);
 
-const posterEdgeClass = `pointer-events-none absolute inset-0 ${discoverCardRadiusClass} shadow-[inset_0_0_0_1px_rgba(0,0,0,0.35)]`;
+const posterEdgeClass = cn(
+  "pointer-events-none absolute inset-0",
+  discoverCardRadiusClass,
+  "shadow-[inset_0_0_0_1px_rgba(0,0,0,0.35)]",
+);
 
-const cardFrameClass = `isolate w-full ${discoverCardRadiusClass} shadow-[0_20px_56px_-14px_rgb(0_0_0/0.5),0_8px_24px_-8px_rgb(0_0_0/0.35)] ring-1 ring-black/20 animate-discover-card`;
+const cardFrameClass = cn(
+  "isolate w-full",
+  discoverCardRadiusClass,
+  "shadow-[0_20px_56px_-14px_rgb(0_0_0/0.5),0_8px_24px_-8px_rgb(0_0_0/0.35)] ring-1 ring-black/20 animate-discover-card",
+);
 
-const cardShellClass = `relative aspect-3/4 min-h-0 w-full max-h-[min(54dvh,calc(100dvh-21rem))] overflow-hidden ${discoverCardRadiusClass} ${discoverCardShellClipClass} sm:max-h-[min(58dvh,calc(100dvh-20rem))]`;
+const cardShellClass = cn(
+  "relative aspect-3/4 min-h-0 w-full max-h-[min(54dvh,calc(100dvh-21rem))] overflow-hidden",
+  discoverCardRadiusClass,
+  discoverCardShellClipClass,
+  "sm:max-h-[min(58dvh,calc(100dvh-20rem))]",
+);
 
 const heroTitleClass =
   "line-clamp-3 text-balance text-center font-display text-3xl font-bold leading-[1.12] tracking-tight text-rose-50 sm:text-4xl sm:leading-[1.1] md:text-5xl";
@@ -64,7 +90,10 @@ export function ArtistCard({ artist, track, state }: ArtistCardProps) {
 
               {track.albumImageUrl ? (
                 <div
-                  className={`absolute inset-0 overflow-hidden ${discoverCardRadiusClass}`}
+                  className={cn(
+                    "absolute inset-0 overflow-hidden",
+                    discoverCardRadiusClass,
+                  )}
                   aria-hidden
                 >
                   <Image
@@ -83,10 +112,13 @@ export function ArtistCard({ artist, track, state }: ArtistCardProps) {
               <div className={posterEdgeClass} aria-hidden />
 
               <div
-                className={`absolute inset-0 z-10 flex flex-col ${discoverCardRadiusClass}`}
+                className={cn(
+                  "absolute inset-0 z-10 flex flex-col",
+                  discoverCardRadiusClass,
+                )}
               >
                 <div className="flex flex-1 flex-col items-center justify-center px-5 pb-4 pt-10 sm:px-6 sm:pb-5 sm:pt-14">
-                  <p className={`${heroTitleClass} ${heroGlowClass}`}>
+                  <p className={cn(heroTitleClass, heroGlowClass)}>
                     {track.name}
                   </p>
                 </div>

@@ -1,3 +1,5 @@
+import { cn } from "@/lib/cn";
+
 type Size = "sm" | "md" | "lg";
 
 interface WordmarkProps {
@@ -14,7 +16,11 @@ const sizes: Record<Size, string> = {
 export function Wordmark({ size = "sm", className = "" }: WordmarkProps) {
   return (
     <span
-      className={`inline-flex items-baseline gap-1.5 font-display font-extrabold tracking-tight text-foreground ${sizes[size]} ${className}`.trim()}
+      className={cn(
+        "inline-flex items-baseline gap-1.5 font-display font-extrabold tracking-tight text-foreground",
+        sizes[size],
+        className,
+      )}
     >
       <span>Randomfy.</span>
       <span

@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 
 import { PauseIcon, PlayIcon } from "@/components/icons";
+import { cn } from "@/lib/cn";
 
 let currentAudio: HTMLAudioElement | null = null;
 
@@ -15,7 +16,6 @@ interface AudioPlayerProps {
 }
 
 export function AudioPlayer({ previewUrl, className = "" }: AudioPlayerProps) {
-  const controlClass = `${controlButtonClass} ${className}`.trim();
   const audioRef = useRef<HTMLAudioElement>(null);
   const [playing, setPlaying] = useState(false);
 
@@ -25,7 +25,7 @@ export function AudioPlayer({ previewUrl, className = "" }: AudioPlayerProps) {
         type="button"
         disabled
         aria-label="Preview not available"
-        className={controlClass}
+        className={cn(controlButtonClass, className)}
       >
         <PlayIcon size={18} />
       </button>
@@ -64,7 +64,7 @@ export function AudioPlayer({ previewUrl, className = "" }: AudioPlayerProps) {
         type="button"
         onClick={toggle}
         aria-label={playing ? "Pause preview" : "Play preview"}
-        className={controlClass}
+        className={cn(controlButtonClass, className)}
       >
         {playing ? <PauseIcon size={18} /> : <PlayIcon size={18} />}
       </button>

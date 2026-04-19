@@ -1,17 +1,40 @@
+import { cn } from "@/lib/cn";
+
 import {
   discoverCardRadiusClass,
   discoverCardShellClipClass,
 } from "./discover-card-surface";
 
-const skeletonPosterBase = `pointer-events-none absolute inset-0 ${discoverCardRadiusClass} bg-[radial-gradient(ellipse_115%_92%_at_50%_6%,#7f1d1d_0%,#450a0a_36%,#141212_100%)]`;
+const skeletonPosterBase = cn(
+  "pointer-events-none absolute inset-0",
+  discoverCardRadiusClass,
+  "bg-[radial-gradient(ellipse_115%_92%_at_50%_6%,#7f1d1d_0%,#450a0a_36%,#141212_100%)]",
+);
 
-const skeletonPosterWarm = `pointer-events-none absolute inset-0 ${discoverCardRadiusClass} bg-[radial-gradient(ellipse_72%_52%_at_50%_40%,rgba(248,113,113,0.14)_0%,transparent_62%)]`;
+const skeletonPosterWarm = cn(
+  "pointer-events-none absolute inset-0",
+  discoverCardRadiusClass,
+  "bg-[radial-gradient(ellipse_72%_52%_at_50%_40%,rgba(248,113,113,0.14)_0%,transparent_62%)]",
+);
 
-const skeletonVignette = `pointer-events-none absolute inset-0 ${discoverCardRadiusClass} bg-linear-to-b from-black/30 via-transparent to-black/90`;
+const skeletonVignette = cn(
+  "pointer-events-none absolute inset-0",
+  discoverCardRadiusClass,
+  "bg-linear-to-b from-black/30 via-transparent to-black/90",
+);
 
-const skeletonFrameClass = `isolate w-full ${discoverCardRadiusClass} shadow-[0_20px_56px_-14px_rgb(0_0_0/0.5),0_8px_24px_-8px_rgb(0_0_0/0.35)] ring-1 ring-black/20 animate-pulse`;
+const skeletonFrameClass = cn(
+  "isolate w-full",
+  discoverCardRadiusClass,
+  "shadow-[0_20px_56px_-14px_rgb(0_0_0/0.5),0_8px_24px_-8px_rgb(0_0_0/0.35)] ring-1 ring-black/20 animate-pulse",
+);
 
-const skeletonShellClass = `relative aspect-3/4 min-h-0 w-full max-h-[min(54dvh,calc(100dvh-21rem))] overflow-hidden ${discoverCardRadiusClass} ${discoverCardShellClipClass} sm:max-h-[min(58dvh,calc(100dvh-20rem))]`;
+const skeletonShellClass = cn(
+  "relative aspect-3/4 min-h-0 w-full max-h-[min(54dvh,calc(100dvh-21rem))] overflow-hidden",
+  discoverCardRadiusClass,
+  discoverCardShellClipClass,
+  "sm:max-h-[min(58dvh,calc(100dvh-20rem))]",
+);
 
 export function ArtistCardSkeleton() {
   return (
@@ -24,14 +47,21 @@ export function ArtistCardSkeleton() {
               <div className={skeletonPosterWarm} aria-hidden />
               <div className={skeletonVignette} aria-hidden />
               <div
-                className={`pointer-events-none absolute inset-0 ${discoverCardRadiusClass} shadow-[inset_0_0_0_1px_rgba(0,0,0,0.35)]`}
+                className={cn(
+                  "pointer-events-none absolute inset-0",
+                  discoverCardRadiusClass,
+                  "shadow-[inset_0_0_0_1px_rgba(0,0,0,0.35)]",
+                )}
                 aria-hidden
               />
 
               <div className="absolute right-4 top-4 h-10 w-10 rounded-full bg-black/45 ring-1 ring-white/10" />
 
               <div
-                className={`absolute inset-0 flex flex-col ${discoverCardRadiusClass}`}
+                className={cn(
+                  "absolute inset-0 flex flex-col",
+                  discoverCardRadiusClass,
+                )}
               >
                 <div className="flex flex-1 flex-col items-center justify-center px-5 pt-10 sm:px-6 sm:pt-14">
                   <div className="h-9 w-[85%] max-w-[260px] rounded-lg bg-rose-100/15" />

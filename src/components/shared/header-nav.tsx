@@ -4,6 +4,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { ReactNode } from "react";
 
+import { cn } from "@/lib/cn";
+
 interface HeaderNavProps {
   isAuthenticated: boolean;
   logoutSlot?: ReactNode;
@@ -45,11 +47,12 @@ export function HeaderNav({ isAuthenticated, logoutSlot }: HeaderNavProps) {
             key={link.href}
             href={link.href}
             aria-current={active ? "page" : undefined}
-            className={`transition-colors ${
+            className={cn(
+              "transition-colors",
               active
                 ? "text-gray-900 underline decoration-2 underline-offset-8 dark:text-foreground dark:decoration-foreground"
-                : "text-gray-500 hover:text-gray-900 dark:text-muted dark:hover:text-foreground"
-            }`}
+                : "text-gray-500 hover:text-gray-900 dark:text-muted dark:hover:text-foreground",
+            )}
           >
             {link.label}
           </Link>
