@@ -216,7 +216,9 @@ export function FestivalPoster({ artists }: FestivalPosterProps) {
             ) : null}
 
             {closing ? (
-              <p className={cn("font-display tracking-tight", closingNameClass)}>
+              <p
+                className={cn("font-display tracking-tight", closingNameClass)}
+              >
                 {closing.name}
               </p>
             ) : null}

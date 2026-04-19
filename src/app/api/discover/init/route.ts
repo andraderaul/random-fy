@@ -1,6 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import { setDiscoverSeed } from "@/features/discover/cookies";
-import { buildDiscoverUrl, parseLikedPairs, parseIds, parseAlbumImageUrls } from "@/features/discover/session";
+import {
+  buildDiscoverUrl,
+  parseLikedPairs,
+  parseIds,
+  parseAlbumImageUrls,
+} from "@/features/discover/session";
 
 export async function GET(request: NextRequest): Promise<NextResponse> {
   const { searchParams } = request.nextUrl;

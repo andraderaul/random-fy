@@ -13,7 +13,9 @@ const VALID_STATE = "mock-oauth-state";
 
 jest.mock("next/navigation", () => ({
   redirect: jest.fn((url: string) => {
-    throw Object.assign(new Error("NEXT_REDIRECT"), { digest: `NEXT_REDIRECT;${url}` });
+    throw Object.assign(new Error("NEXT_REDIRECT"), {
+      digest: `NEXT_REDIRECT;${url}`,
+    });
   }),
 }));
 
@@ -55,7 +57,9 @@ afterEach(() => {
   delete process.env.SPOTIFY_REDIRECT_URI;
 });
 
-function makeRequest(options: { code?: string; state?: string } = {}): NextRequest {
+function makeRequest(
+  options: { code?: string; state?: string } = {},
+): NextRequest {
   const url = new URL("/api/callback", BASE_URL);
   if (options.code) url.searchParams.set("code", options.code);
   if (options.state) url.searchParams.set("state", options.state);

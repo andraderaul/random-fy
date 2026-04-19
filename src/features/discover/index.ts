@@ -1,4 +1,8 @@
-export { likeArtistAction, dislikeArtistAction, endSessionAction } from "./actions";
+export {
+  likeArtistAction,
+  dislikeArtistAction,
+  endSessionAction,
+} from "./actions";
 export { ArtistCard } from "./components/artist-card";
 export { ArtistCardSkeleton } from "./components/artist-card.skeleton";
 export { DiscoverContent } from "./components/discover-content";

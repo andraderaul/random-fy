@@ -28,7 +28,12 @@ export async function likeArtistAction(
   await setDiscoverSeed(artistId);
 
   redirect(
-    buildDiscoverUrl({ liked: newLiked, seen: newSeen, tracks, albums: newAlbums }),
+    buildDiscoverUrl({
+      liked: newLiked,
+      seen: newSeen,
+      tracks,
+      albums: newAlbums,
+    }),
   );
 }
 

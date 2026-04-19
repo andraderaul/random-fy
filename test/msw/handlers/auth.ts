@@ -29,6 +29,9 @@ export const authHandlers = [
       });
     }
 
-    return HttpResponse.json({ error: "unsupported_grant_type" }, { status: 400 });
+    return HttpResponse.json(
+      { error: "unsupported_grant_type" },
+      { status: 400 },
+    );
   }),
 ];

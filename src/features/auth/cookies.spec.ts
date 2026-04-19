@@ -20,9 +20,7 @@ const makeCookieStore = (initial: Record<string, string> = {}) => {
     get: jest.fn((key: string) =>
       store.has(key) ? { value: store.get(key)! } : undefined,
     ),
-    set: jest.fn(
-      (key: string, value: string) => void store.set(key, value),
-    ),
+    set: jest.fn((key: string, value: string) => void store.set(key, value)),
     delete: jest.fn((key: string) => void store.delete(key)),
   };
 };

@@ -17,7 +17,12 @@ describe("getArtistsByIds", () => {
       http.get(`${SPOTIFY_BASE}/artists`, () =>
         HttpResponse.json({
           artists: [
-            mockSpotifyArtist({ id: "a1", name: "Artist 1", popularity: 90, genres: ["rock"] }),
+            mockSpotifyArtist({
+              id: "a1",
+              name: "Artist 1",
+              popularity: 90,
+              genres: ["rock"],
+            }),
           ],
         }),
       ),
@@ -59,10 +64,7 @@ describe("getArtistsByIds", () => {
     server.use(
       http.get(`${SPOTIFY_BASE}/artists`, () =>
         HttpResponse.json({
-          artists: [
-            mockSpotifyArtist({ id: "valid" }),
-            null,
-          ],
+          artists: [mockSpotifyArtist({ id: "valid" }), null],
         }),
       ),
     );

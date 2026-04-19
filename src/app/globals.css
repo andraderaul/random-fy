@@ -97,14 +97,15 @@
     var(--color-primary-hover),
     var(--color-primary)
   );
-  --shadow-glow: 0 0 44px -8px rgb(34 197 94 / 0.55),
-    0 14px 28px -10px rgb(0 0 0 / 0.45);
+  --shadow-glow:
+    0 0 44px -8px rgb(34 197 94 / 0.55), 0 14px 28px -10px rgb(0 0 0 / 0.45);
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
   --animate-fade-in: fade-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
   --animate-scale-in: scale-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
-  --animate-discover-card: discover-card-enter 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-discover-card: discover-card-enter 0.55s
+    cubic-bezier(0.22, 1, 0.36, 1) both;
   --animate-spin-slow: spin-slow 20s linear infinite;
   --animate-pulse-glow: pulse-glow 2.4s ease-out infinite;
 }

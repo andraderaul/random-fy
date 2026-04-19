@@ -28,7 +28,9 @@ export async function spotifyFetch<T>(
   });
 
   if (!response.ok) {
-    throw new Error(`Spotify API error: ${response.status} ${response.statusText}`);
+    throw new Error(
+      `Spotify API error: ${response.status} ${response.statusText}`,
+    );
   }
 
   return response.json() as Promise<T>;

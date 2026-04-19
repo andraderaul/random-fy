@@ -26,7 +26,9 @@ export async function handleOAuthCallback(
     return { success: false, redirectTo: "/login" };
   }
 
-  const credentials = Buffer.from(`${clientId}:${clientSecret}`).toString("base64");
+  const credentials = Buffer.from(`${clientId}:${clientSecret}`).toString(
+    "base64",
+  );
 
   let tokenData: SpotifyTokenResponse;
 

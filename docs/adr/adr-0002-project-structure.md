@@ -38,12 +38,12 @@ Adotar uma **arquitetura em camadas com organização feature-based**, onde as d
 
 ### Regras de dependência
 
-| Camada       | Pode importar de         | Não pode importar de       |
-| ------------ | ------------------------ | -------------------------- |
-| `app/`       | `features/`, `lib/`, `components/` | —                |
-| `features/`  | `lib/`, `components/`    | `app/`                     |
-| `components/`| `lib/`                   | `features/`, `app/`        |
-| `lib/`       | —                        | `features/`, `components/`, `app/` |
+| Camada        | Pode importar de                   | Não pode importar de               |
+| ------------- | ---------------------------------- | ---------------------------------- |
+| `app/`        | `features/`, `lib/`, `components/` | —                                  |
+| `features/`   | `lib/`, `components/`              | `app/`                             |
+| `components/` | `lib/`                             | `features/`, `app/`                |
+| `lib/`        | —                                  | `features/`, `components/`, `app/` |
 
 Essas regras serão enforçadas via ESLint com a rule `import/no-restricted-paths`.
 

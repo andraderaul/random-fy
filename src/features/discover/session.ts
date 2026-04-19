@@ -9,7 +9,13 @@ export {
   parseAlbumImageUrls,
 } from "@/lib/session";
 
-import { parseLikedPairs, parseIds, parseAlbumImageUrls, serializeLikedPairs, serializeIds } from "@/lib/session";
+import {
+  parseLikedPairs,
+  parseIds,
+  parseAlbumImageUrls,
+  serializeLikedPairs,
+  serializeIds,
+} from "@/lib/session";
 
 export function pickSeed(artists: Artist[], seen: string[]): Artist | null {
   const seenSet = new Set(seen);

@@ -14,14 +14,19 @@ describe("createPlaylist", () => {
     let capturedBody: Record<string, unknown> = {};
 
     server.use(
-      http.post(`${SPOTIFY_BASE}/users/:userId/playlists`, async ({ request }) => {
-        capturedBody = (await request.json()) as Record<string, unknown>;
-        return HttpResponse.json({
-          id: "playlist-1",
-          name: "Randomfy",
-          external_urls: { spotify: "https://open.spotify.com/playlist/playlist-1" },
-        });
-      }),
+      http.post(
+        `${SPOTIFY_BASE}/users/:userId/playlists`,
+        async ({ request }) => {
+          capturedBody = (await request.json()) as Record<string, unknown>;
+          return HttpResponse.json({
+            id: "playlist-1",
+            name: "Randomfy",
+            external_urls: {
+              spotify: "https://open.spotify.com/playlist/playlist-1",
+            },
+          });
+        },
+      ),
     );
 
     await createPlaylist("user-123", ["track-1"], ACCESS_TOKEN);

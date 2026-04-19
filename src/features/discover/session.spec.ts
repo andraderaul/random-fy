@@ -103,7 +103,9 @@ describe("parseLikedPairs", () => {
 
 describe("serializeLikedPairs", () => {
   it("serializes pairs correctly with colon", () => {
-    expect(serializeLikedPairs([{ artistId: "a", trackId: "t1" }])).toBe("a:t1");
+    expect(serializeLikedPairs([{ artistId: "a", trackId: "t1" }])).toBe(
+      "a:t1",
+    );
   });
 
   it("returns empty string for empty array", () => {
@@ -122,12 +124,17 @@ describe("serializeLikedPairs", () => {
 
 describe("buildDiscoverUrl", () => {
   it("returns /discover when all arrays are empty", () => {
-    expect(buildDiscoverUrl({ liked: [], seen: [], tracks: [] })).toBe("/discover");
+    expect(buildDiscoverUrl({ liked: [], seen: [], tracks: [] })).toBe(
+      "/discover",
+    );
   });
 
   it("includes liked param", () => {
     const url = buildDiscoverUrl({
-      liked: [{ artistId: "a", trackId: "t1" }, { artistId: "b", trackId: "t2" }],
+      liked: [
+        { artistId: "a", trackId: "t1" },
+        { artistId: "b", trackId: "t2" },
+      ],
       seen: [],
       tracks: [],
     });

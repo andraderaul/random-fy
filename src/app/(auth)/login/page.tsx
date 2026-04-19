@@ -23,13 +23,15 @@ export default function LoginPage() {
 
             <h1 className="font-display text-balance text-4xl font-semibold leading-[1.1] tracking-tight text-foreground sm:text-5xl lg:text-6xl">
               <span className="block">Discover artists</span>
-              <span className="text-primary block italic">you&apos;ll love.</span>
+              <span className="text-primary block italic">
+                you&apos;ll love.
+              </span>
             </h1>
 
             <p className="mt-6 max-w-xl text-pretty text-base leading-relaxed text-muted sm:text-lg">
               Built from your most-listened Spotify artists. Swipe twenty picks.
-              Walk away with a playlist, a collage, and a festival poster of your
-              taste.
+              Walk away with a playlist, a collage, and a festival poster of
+              your taste.
             </p>
 
             <div className="mt-10 flex flex-wrap items-center gap-6">
@@ -53,9 +55,7 @@ export default function LoginPage() {
             aria-hidden
           >
             <div className="relative flex h-64 w-64 items-center justify-center sm:h-72 sm:w-72">
-              <div
-                className="border-brand/35 absolute inset-0 rounded-full border-2 border-t-brand motion-reduce:animate-none motion-reduce:opacity-80 animate-spin-slow"
-              />
+              <div className="border-brand/35 absolute inset-0 rounded-full border-2 border-t-brand motion-reduce:animate-none motion-reduce:opacity-80 animate-spin-slow" />
               <div className="absolute inset-4 rounded-full border border-subtle/60" />
               <span className="font-display text-brand text-center text-3xl font-semibold tracking-tight sm:text-4xl">
                 Randomfy

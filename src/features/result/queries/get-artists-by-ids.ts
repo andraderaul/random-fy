@@ -25,7 +25,10 @@ function mapArtist(raw: SpotifyArtist): Artist {
   };
 }
 
-export async function getArtistsByIds(ids: string[], accessToken: string): Promise<Artist[]> {
+export async function getArtistsByIds(
+  ids: string[],
+  accessToken: string,
+): Promise<Artist[]> {
   if (ids.length === 0) return [];
 
   const data = await spotifyFetch<ArtistsBatchResponse>(

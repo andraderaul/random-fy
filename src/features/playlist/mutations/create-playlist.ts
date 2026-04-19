@@ -29,14 +29,10 @@ export async function createPlaylist(
 
   const uris = trackIds.map((id) => `spotify:track:${id}`);
 
-  await spotifyFetch(
-    accessToken,
-    `/playlists/${playlist.id}/tracks`,
-    {
-      method: "POST",
-      body: JSON.stringify({ uris }),
-    },
-  );
+  await spotifyFetch(accessToken, `/playlists/${playlist.id}/tracks`, {
+    method: "POST",
+    body: JSON.stringify({ uris }),
+  });
 
   return {
     id: playlist.id,

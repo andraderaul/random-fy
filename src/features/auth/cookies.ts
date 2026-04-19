@@ -87,9 +87,4 @@ export async function clearOAuthState(): Promise<void> {
   cookieStore.delete(OAUTH_STATE_KEY);
 }
 
-export {
-  ACCESS_TOKEN_KEY,
-  REFRESH_TOKEN_KEY,
-  EXPIRES_AT_KEY,
-  OAUTH_STATE_KEY,
-};
+export { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY, EXPIRES_AT_KEY, OAUTH_STATE_KEY };

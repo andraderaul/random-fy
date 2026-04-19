@@ -18,7 +18,7 @@ function buildDiscoverResumeHref(liked?: string, albums?: string): string {
   if (liked) {
     params.set("liked", liked);
   }
-  
+
   if (albums) {
     params.set("albums", albums);
   }
