@@ -1,3 +1,4 @@
+import { NavLink } from "@/components";
 import { Heading } from "@/components/ui";
 
 export default function AboutPage() {
@@ -43,38 +44,33 @@ export default function AboutPage() {
             </a>
             .
           </p>
-          <ul className="flex items-center gap-4 text-sm text-muted">
+          <ul className="flex flex-wrap items-center gap-4">
             <li>
-              <a
+              <NavLink
+                external
                 href="https://github.com/andraderaul"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-foreground transition-colors"
-              >
-                GitHub
-              </a>
+                label="GitHub"
+              />
             </li>
-            <li aria-hidden="true" className="opacity-30">·</li>
+            <li aria-hidden="true" className="opacity-30">
+              ·
+            </li>
             <li>
-              <a
+              <NavLink
+                external
                 href="https://linkedin.com/in/andraderaul"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-foreground transition-colors"
-              >
-                LinkedIn
-              </a>
+                label="LinkedIn"
+              />
             </li>
-            <li aria-hidden="true" className="opacity-30">·</li>
+            <li aria-hidden="true" className="opacity-30">
+              ·
+            </li>
             <li>
-              <a
+              <NavLink
+                external
                 href="https://twitter.com/theandraderaul"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-foreground transition-colors"
-              >
-                Twitter
-              </a>
+                label="Twitter"
+              />
             </li>
           </ul>
         </section>
