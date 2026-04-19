@@ -11,7 +11,7 @@ const sectionLabelClass =
   "text-xs font-medium uppercase tracking-[0.2em] text-muted";
 
 const downloadLinkClass =
-  "text-xs font-medium uppercase tracking-[0.18em] text-muted transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-spotify";
+  "text-xs font-medium uppercase tracking-[0.18em] text-muted transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand";
 
 export function CollageGrid({ artists }: CollageGridProps) {
   const ref = useRef<HTMLDivElement>(null);

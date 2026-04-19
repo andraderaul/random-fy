@@ -19,7 +19,7 @@ const variants: Record<Variant, string> = {
   primary:
     "bg-primary text-black hover:bg-primary-hover focus-visible:outline-primary",
   spotify:
-    "bg-spotify text-spotify-fg hover:bg-spotify-hover focus-visible:outline-spotify",
+    "bg-brand text-gray-950 hover:bg-brand-dark focus-visible:outline-brand",
   secondary:
     "bg-gray-900 text-white dark:bg-white dark:text-gray-900 hover:opacity-80 focus-visible:outline-gray-900 dark:focus-visible:outline-white",
   ghost:

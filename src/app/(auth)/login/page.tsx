@@ -58,10 +58,10 @@ export default function LoginPage() {
           >
             <div className="relative flex h-64 w-64 items-center justify-center sm:h-72 sm:w-72">
               <div
-                className="border-spotify/35 absolute inset-0 rounded-full border-2 border-t-spotify motion-reduce:animate-none motion-reduce:opacity-80 animate-spin-slow"
+                className="border-brand/35 absolute inset-0 rounded-full border-2 border-t-brand motion-reduce:animate-none motion-reduce:opacity-80 animate-spin-slow"
               />
               <div className="absolute inset-4 rounded-full border border-subtle/60" />
-              <span className="font-display text-spotify text-center text-3xl font-semibold tracking-tight sm:text-4xl">
+              <span className="font-display text-brand text-center text-3xl font-semibold tracking-tight sm:text-4xl">
                 Randomfy
               </span>
             </div>

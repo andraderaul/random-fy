@@ -5,7 +5,7 @@ const resultGlowTop =
   "pointer-events-none absolute left-1/2 top-0 h-[min(72vmin,440px)] w-[min(92vw,720px)] -translate-x-1/2 -translate-y-[38%] rounded-full bg-primary/12 blur-[100px]";
 
 const resultGlowGreen =
-  "pointer-events-none absolute left-1/2 top-[min(28vh,220px)] h-[min(48vmin,320px)] w-[min(80vw,520px)] -translate-x-1/2 rounded-full bg-spotify/8 blur-[90px]";
+  "pointer-events-none absolute left-1/2 top-[min(28vh,220px)] h-[min(48vmin,320px)] w-[min(80vw,520px)] -translate-x-1/2 rounded-full bg-brand/8 blur-[90px]";
 
 const resultGlowMagenta =
   "pointer-events-none absolute -right-[min(20vw,120px)] bottom-0 h-[min(56vmin,360px)] w-[min(72vw,480px)] translate-y-[20%] rounded-full bg-fuchsia-950/35 blur-[100px]";

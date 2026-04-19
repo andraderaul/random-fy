@@ -1,12 +1,11 @@
 @import "tailwindcss";
+@config "../../tailwind.config.js";
 
 /*
   CSS custom properties are defined in :root and overridden in dark mode.
   @theme inline maps Tailwind utility tokens → var() so utilities like
   bg-surface, text-muted, border-subtle adapt automatically to dark mode
   via the CSS var cascade — no dark: prefix needed in components.
-
-  Primary stays green in both modes.
 */
 
 :root {
@@ -16,9 +15,6 @@
   --c-surface-muted: #f7f7f8;
   --c-subtle: #ececee;
   --c-muted: #6b7280;
-  --c-spotify: #1db954;
-  --c-spotify-hover: #1ed760;
-  --c-spotify-fg: #0a0a0a;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -29,10 +25,6 @@
     --c-surface-muted: #1a1a1d;
     --c-subtle: #26262a;
     --c-muted: #9ca3af;
-    /* Brighter green + light label so the CTA reads on dark UI and green glows */
-    --c-spotify: #1ed760;
-    --c-spotify-hover: #3be477;
-    --c-spotify-fg: #0a0a0a;
   }
 }
 
@@ -107,9 +99,6 @@
   );
   --shadow-glow: 0 0 44px -8px rgb(34 197 94 / 0.55),
     0 14px 28px -10px rgb(0 0 0 / 0.45);
-  --color-spotify: var(--c-spotify);
-  --color-spotify-hover: var(--c-spotify-hover);
-  --color-spotify-fg: var(--c-spotify-fg);
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;

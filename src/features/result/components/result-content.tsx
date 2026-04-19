@@ -22,10 +22,10 @@ function buildDiscoverResumeHref(liked?: string, albums?: string): string {
 }
 
 const linkMutedClass =
-  "text-sm font-medium text-muted transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-spotify";
+  "text-sm font-medium text-muted transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand";
 
 const secondaryOutlineClass =
-  "inline-flex items-center justify-center rounded-full border border-subtle bg-transparent px-7 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-surface-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-spotify";
+  "inline-flex items-center justify-center rounded-full border border-subtle bg-transparent px-7 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-surface-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand";
 
 export async function ResultContent({ searchParams }: ResultContentProps) {
   const { liked: likedParam, albums: albumsParam } = searchParams;
@@ -64,7 +64,7 @@ export async function ResultContent({ searchParams }: ResultContentProps) {
 
         <h1 className="font-display text-4xl font-bold leading-[1.08] tracking-tight text-balance text-foreground sm:text-5xl md:text-6xl">
           <span className="text-foreground">Your </span>
-          <span className="text-spotify italic">{pairs.length}</span>
+          <span className="text-brand italic">{pairs.length}</span>
           <span className="text-foreground"> picks</span>
         </h1>
 
