@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { redirect } from "next/navigation";
+import { NavLink } from "@/components/nav-link";
 import { Heading, Surface } from "@/components/ui";
 import { getAccessToken } from "@/features/auth";
 import { parseLikedPairs, parseAlbumImageUrls } from "@/lib/session";
@@ -20,12 +20,6 @@ function buildDiscoverResumeHref(liked?: string, albums?: string): string {
   const query = params.toString();
   return query ? `/discover?${query}` : "/discover";
 }
-
-const linkMutedClass =
-  "text-sm font-medium text-muted transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand";
-
-const secondaryOutlineClass =
-  "inline-flex items-center justify-center rounded-full border border-subtle bg-transparent px-7 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-surface-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand";
 
 export async function ResultContent({ searchParams }: ResultContentProps) {
   const { liked: likedParam, albums: albumsParam } = searchParams;
@@ -77,18 +71,27 @@ export async function ResultContent({ searchParams }: ResultContentProps) {
           <div className="flex w-full flex-col flex-wrap items-stretch justify-center gap-3 px-4 py-8 sm:flex-row sm:items-center sm:justify-center">
             <CreatePlaylistButton trackIds={trackIds} />
             {festivalUnlocked ? (
-              <Link href="/discover" className={secondaryOutlineClass}>
-                Start new session
-              </Link>
+              <NavLink
+                href="/discover"
+                preset="none"
+                label="Start new session"
+                className="inline-flex items-center justify-center rounded-full border border-subtle bg-transparent px-7 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-surface-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+              />
             ) : (
-              <Link href={discoverResumeHref} className={secondaryOutlineClass}>
-                Keep discovering
-              </Link>
+              <NavLink
+                href={discoverResumeHref}
+                preset="none"
+                label="Keep discovering"
+                className="inline-flex items-center justify-center rounded-full border border-subtle bg-transparent px-7 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-surface-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+              />
             )}
           </div>
-          <Link href="/discover" className={linkMutedClass}>
-            Reset
-          </Link>
+          <NavLink
+            href="/discover"
+            preset="none"
+            label="Reset"
+            className="text-sm font-medium text-muted transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+          />
         </div>
       </section>
 

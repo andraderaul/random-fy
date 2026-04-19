@@ -1,18 +1,13 @@
-import Link from "next/link";
+import { NavLink } from "@/components/nav-link";
 import { SpotifyIcon } from "@/components/icons";
 import { Button, Heading } from "@/components/ui";
-
-const heroGlowTopLeft =
-  "pointer-events-none absolute -left-[min(40vw,280px)] -top-[min(35vw,240px)] h-[min(85vw,560px)] w-[min(85vw,560px)] rounded-full bg-primary/20 blur-[120px]";
-const heroGlowBottomRight =
-  "pointer-events-none absolute -bottom-[min(25vw,160px)] -right-[min(35vw,220px)] h-[min(75vw,500px)] w-[min(75vw,500px)] rounded-full bg-fuchsia-600/25 blur-[120px]";
 
 export default function LoginPage() {
   return (
     <main className="relative flex flex-1 flex-col overflow-hidden bg-background">
       <div className="pointer-events-none absolute inset-0" aria-hidden>
-        <div className={heroGlowTopLeft} />
-        <div className={heroGlowBottomRight} />
+        <div className="pointer-events-none absolute -left-[min(40vw,280px)] -top-[min(35vw,240px)] h-[min(85vw,560px)] w-[min(85vw,560px)] rounded-full bg-primary/20 blur-[120px]" />
+        <div className="pointer-events-none absolute -bottom-[min(25vw,160px)] -right-[min(35vw,220px)] h-[min(75vw,500px)] w-[min(75vw,500px)] rounded-full bg-fuchsia-600/25 blur-[120px]" />
       </div>
 
       <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-1 flex-col justify-center px-6 py-10 lg:py-16">
@@ -43,12 +38,12 @@ export default function LoginPage() {
                   Continue with Spotify
                 </Button>
               </form>
-              <Link
+              <NavLink
                 href="/about#how-it-works"
+                preset="none"
+                label="How it works ↗"
                 className="text-sm text-muted transition-colors hover:text-foreground"
-              >
-                How it works ↗
-              </Link>
+              />
             </div>
           </div>
 

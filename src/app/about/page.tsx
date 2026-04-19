@@ -34,14 +34,13 @@ export default function AboutPage() {
           <Heading level="eyebrow">Developer</Heading>
           <p className="text-base">
             Built by{" "}
-            <a
+            <NavLink
+              external
               href="https://github.com/raulandrade"
-              target="_blank"
-              rel="noopener noreferrer"
+              preset="none"
+              label="Raul Andrade"
               className="font-medium hover:underline"
-            >
-              Raul Andrade
-            </a>
+            />
             .
           </p>
           <ul className="flex flex-wrap items-center gap-4">

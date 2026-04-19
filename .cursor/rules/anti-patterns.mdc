@@ -3,6 +3,10 @@ description: Catalog of patterns to actively avoid across architecture, React, s
 alwaysApply: true
 ---
 
+## Styling / Tailwind
+
+- ❌ Duplicating navigation link classes with raw `Link` / `<a>` instead of [`NavLink`](src/components/nav-link/nav-link.tsx); ❌ loose Tailwind string variables or dynamic `className` templates instead of `cn()` — see [`styling.mdc`](styling.mdc).
+
 ## Architecture Violations
 
 - ❌ Feature importing another feature directly (use `index.ts` public API or lift to App)

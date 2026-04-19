@@ -1,0 +1,37 @@
+---
+description: Tailwind styling conventions for randomfy v2 — cn(), NavLink, design tokens, globals utilities, and transitions. Apply when writing or reviewing JSX, CSS, or Tailwind classNames.
+alwaysApply: true
+---
+
+## `cn()` ([`src/lib/cn.ts`](src/lib/cn.ts))
+
+- Import `cn` from `@/lib/cn` (clsx + tailwind-merge).
+- Every conditional or composite `className` must use `cn()`.
+- Do not build Tailwind utility names with dynamic template literals (e.g. `text-${color}`) — breaks safelisting and merging.
+- Do not stash Tailwind utilities in loose **string** variables; compose with `cn()` at the callsite. If the same composition repeats in one file, a module-level `const styles = cn(...)` is acceptable.
+
+## Navigation links — `NavLink` ([`src/components/nav-link/nav-link.tsx`](src/components/nav-link/nav-link.tsx))
+
+- Use `NavLink` for all internal navigation and external URLs. Do not duplicate link styling inline with raw `Link` / `<a>` + copied classes.
+- Use the `external` prop for off-site links (`target="_blank"`, `rel="noopener noreferrer"`).
+- Optional `preset`: `"nav-text"` (default) applies `.nav-text`; `"none"` passes through only `className` (e.g. header nav, custom typography).
+- Optional `children`: when provided, renders instead of `label` (e.g. wordmark logo).
+
+## Design tokens ([`tailwind.config.js`](tailwind.config.js))
+
+- Spotify brand color: `text-brand`, `bg-brand`, `fill-brand`, `stroke-brand` (not ad-hoc hex or legacy names).
+- Layout: `spacing.card` (300px), `grid-cols-auto-fit-card` where appropriate.
+- `darkMode` is `class`.
+
+## Globals utilities ([`src/app/globals.css`](src/app/globals.css))
+
+- `@layer utilities`: `.nav-text`, `.text-display`, `.section-container`, `.icon-interactive` — prefer these over repeating the same utility bundles.
+
+## Transitions
+
+- Default pattern: `transition-all duration-200 ease-in-out`.
+- Do not combine `ease-out` with `hover:ease-in` on the same element.
+
+## Misc
+
+- Avoid redundant `my-0` (vertical margin zero is the default).

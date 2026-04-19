@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { HeartIcon, XIcon } from "@/components/icons";
+import { NavLink } from "@/components/nav-link";
 import { cn } from "@/lib/cn";
 import { dislikeArtistAction, likeArtistAction } from "../actions";
 import type { Artist, DiscoverSearchParams, Track } from "../types";
@@ -54,9 +55,6 @@ const heroGlowClass =
 
 const eyebrowClass =
   "font-sans text-[0.7rem] font-medium uppercase tracking-[0.2em] text-stone-400/85";
-
-const artistClass =
-  "font-display text-2xl font-bold tracking-tight text-white drop-shadow-[0_2px_16px_rgb(0_0_0/0.5)] hover:underline sm:text-3xl md:text-4xl";
 
 const trackSecondaryClass =
   "truncate font-display text-base font-normal leading-snug text-stone-100 sm:text-lg";
@@ -127,14 +125,14 @@ export function ArtistCard({ artist, track, state }: ArtistCardProps) {
                   {genreEyebrow ? (
                     <span className={eyebrowClass}>{genreEyebrow}</span>
                   ) : null}
-                  <a
+                  <NavLink
+                    external
                     href={artist.spotifyUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={artistClass}
+                    preset="none"
+                    className="font-display text-2xl font-bold tracking-tight text-white drop-shadow-[0_2px_16px_rgb(0_0_0/0.5)] hover:underline sm:text-3xl md:text-4xl"
                   >
                     {artist.name}
-                  </a>
+                  </NavLink>
                   <span className={trackSecondaryClass}>{track.name}</span>
                 </div>
               </div>

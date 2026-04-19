@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { NavLink } from "@/components/nav-link";
 import { Wordmark } from "@/components/ui";
 import { HeaderNav } from "./header-nav";
 
@@ -21,13 +21,14 @@ export function Header({ isAuthenticated, onLogout }: HeaderProps) {
 
   return (
     <header className="flex items-center justify-between gap-4 border-b border-subtle/50 px-6 py-4 dark:border-white/10">
-      <Link
+      <NavLink
         href={isAuthenticated ? "/discover" : "/"}
+        preset="none"
         className="shrink-0"
         aria-label="Randomfy"
       >
         <Wordmark size="sm" />
-      </Link>
+      </NavLink>
 
       <HeaderNav isAuthenticated={isAuthenticated} logoutSlot={logoutSlot} />
     </header>

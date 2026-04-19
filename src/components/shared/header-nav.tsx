@@ -1,9 +1,9 @@
 "use client";
 
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { ReactNode } from "react";
 
+import { NavLink } from "@/components/nav-link";
 import { cn } from "@/lib/cn";
 
 interface HeaderNavProps {
@@ -11,19 +11,19 @@ interface HeaderNavProps {
   logoutSlot?: ReactNode;
 }
 
-interface NavLink {
+interface NavItem {
   href: string;
   label: string;
 }
 
-const publicLinks: NavLink[] = [
+const publicLinks: NavItem[] = [
   {
     href: "/about",
     label: "About",
   },
 ];
 
-const sessionLinks: NavLink[] = [
+const sessionLinks: NavItem[] = [
   { href: "/discover", label: "Discover" },
   { href: "/result", label: "Playlist" },
   { href: "/about", label: "About" },
@@ -43,9 +43,11 @@ export function HeaderNav({ isAuthenticated, logoutSlot }: HeaderNavProps) {
       {links.map((link) => {
         const active = isActive(link.href);
         return (
-          <Link
+          <NavLink
             key={link.href}
             href={link.href}
+            preset="none"
+            label={link.label}
             aria-current={active ? "page" : undefined}
             className={cn(
               "transition-colors",
@@ -53,9 +55,7 @@ export function HeaderNav({ isAuthenticated, logoutSlot }: HeaderNavProps) {
                 ? "text-gray-900 underline decoration-2 underline-offset-8 dark:text-foreground dark:decoration-foreground"
                 : "text-gray-500 hover:text-gray-900 dark:text-muted dark:hover:text-foreground",
             )}
-          >
-            {link.label}
-          </Link>
+          />
         );
       })}
       {isAuthenticated && logoutSlot}

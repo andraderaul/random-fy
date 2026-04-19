@@ -3,6 +3,7 @@
 import { useTransition, useState } from "react";
 import { toast } from "sonner";
 import { SpotifyIcon } from "@/components/icons";
+import { NavLink } from "@/components/nav-link";
 import { Button, Heading, Surface } from "@/components/ui";
 import { createPlaylistAction, PlaylistEmbed } from "@/features/playlist";
 import type { Playlist } from "@/features/playlist";
@@ -39,14 +40,13 @@ export function CreatePlaylistButton({ trackIds }: CreatePlaylistButtonProps) {
               Saved to your Spotify account.
             </p>
           </div>
-          <a
+          <NavLink
+            external
             href={playlist.spotifyUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+            preset="none"
+            label="Open in Spotify ↗"
             className="shrink-0 text-sm font-medium transition-opacity hover:opacity-70"
-          >
-            Open in Spotify ↗
-          </a>
+          />
         </Surface>
         <PlaylistEmbed playlist={playlist} />
       </div>

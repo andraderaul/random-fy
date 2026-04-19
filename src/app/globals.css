@@ -134,7 +134,7 @@ body {
     @apply text-2xl font-thin leading-10 tracking-wide;
     @apply text-gray-700 dark:text-gray-300;
     @apply hover:text-blue-500 dark:hover:text-orange-400;
-    @apply transition-colors duration-200;
+    @apply transition-all duration-200 ease-in-out;
   }
 
   /* Large primary text — PrimaryText component */
