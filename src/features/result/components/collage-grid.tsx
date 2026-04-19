@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useRef, useState } from "react";
 import type { CollageItem } from "@/lib/types/spotify";
 
@@ -70,12 +71,13 @@ function CollageTile({ item }: { item: CollageItem }) {
   }
 
   return (
-    <div className="aspect-square w-full overflow-hidden rounded-xl bg-surface-muted ring-1 ring-inset ring-subtle">
-      <img
+    <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-surface-muted ring-1 ring-inset ring-subtle">
+      <Image
         src={item.imageUrl}
         alt={item.artistName}
-        className="aspect-square h-full w-full object-cover"
-        crossOrigin="anonymous"
+        fill
+        className="object-cover"
+        sizes="(max-width: 640px) 20vw, 18vw"
         onError={() => setFailed(true)}
       />
     </div>

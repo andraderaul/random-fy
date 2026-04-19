@@ -1,14 +1,6 @@
-import { dirname } from "path";
-import { fileURLToPath } from "url";
-import { FlatCompat } from "@eslint/eslintrc";
+import nextCoreWebVitals from "eslint-config-next/core-web-vitals";
+import eslintConfigPrettier from "eslint-config-prettier/flat";
 import pluginImport from "eslint-plugin-import";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
 
 const FEATURES = ["auth", "discover", "playlist", "result"];
 
@@ -17,14 +9,19 @@ const crossFeatureZones = FEATURES.map((feature) => {
   return {
     target: `./src/features/${feature}`,
     from: otherFeatures.map((f) => `./src/features/${f}`),
-    except: otherFeatures.map((f) => `./src/features/${f}/index.ts`),
+    // Resolved relative to each `from` directory (import/no-restricted-paths).
+    except: ["index.ts"],
     message:
       "features/ can only import from other features via their public barrel (index.ts) (ADR-002)",
   };
 });
 
 const eslintConfig = [
-  ...compat.extends("next/core-web-vitals", "next/typescript", "prettier"),
+  {
+    ignores: ["coverage/**"],
+  },
+  ...nextCoreWebVitals,
+  eslintConfigPrettier,
   {
     plugins: {
       import: pluginImport,
