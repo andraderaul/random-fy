@@ -25,7 +25,6 @@ const publicLinks: NavItem[] = [
 
 const sessionLinks: NavItem[] = [
   { href: "/discover", label: "Discover" },
-  { href: "/result", label: "Playlist" },
   { href: "/about", label: "About" },
 ];
 
